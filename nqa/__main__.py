@@ -52,11 +52,23 @@ def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = 
         print(f"Runtime: {runtime} seconds")
         print(f"Compilation time: {compilation_time} seconds\n")
     
-    f = open("nqa_driver.py", "w")
+    f = open("nateve_driver.py", "w")
     f.write(driver.format(file))
     f.close()
 
     return file
+
+def execute_driver():
+    try:
+        subprocess.call(["py", "-m", "nateve_driver"])
+    except:
+        subprocess.call(["py", "-m", "nateve_driver.py"])
+
+def get_argument(position):
+    try:
+        return sys.argv[position]
+    except:
+        return None
 
 # Main code
 
@@ -67,10 +79,7 @@ if len(params) >= 2:
         try:
             file = sys.argv[2]
 
-            if len(params) == 3:
-                arg = None
-            elif len(params) >= 4:
-                arg = sys.argv[3]
+            arg = get_argument(3)
 
             # Switch command
             
@@ -92,17 +101,12 @@ if len(params) >= 2:
             
             elif command == "run":
                 file = build(file, arg, driver = "import {}")
-                try:
-                    subprocess.call(["py", "-m", "nqa_driver"])
-                except:
-                    subprocess.call(["py", "-m", "nqa_driver.py"])
+                execute_driver()
             
             elif command == "compile":
                 if len(params) >= 4:
-                    if len(params) == 4:
-                        arg2 = None
-                    elif len(params) >= 5:
-                        arg2 = sys.argv[4]
+
+                    arg2 = get_argument(4)
 
                     file = build(file, arg2, driver = "import {}")
                     subprocess.call(["py", "-m", "PyInstaller", "--onefile", "--name", f'{arg}', f'{file}.py'])
@@ -111,18 +115,14 @@ if len(params) >= 2:
 
             elif command == "run-init-loop":
                 if len(params) >= 4:
-                    if len(params) == 4:
-                        arg2 = None
-                    elif len(params) >= 5:
-                        arg2 = sys.argv[4]
+
+                    arg2 = get_argument(4)
 
                     file = build(file, arg2)
                     file2 = build(arg, arg2, driver = "import " + file + "\nwhile True:\n\timport {}")
 
-                    try:
-                        subprocess.call(["py", "-m", "nqa_driver"])
-                    except:
-                        subprocess.call(["py", "-m", "nqa_driver.py"])
+                    execute_driver()
+
                 else:
                     ArgumentError(None, "no loop file specified")
 
