@@ -15,7 +15,7 @@ COMPLEX = "complejo"
 STRING = "cadena"
 NULL = "nada"
 
-USE, INSTALL, WAIT = "usa", "instala", "espera"
+USE, UPDATE, WAIT = "usa", "actualiza", "espera"
 INCLUDE, FROM, AS, PASS, IN = "importa", "desde", "como", "pasa", "en"
 IF, ELIF, ELSE = "si", "sino", "sifalso"
 TRY, EXCEPT = "intenta", "excepto"

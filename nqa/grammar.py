@@ -17,7 +17,7 @@ COMPLEX = "complex"
 STRING = "string"
 NULL = "none"
 
-USE, INSTALL, WAIT = "use", "install", "wait"
+USE, UPDATE, WAIT = "use", "update", "wait"
 INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
 TRY, EXCEPT = "try", "except"
@@ -26,7 +26,7 @@ OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
 AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 
-preprocess = [USE]
+preprocess = [USE, UPDATE, WAIT]
 process = [INCLUDE, FROM, AS, PASS, IN]
 conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
 loops = [WHILE, FOR, BREAK, CONTINUE]

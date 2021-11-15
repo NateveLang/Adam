@@ -2,7 +2,7 @@ from nqa.utils import tolist, tokenize
 
 from nqa.templates.spanish import *
 
-preprocess = [USE]
+preprocess = [USE, UPDATE, WAIT]
 process = [INCLUDE, FROM, AS, PASS, IN]
 conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
 loops = [WHILE, FOR, BREAK, CONTINUE]
