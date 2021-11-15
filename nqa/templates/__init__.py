@@ -4,7 +4,7 @@ from nqa.templates.spanish import *
 
 preprocess = [USE]
 process = [INCLUDE, FROM, AS, PASS, IN]
-conditionals = [IF, ELIF, ELSE]
+conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
 loops = [WHILE, FOR, BREAK, CONTINUE]
 functions = [OPERATOR, RETURN]
 classes = [CLASS, SELF]

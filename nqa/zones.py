@@ -10,7 +10,7 @@ class Zone():
         self.parent = parent
 
         if type == "auto":
-            if name == gr.IF:
+            if name in gr.conditionals:
                 self.type = "conditional"
             elif name in [gr.WHILE, gr.FOR]:
                 self.type = "loop"

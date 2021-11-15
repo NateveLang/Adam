@@ -70,7 +70,7 @@ def parser(tokens, errors):
         elif token.equal(gr.WAIT):
             expected_types = [gr.INT, gr.FLOAT]
             expecting = True
-        elif token.symbol in [gr.IF, gr.WHILE, gr.FOR]:
+        elif token.symbol in gr.conditionals + [gr.WHILE, gr.FOR]:
             zone = Zone(token.symbol, token.line, parent = zone)
             declaration = True
             statements = False
@@ -99,5 +99,7 @@ def parser(tokens, errors):
         
         i += 1
     
+    tree.statements.append(eof_token)
+
     return tree, tokens, errors
         

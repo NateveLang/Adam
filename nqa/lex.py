@@ -115,6 +115,8 @@ def scanner(text, command = None):
     errors = 0
     pos = 1
 
+    text += "~eof token for security~"
+
     i = 0
     while i < len(text):
         ch = text[i]

@@ -94,7 +94,8 @@ def generator(tree, file_name, errors, main = "root()", exceptions = "except:\n\
         return errors
 
     init = """try:
-\tpass
+\timport eggdriver as std
+\timport sys
 except ImportError:
 \tprint('ImportError')
 """

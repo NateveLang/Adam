@@ -8,6 +8,8 @@ import sys, subprocess, time
 
 # Functions
 
+driver_file = "nateve_driver"
+
 def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = ""):
 
     start = time.time()
@@ -42,7 +44,7 @@ def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = 
     now = time.time()
     runtime = now - start
     
-    f = open("nqa/nqa_vars")
+    f = open("nqa/nateve_vars")
     miliseconds = f.read().strip()
     f.close()
     if miliseconds == "True":
@@ -52,17 +54,18 @@ def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = 
         print(f"Runtime: {runtime} seconds")
         print(f"Compilation time: {compilation_time} seconds\n")
     
-    f = open("nateve_driver.py", "w")
+    f = open(driver_file + ".py", "w")
     f.write(driver.format(file))
     f.close()
 
     return file
 
 def execute_driver():
+
     try:
-        subprocess.call(["py", "-m", "nateve_driver"])
+        subprocess.call(["py", "-m", driver_file])
     except:
-        subprocess.call(["py", "-m", "nateve_driver.py"])
+        subprocess.call(["py", "-m", driver_file + ".py"])
 
 def get_argument(position):
     try:
@@ -92,8 +95,8 @@ if len(params) >= 2:
                     miliseconds = False
                 else:
                     miliseconds = True
-                f = open("nqa/nqa_vars", "w")
-                print(miliseconds, file=f)
+                f = open("nqa/nateve_vars", "w")
+                print(miliseconds, file = f)
                 f.close()
             
             elif command == "build":
@@ -127,7 +130,7 @@ if len(params) >= 2:
                     ArgumentError(None, "no loop file specified")
 
         except:
-            RuntimeError("Error in compilation")
+            RuntimeError(None, "Error in compilation")
     else:
         FileError(None, "no file or argument specified")
 else:

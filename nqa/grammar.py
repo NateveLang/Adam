@@ -20,6 +20,7 @@ NULL = "none"
 USE, INSTALL, WAIT = "use", "install", "wait"
 INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
+TRY, EXCEPT = "try", "except"
 WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
 OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
@@ -27,7 +28,7 @@ AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 
 preprocess = [USE]
 process = [INCLUDE, FROM, AS, PASS, IN]
-conditionals = [IF, ELIF, ELSE]
+conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
 loops = [WHILE, FOR, BREAK, CONTINUE]
 functions = [OPERATOR, RETURN]
 classes = [CLASS, SELF]
