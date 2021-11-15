@@ -13,7 +13,6 @@ def parser(tokens, errors):
     errors = 0
     function_declaration = False
     class_declaration = False
-    installing = False
 
     last_line = tokens.last_line
     eof_token = lex.TokenType().EOF(last_line[0], last_line[1])
@@ -59,14 +58,10 @@ def parser(tokens, errors):
             zone = Zone(token.symbol, token.line, type = "class", parent = zone)
             class_declaration = False
         
-        if installing:
-            install(token.symbol)
-            installing = False
-        elif token.equal(gr.USE) or token.equal(gr.INSTALL):
+        elif token.equal(gr.USE):
             expected_types = [gr.STRING]
             expecting = True
-            if token.equal(gr.INSTALL):
-                installing = True
+
         elif token.equal(gr.WAIT):
             expected_types = [gr.INT, gr.FLOAT]
             expecting = True

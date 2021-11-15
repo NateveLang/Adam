@@ -8,6 +8,8 @@ def root():
 	for i in range(2):
 		print(i)
 	
+	server=std.Server()
+	server.ngrok()
 	try:
 		print(2/0)
 	
