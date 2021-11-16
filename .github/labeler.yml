@@ -1,0 +1,10 @@
+# Add 'test' to any changes within 'test' folder or any subfolders
+test:
+- test/**/*
+
+# Add 'Adam' to any file changes within 'nqa' folder
+Adam: nqa/*
+
+# Add 'github' to any file changes within '.github' folder or any subfolders
+github: 
+- .github/**/*
