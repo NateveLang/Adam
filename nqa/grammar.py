@@ -15,6 +15,7 @@ FLOAT = "float"
 INT = "int"
 COMPLEX = "complex"
 STRING = "string"
+DOCSTRING = "docstring"
 NULL = "none"
 
 USE, WAIT = "use", "wait"

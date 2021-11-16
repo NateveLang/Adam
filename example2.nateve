@@ -9,7 +9,8 @@ print(p.eval(theta))
 derive(p)
 
 print(p.eval(theta))
-
+x = "hello"
+import numpy as np
 
 c = Matrix("""
 | 1 1 2 3 4 |

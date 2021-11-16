@@ -49,7 +49,9 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             break
         else:
             if d.ID == gr.STRING:
-                code_line += [f"'{d.symbol}'"]
+                code_line += [f'"{d.symbol}"']
+            elif d.ID == gr.DOCSTRING:
+                code_line += ['"""' + d.symbol + '"""']
             else:
                 code_line += [d.symbol]
     
@@ -73,8 +75,10 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
 
         if type(s) == Zone:
             errors = navigator(s, depth_2, last_line, file, errors)
-        elif s.ID == "string":
-            code_line += [f"'{s.symbol}'"]
+        if s.ID == gr.STRING:
+            code_line += [f'"{s.symbol}"']
+        elif s.ID == gr.DOCSTRING:
+            code_line += ['"""' + s.symbol + '"""']
         else:
             code_line += [f"{s.symbol}"]
         

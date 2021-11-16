@@ -13,6 +13,7 @@ FLOAT = "decimal"
 INT = "entero"
 COMPLEX = "complejo"
 STRING = "cadena"
+DOCSTRING = "documentacion"
 NULL = "nada"
 
 USE, WAIT = "usa", "espera"
