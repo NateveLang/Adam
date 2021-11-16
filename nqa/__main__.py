@@ -63,9 +63,9 @@ def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = 
 def execute_driver():
 
     try:
-        subprocess.call(["py", "-m", driver_file])
+        subprocess.call([sys.executable, "-m", driver_file])
     except:
-        subprocess.call(["py", "-m", driver_file + ".py"])
+        subprocess.call([sys.executable, "-m", driver_file + ".py"])
 
 def get_argument(position):
     try:
@@ -112,7 +112,7 @@ if len(params) >= 2:
                     arg2 = get_argument(4)
 
                     file = build(file, arg2, driver = "import {}")
-                    subprocess.call(["py", "-m", "PyInstaller", "--onefile", "--name", f'{arg}', f'{file}.py'])
+                    subprocess.call([sys.executable, "-m", "PyInstaller", "--onefile", "--name", f'{arg}', f'{file}.py'])
                 else:
                     ArgumentError(None, "no executable file name specified")
 
@@ -129,7 +129,7 @@ if len(params) >= 2:
                 else:
                     ArgumentError(None, "no loop file specified")
 
-        except:
+        except ZeroDivisionError:
             RuntimeError(None, "Error in compilation")
     else:
         FileError(None, "no file or argument specified")

@@ -35,7 +35,7 @@ def binput(prompt = '', default = ''):
 \treturn bool(input(prompt, default))
 
 def update_std():
-\tsubprocess.call(["py", "-m", "pip", "install", "eggdriver"])
+\tsubprocess.call([sys.executable, "-m", "pip", "install", "eggdriver"])
 """
 
 

@@ -75,7 +75,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
 
         if type(s) == Zone:
             errors = navigator(s, depth_2, last_line, file, errors)
-        if s.ID == gr.STRING:
+        elif s.ID == gr.STRING:
             code_line += [f'"{s.symbol}"']
         elif s.ID == gr.DOCSTRING:
             code_line += ['"""' + s.symbol + '"""']
