@@ -129,7 +129,7 @@ if len(params) >= 2:
                 else:
                     ArgumentError(None, "no loop file specified")
 
-        except ZeroDivisionError:
+        except IndexError:
             RuntimeError(None, "Error in compilation")
     else:
         FileError(None, "no file or argument specified")
