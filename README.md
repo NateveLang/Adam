@@ -161,7 +161,7 @@ def qsort(l) {
         greater = qsort(l[1:].filter(lambda x: x >= pivot))
         return less + [pivot] + greater
     }
-
+}
 ```
 
 ## Feedback
@@ -186,7 +186,7 @@ This project has a great potential to be the next programming language for educa
 
 One of the main purposes of this programming language is to create an easy-to-learn language, which at the same time is capable of being used for many different purposes.
 
-### 5. Respect for diversity
+### 4. Respect for diversity
 
 Everybody is welcome, it does not matter your genre, experience or nationality. Anyone with enthusiasm can be part of this project. Anyone from the most expert to the that is beginning to learn about programming, marketing, design, or any career.
 

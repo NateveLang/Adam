@@ -104,8 +104,9 @@ except ImportError:
 \t{main}
 {exceptions}
 """
-    print(init, file = file)
+
     print(gr.special_functions, file = file)
+    print(init, file = file)
     errors = navigator(tree, -1, 1, file, errors)
     print(close, file = file)
 

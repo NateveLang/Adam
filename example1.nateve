@@ -1,4 +1,4 @@
-~Nateve Test 1~
+~Nateve Example 1~
 
 update_std()  ~update std library~
 
@@ -7,12 +7,7 @@ for i in range(2){
     print(i)
 }
 
-~install("matplotlib")~
-
-~help(Server)~
-
-server = Server()
-server.ngrok()
+install("matplotlib")
 
 try{
 print(2/0)
