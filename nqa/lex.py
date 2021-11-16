@@ -116,7 +116,7 @@ def scanner(text, command = None):
     pos = 1
     string_ch = ""
 
-    text += "\n ~eof~ ~tokens~ ~for~ ~security~"
+    text += "\n ~eof tokens for security~ ~including the \n, DO NOT REMOVE THE EXTRA \n~"
 
     i = 0
     while i < len(text):

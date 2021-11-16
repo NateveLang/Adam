@@ -21,8 +21,8 @@ def root():
 	print(p.eval(theta))
 	derive(p)
 	print(p.eval(theta))
-	x="hello"
 	import numpy as np
+	x="hello"
 	c=Matrix("""
 | 1 1 2 3 4 |
 | 0 1 2 3 4 |
