@@ -78,15 +78,22 @@ This language uses variables. For declaring variables, you just need to write th
 For example:
 
 ```python
-a = 1                   -- Interger
-b = 1.0                 -- Float
-c = 1 + 2j              -- Complex
-d = "hello"            -- String
-e = True                -- Boolean
-f = [1,2,3]             -- List
-g = (1,2)               -- Tuple
-h = Vector([1,2,3])     -- Vector
-i = Polynomial([1,2,3]) -- Polynomial         
+a = 1                          ~ Interger ~
+b = 1.0                        ~ Float ~
+c = 1 + 2j                     ~ Complex ~
+d = "hello"                    ~ String ~
+e = True                       ~ Boolean ~
+f = [1,2,3]                    ~ List ~
+g = (1,2)                      ~ Tuple ~
+h = Vector([1,2,3])            ~ Vector ~
+i = Polynomial("1 +2x +x^2")   ~ Polynomial ~
+j = Matrix("""          
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+""")                           ~ Matrix ~
 ```
 
 Nateve allows data type as Integer, Float, Complex, Boolean, String, List, Tuple, None, Vector, Polynomial and Matrix.
@@ -98,9 +105,9 @@ The Lists allow to use all the data types before mentioned, as well as lists and
 Also, they allow to get an item through the next notation:
 
 ```python
-let value_list = [1,2,3,4,5,6,7,8,9]
-value_list[0]       -- Output: 1
-value_list[0 : 4]    -- Output: [1,2,3,4]
+value_list = [1,2,3,4,5,6,7,8,9]
+value_list[0]       ~ Output: 1 ~
+value_list[0 : 4]   ~ Output: [1,2,3,4] ~
 ```
 
 > The struct of **List Call** is `example_list[<Start> : <End> + 1]`
