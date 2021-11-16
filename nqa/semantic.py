@@ -95,7 +95,7 @@ def generator(tree, file_name, errors, main = "root()", exceptions = "except:\n\
 
     init = """try:
 \tfrom eggdriver import *
-\timport sys, os
+\timport sys, os, subprocess
 except ImportError:
 \tprint('ImportError')
 """
@@ -105,8 +105,8 @@ except ImportError:
 {exceptions}
 """
 
-    print(gr.special_functions, file = file)
     print(init, file = file)
+    print(gr.special_functions, file = file)
     errors = navigator(tree, -1, 1, file, errors)
     print(close, file = file)
 
