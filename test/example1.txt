@@ -1,6 +1,6 @@
 try:
 	from eggdriver import *
-	import sys, os
+	import sys, os, subprocess
 except ImportError:
 	print('ImportError')
 
