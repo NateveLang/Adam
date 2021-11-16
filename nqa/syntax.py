@@ -2,7 +2,6 @@ import nqa.grammar as gr
 import nqa.lex as lex
 from nqa.error import *
 from nqa.zones import Zone
-from nqa.utils import install
 
 # Main code
 
@@ -61,8 +60,6 @@ def parser(tokens, errors):
         if token.equal(gr.USE):
             expected_types = [gr.STRING]
             expecting = True
-        elif token.equal(gr.UPDATE):
-            install("eggdriver")
         elif token.equal(gr.USE):
             expected_types = [gr.STRING]
             expecting = True

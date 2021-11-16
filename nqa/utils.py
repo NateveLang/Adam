@@ -19,6 +19,3 @@ def tostring(array, separator = ""):
         if i != len(array) - 1:
             s += separator
     return s
-
-def install(package):
-    subprocess.call(["py", "-m", "pip", "install", package])

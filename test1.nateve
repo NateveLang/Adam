@@ -1,17 +1,17 @@
 ~Nateve Test 1~
 
-update  ~update std library~
+update_std()  ~update std library~
 
 
 for i in range(2){
     print(i)
 }
 
-~std.install("matplotlib")~
+~install("matplotlib")~
 
-~help(std.Server)~
+~help(Server)~
 
-server = std.Server()
+server = Server()
 server.ngrok()
 
 try{

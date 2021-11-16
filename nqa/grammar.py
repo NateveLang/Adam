@@ -17,7 +17,7 @@ COMPLEX = "complex"
 STRING = "string"
 NULL = "none"
 
-USE, UPDATE, WAIT = "use", "update", "wait"
+USE, WAIT = "use", "wait"
 INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
 TRY, EXCEPT = "try", "except"
@@ -26,7 +26,19 @@ OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
 AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 
-preprocess = [USE, UPDATE, WAIT]
+special_functions = """
+def ninput(prompt = '', default = ''):
+\treturn float(input(prompt, default))
+
+def binput(prompt = '', default = ''):
+\treturn bool(input(prompt, default))
+
+def update_std():
+\tsubprocess.call(["py", "-m", "pip", "install", "eggdriver"])
+"""
+
+
+preprocess = [USE, WAIT]
 process = [INCLUDE, FROM, AS, PASS, IN]
 conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
 loops = [WHILE, FOR, BREAK, CONTINUE]
