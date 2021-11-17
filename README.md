@@ -179,7 +179,7 @@ I would really appreciatte your feedback. You can submit a new issue.
 
 This is an **opensource** project, everyone can contribute and become a member of the community of **Nateve**.
 
-## Why be a member of the SigmaF community?
+## Why be a member of the Nateve community?
 
 ### 1. A simple and understandable code
 
