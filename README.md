@@ -2,6 +2,9 @@
 
 Adam is a Nateve Programming Language compiler developed using Python.
 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![HitCount](http://hits.dwyl.com/NateveLanguage/Adam.svg?style=flat-square)](http://hits.dwyl.com/NateveLanguage/Adam)
+
 ## Nateve
 
 Nateve is a new general domain programming language open source inspired by languages like Python, C++, JavaScript, and Wolfram Mathematica.
