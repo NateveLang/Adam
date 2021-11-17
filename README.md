@@ -129,7 +129,7 @@ def example_function(<argument1>, <argument2>, ...) {
 
 Regarding the conditionals, the syntax structure is:
 
-``` Python
+```python
 if <Condition> {
     <Consequence>
 }
@@ -144,7 +144,7 @@ else {
 
 For example:
 
-``` Python
+```python
 if x <= 1 and x % 3 == 0 {
     a = 0
 }
@@ -154,6 +154,30 @@ elif x == 9 {
 else {
     a = 2
 }
+```
+
+### Loops
+
+In order to use loops, you have to use the next syntax:
+
+**While**
+
+```python
+while <condition> {
+    <sentence1>
+    <sentence2>
+    ...
+}  
+```
+
+**For**
+
+```python
+for <iterator> in <iterable> {
+    <sentence1>
+    <sentence2>
+    ...
+}  
 ```
 
 ## Some Examples
