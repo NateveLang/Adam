@@ -165,7 +165,7 @@ else {
 
 In order to use loops, you have to use the next syntax:
 
-**While**
+#### While Loop
 
 ```python
 while <condition> {
@@ -175,7 +175,7 @@ while <condition> {
 }  
 ```
 
-**For**
+#### For Loop
 
 ```python
 for <iterator> in <iterable> {

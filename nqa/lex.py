@@ -1,14 +1,15 @@
 import nqa.grammar as gr
 import nqa.templates as tp
-from nqa.token import Token, Tokens, TokenType, get_token_ID, get_token_Symbol
+from nqa.token import Tokens, get_token_ID
 from nqa.error import LexicalError
+from nqa.utils import tostring
 
 F = False
 
 # Main code
 
 def scanner(text, command = None):
-    verbose = command in ["-v"]
+    dev_mode = command in ["dev"]
 
     commentary, string, name, number, float, operator, docstring =  F, F, F, F, F, F, 0
 
@@ -180,7 +181,7 @@ def scanner(text, command = None):
 
     log = ""
 
-    if verbose:
+    if dev_mode:
         log += f"Last line: {line} Last column: {pos}\n"
         log += f"Tokens detected: {len(tokens)}\n"
 
