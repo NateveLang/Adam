@@ -1,24 +1,9 @@
-import nqa.grammar as gr
-import nqa.lex as lex
 import sys
-from nqa.error import *
+
+from nqa import lex, code
+import nqa.grammar as gr
+from nqa.error import SemanticError, DeclarationError
 from nqa.zones import Zone
-
-def join(code_line):
-    if len(code_line) > 0:
-
-        code = code_line[0]
-        symbols = gr.operators + [":"]
-
-        for i in range(1, len(code_line)):
-            if code_line[i] not in symbols and code_line[i - 1] not in symbols:
-                code += " " + code_line[i]
-            else:
-                code += code_line[i]
-
-        return code
-    else:
-        return ""
 
 def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
     last_line = line
@@ -29,13 +14,14 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
         code_line += [gr.OPERATOR]
     elif zone.type == "class":
         code_line += [gr.CLASS]
+
     code_line += [zone.name]
 
     for dec in range(len(zone.declaration)):
         d = zone.declaration[dec]
         
         if d.relative_line > last_line:
-            content = depth * tab + join(code_line)
+            content = depth * tab + code.join(code_line)
             print(content, file = file)
 
             last_line = d.relative_line
@@ -48,6 +34,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             errors += DeclarationError(d.line, "Calling a name into its declaration sentence")
             break
         else:
+
             if d.ID == gr.STRING:
                 code_line += [f'"{d.symbol}"']
             elif d.ID == gr.DOCSTRING:
@@ -63,11 +50,12 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
         s = zone.statements[stat]
         
         if s.relative_line > last_line:
+
             if not first_line:
-                content = (depth_2 + 1) * tab + join(code_line)
+                content = (depth_2 + 1) * tab + code.join(code_line)
                 print(content, file = file)
             else:
-                content = depth_2 * tab + join(code_line)
+                content = depth_2 * tab + code.join(code_line)
                 print(content, file = file)
             
             last_line = s.relative_line
@@ -111,10 +99,10 @@ except ImportError:
 
     print(init, file = file)
     print(gr.special_functions, file = file)
+
     errors = navigator(tree, -1, 1, file, errors)
+
     print(close, file = file)
 
     file.close()
     return errors
-
-

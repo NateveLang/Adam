@@ -1,6 +1,5 @@
 import nqa.grammar as gr
-import nqa.lex as lex
-from nqa.error import *
+from nqa import lex
 from nqa.zones import Zone
 
 # Main code
@@ -36,11 +35,13 @@ def parser(tokens, errors):
 
         # SyntaxError
         if expecting:
+
             if token.is_expected(expected_types):
                 expecting = False
             else:
                 errors += 1
                 break
+            
         else:
             expected_types = gr.ALL
         
@@ -51,6 +52,7 @@ def parser(tokens, errors):
             statements = False
             zone = Zone(token.symbol, token.line, type = "function", parent = zone)
             function_declaration = False
+
         elif class_declaration:
             declaration = True
             statements = False
@@ -60,6 +62,7 @@ def parser(tokens, errors):
         if token.equal(gr.USE):
             expected_types = [gr.STRING]
             expecting = True
+
         elif token.equal(gr.USE):
             expected_types = [gr.STRING]
             expecting = True
@@ -67,16 +70,20 @@ def parser(tokens, errors):
         elif token.equal(gr.WAIT):
             expected_types = [gr.INT, gr.FLOAT]
             expecting = True
+
         elif token.symbol in gr.conditionals + [gr.WHILE, gr.FOR]:
             zone = Zone(token.symbol, token.line, parent = zone)
             declaration = True
             statements = False
+
         elif token.symbol == gr.OPERATOR:
             function_declaration = True
+
         elif token.symbol == gr.CLASS:
             class_declaration = True
         
         elif declaration:
+
             if token.symbol != zone.name:
                 zone.declaration.append(token) # It includes ":"
             if token.symbol == "{":
@@ -84,10 +91,13 @@ def parser(tokens, errors):
                 statements = True
                 token[0] = ":" # set symbol to ":"
                 token[1] = ":" # set ID to ":"
+
         elif statements:
+
             if token.symbol == "}":
                 eoz_token = lex.TokenType().EOZ(last_line[0], last_line[1])
                 zone.statements.append(eoz_token)
+                
                 closed_zone = zone
                 zone = zone.parent
                 zone.statements.append(closed_zone) # closed_zone.name added to zone.name

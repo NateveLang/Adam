@@ -1,10 +1,10 @@
+import sys, subprocess, time
+
 from nqa.file import  read_module
 from nqa.lex import scanner
 from nqa.syntax import parser
 from nqa.semantic import generator
-from nqa.error import *
-
-import sys, subprocess, time
+from nqa.error import RuntimeError, FileError, ArgumentError
 
 # Functions
 
@@ -47,6 +47,7 @@ def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = 
     f = open("nqa/nateve_vars")
     miliseconds = f.read().strip()
     f.close()
+
     if miliseconds == "True":
         print(f"Runtime: {1000 * runtime} miliseconds")
         print(f"Compilation time: {1000 * compilation_time} miliseconds\n")
@@ -68,6 +69,7 @@ def execute_driver():
         subprocess.call([sys.executable, "-m", driver_file + ".py"])
 
 def get_argument(position):
+
     try:
         return sys.argv[position]
     except:
@@ -78,7 +80,9 @@ def get_argument(position):
 params = sys.argv[:]
 
 if len(params) >= 2:
+
     if len(params) >= 3:
+
         try:
             file = sys.argv[2]
 
@@ -89,12 +93,14 @@ if len(params) >= 2:
             command = params[1]
 
             if command == "set-time-unit":
+
                 if file == "ms":
                     miliseconds = True
                 elif file == "s":
                     miliseconds = False
                 else:
                     miliseconds = True
+
                 f = open("nqa/nateve_vars", "w")
                 print(miliseconds, file = f)
                 f.close()
@@ -107,6 +113,7 @@ if len(params) >= 2:
                 execute_driver()
             
             elif command == "compile":
+
                 if len(params) >= 4:
 
                     arg2 = get_argument(4)
@@ -117,6 +124,7 @@ if len(params) >= 2:
                     ArgumentError(None, "no executable file name specified")
 
             elif command == "run-init-loop":
+
                 if len(params) >= 4:
 
                     arg2 = get_argument(4)
@@ -131,7 +139,9 @@ if len(params) >= 2:
 
         except IndexError:
             RuntimeError(None, "Error in compilation")
+
     else:
         FileError(None, "no file or argument specified")
+
 else:
     ArgumentError(None, "no arguments specified")

@@ -1,8 +1,10 @@
 def Error(line = None, message = "", type = ""):
+    
     if line != None:
         print(f"{type}Error in line {line}: {message}")
     else:
         print(f"{type}Error: {message}")
+
     return 1
 
 def LexicalError(line, message):

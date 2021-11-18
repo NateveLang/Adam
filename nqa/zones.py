@@ -1,5 +1,6 @@
-import nqa.grammar as gr
 import sys
+
+import nqa.grammar as gr
 from nqa.error import *
 
 class Zone():
@@ -10,6 +11,7 @@ class Zone():
         self.parent = parent
 
         if type == "auto":
+
             if name in gr.conditionals:
                 self.type = "conditional"
             elif name in [gr.WHILE, gr.FOR]:
@@ -18,8 +20,10 @@ class Zone():
                 self.type = "root"
             else:
                 ZoneError(line, f"Unknown zone type for zone '{name}'")
+            
         else:
             self.type = type
+        
         self.declaration = []
         self.statements = []
 
@@ -33,6 +37,7 @@ class Zone():
         print(depth * "    " + arrow + f"{self.name} ({self.type})", file = file)
 
         for d in self.declaration:
+
             if type(d) == Zone:
                 d.display(depth + 1)
             else:
@@ -41,7 +46,9 @@ class Zone():
         print((depth + 1) * "    " + "↳  " + 10 * "-", file = file)
 
         for s in self.statements:
+
             if type(s) == Zone:
                 s.display(depth + 1)
             else:
                 print((depth + 1) * "    " + "↳  " + f"{s.symbol} ({s.ID})", file = file)
+                
