@@ -1,5 +1,5 @@
 import nqa.grammar as gr
-from nqa import lex
+from nqa.token import Token, TokenType, get_token_ID
 from nqa.zones import Zone
 
 # Main code
@@ -13,12 +13,12 @@ def parser(tokens, errors):
     class_declaration = False
     
     last_line = tokens.last_line
-    eof_token = lex.TokenType().EOF(last_line[0], last_line[1])
+    eof_token = TokenType().EOF(last_line[0], last_line[1])
     tokens.append(eof_token)
 
     #Initialize the tree
     tree = Zone("root", 0, "function")
-    tk = [lex.Token('(', lex.get_token_ID('('), -1, 2, 1), lex.Token(')', lex.get_token_ID(')'), -1, 3, 1), lex.Token(':', ':', -1, 1, 1)]
+    tk = [Token('(', get_token_ID('('), -1, 2, 1), Token(')', get_token_ID(')'), -1, 3, 1), Token(':', ':', -1, 1, 1)]
     
     for t in tk:
         tree.declaration.append(t)
@@ -95,7 +95,7 @@ def parser(tokens, errors):
         elif statements:
 
             if token.symbol == "}":
-                eoz_token = lex.TokenType().EOZ(last_line[0], last_line[1])
+                eoz_token = token.TokenType().EOZ(last_line[0], last_line[1])
                 zone.statements.append(eoz_token)
                 
                 closed_zone = zone
