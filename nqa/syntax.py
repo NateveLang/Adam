@@ -95,7 +95,7 @@ def parser(tokens, errors):
         elif statements:
 
             if token.symbol == "}":
-                eoz_token = token.TokenType().EOZ(last_line[0], last_line[1])
+                eoz_token = TokenType().EOZ(last_line[0], last_line[1])
                 zone.statements.append(eoz_token)
                 
                 closed_zone = zone
