@@ -188,16 +188,118 @@ for <iterator> in <iterable> {
 ## Some Examples
 
 ```python
-~ Quick Sort ~
-def qsort(l) {
-    if (l == []) {return []}
-    else{
-        pivot = l[0]
-        less = qsort(l[1:].filter(lambda x: x < pivot))
-        greater = qsort(l[1:].filter(lambda x: x >= pivot))
-        return less + [pivot] + greater
-    }
+~Nateve Example 1~
+
+update_std()  ~update std library~
+
+for i in range(2) {
+    print(i)
 }
+
+install("matplotlib")
+
+try {
+    print(2/0)
+}
+    
+except {
+    print("xd")
+}
+```
+
+Output:
+
+```bash
+0
+1
+matplotlib successfully installed
+xd
+```
+
+```python
+~Nateve Example 2~
+
+theta = pi/3
+print(sin(theta), cos(theta), tan(theta))
+
+p = sin_serie
+print(p.eval(theta))
+
+derive(p)
+
+print(p.eval(theta))
+
+import numpy as np
+x = "hello"
+c = Matrix("""
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+""")
+c.display()
+
+a = Vector("[ 1 2 3 4 5 6 30 0 9]")
+a.display()
+```
+
+Output:
+
+```bash
+0.8660254037844386 0.5000000000000001 1.73205080756887
+0.8660254037844386
+0.5000000000000001
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+[ 1 2 3 4 5 6 30 0 9 ]
+```
+
+```python
+~Nateve Example 3~
+
+using "spanish"
+
+theta = pi/3
+imprime(sen(theta), cos(theta), tan(theta))
+
+p = serie_sen
+imprime(p.eval(theta))
+
+deriva(p)
+
+print(p.eval(theta))
+
+importa numpy como np
+x = "hello"
+c = Matriz("""
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+""")
+c.display()
+
+a = Vector("[ 1 2 3 4 5 6 30 0 9]")
+a.display()
+```
+
+Output:
+
+```bash
+0.8660254037844386 0.5000000000000001 1.73205080756887
+0.8660254037844386
+0.5000000000000001
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+[ 1 2 3 4 5 6 30 0 9 ]
 ```
 
 ## Feedback
