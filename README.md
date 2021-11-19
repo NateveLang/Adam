@@ -29,8 +29,8 @@ In this tutorial, we will learn how to use Nateve step by step.
 ### Step 1: Create a new Nateve project
 
 ```cmd
-$ cd my-project
-$ COPY CON main.nateve
+$> cd my-project
+$> COPY CON main.nateve
 ```
 
 #### Hello World program
