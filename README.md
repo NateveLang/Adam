@@ -185,6 +185,85 @@ for <iterator> in <iterable> {
 }  
 ```
 
+## Using Templates
+
+One of the most important features of Nateve is the use of templates. Templates are a way to write code in a more readable way. They are words translations written in Python. In order to use templates, you just have to write the protected word "using", and then, write the name of the template. For example:
+
+```c++
+using "template_name"
+```
+
+Nateve includes the following standard templates:
+
+1. `"english"`: This template is used to write the code of the program in English. It is the default template.
+2. `"spanish"`: This template is used to write the code of the program in Spanish.
+
+You also can use your own templates. Just create a file with the name of the template and write the code of the template in the file. Here is a blank template:
+
+```python
+# The name of the compiler. This line is required. Do not change it.
+compiler_name = "adam"
+
+"""
+The following code is the translation of the code.
+You can write your code here and modify the content of the variables.
+Do not change the name of the variables.
+"""
+
+# All the symbols that the compiler uses.
+mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+alphabet = mayusc + mayusc.lower() + "_"
+digits = "0123456789"
+alphanum = alphabet + digits
+blanks = "/t /n"
+strings = ["'", '"', '"""', "'''"]
+commentaries = "~"
+floating = "."
+one_char_symbols = "+-*/%=<>()[]{}#$@,."
+two_char_symbols = ["//", "==", "<=", ">="]
+
+# All the data types that the compiler uses.
+FLOAT = "float"
+INT = "int"
+COMPLEX = "complex"
+STRING = "string"
+DOCSTRING = "docstring"
+NULL = "none"
+
+# All the keywords that the compiler uses.
+USE, WAIT = "using", "wait"
+INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
+IF, ELIF, ELSE = "if", "elif", "else"
+TRY, EXCEPT = "try", "except"
+WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
+OPERATOR, RETURN = "def", "return"
+CLASS, SELF = "class", "self"
+AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
+
+# All the status codes that the compiler uses.
+identifier = 300
+eof = 400
+
+# All extra functions that the compiler uses. Feel free to add your own functions.
+# The string special_functions is used to write these functions.
+# You can use variables in it using the fstring notation.
+# For example: include function calls the variable compiler_name.
+special_functions = f"""
+def ninput(prompt = '', default = ''):
+\treturn float(input(prompt, default))
+
+def binput(prompt = '', default = ''):
+\treturn bool(input(prompt, default))
+
+def update_std():
+\tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def include(file_name = ''):
+\tfile = file_name.split('.')[0]
+\tsubprocess.call([sys.executable, '-m', '{compiler_name}', 'build', file])
+""" 
+```
+
 ## Some Examples
 
 ```python
@@ -258,7 +337,7 @@ Output:
 [ 1 2 3 4 5 6 30 0 9 ]
 ```
 
-```python
+```c++
 ~Nateve Example 3~
 
 using "spanish"
@@ -271,7 +350,7 @@ imprime(p.eval(theta))
 
 deriva(p)
 
-print(p.eval(theta))
+imprime(p.eval(theta))
 
 importa numpy como np
 x = "hello"
