@@ -1,6 +1,6 @@
 compiler_name = "adam"
 
-mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+mayusc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabet = mayusc + mayusc.lower() + "_"
 digits = "0123456789"
 alphanum = alphabet + digits
