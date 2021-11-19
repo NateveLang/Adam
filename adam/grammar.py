@@ -1,5 +1,7 @@
 from adam.utils import tolist, tokenize
 
+compiler_name = "adam"
+
 mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 alphabet = mayusc + mayusc.lower() + "_"
 digits = "0123456789"
@@ -27,7 +29,7 @@ OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
 AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 
-special_functions = """
+special_functions = f"""
 def ninput(prompt = '', default = ''):
 \treturn float(input(prompt, default))
 
@@ -35,9 +37,12 @@ def binput(prompt = '', default = ''):
 \treturn bool(input(prompt, default))
 
 def update_std():
-\tsubprocess.call([sys.executable, "-m", "pip", "install", "eggdriver"])
-"""
+\tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
+def include(file_name = ''):
+\tfile = file_name.split('.')[0]
+\tsubprocess.call([sys.executable, '-m', '{compiler_name}', 'build', file])
+"""
 
 preprocess = [USE, WAIT]
 process = [INCLUDE, FROM, AS, PASS, IN]
