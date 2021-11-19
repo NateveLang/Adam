@@ -1,5 +1,6 @@
 import adam.grammar as gr
-import adam.templates as tp
+import adam.templates as temp
+import adam.translation as tr
 from adam.token import Tokens, get_token_ID
 from adam.error import LexicalError
 from adam.utils import tostring
@@ -11,7 +12,9 @@ F = False
 def scanner(text, args = ["none"]):
     dev_mode = "dev" in args
 
-    commentary, string, name, number, float, operator, docstring =  F, F, F, F, F, F, 0
+    tp = temp.Template("english")
+
+    commentary, string, name, number, float, operator, using, docstring =  F, F, F, F, F, F, F, 0
 
     tokens = Tokens()
     errors = 0
@@ -38,7 +41,15 @@ def scanner(text, args = ["none"]):
         elif ch == "\n":
 
             if string:
-                tokens.add(lexema, gr.STRING, line, pos)
+
+                if using:
+                    tp = temp.Template(lexema)
+                    using = False
+                else:
+                    tokens.add(lexema, gr.STRING, line, pos)
+                    
+                lexema = ""
+                string_ch = ""
                 string = F
             
             elif number:
@@ -50,7 +61,13 @@ def scanner(text, args = ["none"]):
                 float = F
             
             elif name:
-                tokens.add(lexema, get_token_ID(lexema), line, pos)
+                lexema, errors = tr.translate(lexema, errors, tp)
+
+                if lexema == gr.USE:
+                    using = True
+                else:
+                    tokens.add(lexema, get_token_ID(lexema), line, pos)
+
                 name = F
             
             elif operator:
@@ -76,13 +93,13 @@ def scanner(text, args = ["none"]):
                 string_ch = ""
                 lexema = ""
 
-        elif commentary and ch not in gr.commentaries:
+        elif commentary and ch not in tp.commentaries:
             pass
 
-        elif commentary and ch in gr.commentaries:
+        elif commentary and ch in tp.commentaries:
             commentary = F
         
-        elif string and ch not in gr.strings:
+        elif string and ch not in tp.strings:
             lexema += ch
 
         elif string and ch == string_ch:
@@ -91,26 +108,31 @@ def scanner(text, args = ["none"]):
                 docstring = 3
                 i += 1
             else:
-                tokens.add(lexema, gr.STRING, line, pos)
+                if using:
+                    tp = temp.Template(lexema)
+                    using = False
+                else:
+                    tokens.add(lexema, gr.STRING, line, pos)
+
                 lexema = ""
                 string_ch = ""
             
             string = F
         
-        elif float and ch in gr.digits:
+        elif float and ch in tp.digits:
             lexema += ch
 
-        elif float and ch in gr.floating:
+        elif float and ch in tp.floating:
             errors += LexicalError(line, f"two {gr.floating} in float definition")
             break
 
-        elif number and not float and ch in (gr.digits + gr.floating):
+        elif number and not float and ch in (tp.digits + tp.floating):
             lexema += ch
 
-            if ch in gr.floating:
+            if ch in tp.floating:
                 float = True
 
-        elif number and ch not in (gr.digits + gr.floating):
+        elif number and ch not in (tp.digits + tp.floating):
 
             if float:
                 tokens.add(lexema + "0", gr.FLOAT, line, pos, last_line)
@@ -122,20 +144,26 @@ def scanner(text, args = ["none"]):
             pos -= 1
             number, float = F, F
         
-        elif name and ch in gr.alphanum:
+        elif name and ch in tp.alphanum:
             lexema += ch
 
-        elif name and ch not in gr.alphanum:
-            tokens.add(lexema, get_token_ID(lexema), line, pos)
+        elif name and ch not in tp.alphanum:
+            lexema, errors = tr.translate(lexema, errors, tp)
+
+            if lexema == tp.USE:
+                using = True
+            else:
+                tokens.add(lexema, get_token_ID(lexema), line, pos)
+
             lexema = ""
             i -= 1
             pos -= 1
             name = F
         
-        elif operator and ch in gr.operators:
+        elif operator and ch in tp.operators:
             lexema += ch
 
-        elif operator and ch not in gr.operators:
+        elif operator and ch not in tp.operators:
             id = get_token_ID(lexema)
 
             if id == gr.identifier:
@@ -149,26 +177,26 @@ def scanner(text, args = ["none"]):
             pos -= 1
             operator = F
 
-        elif not commentary and ch in gr.commentaries:
+        elif not commentary and ch in tp.commentaries:
             commentary = True
 
-        elif not string and ch in gr.strings:
+        elif not string and ch in tp.strings:
             string = True
             string_ch = ch
 
-        elif not name and ch in gr.alphabet:
+        elif not name and ch in tp.alphabet:
             name = True
             lexema += ch
 
-        elif not name and not number and ch in gr.digits:
+        elif not name and not number and ch in tp.digits:
             number = True
             lexema += ch
 
-        elif not name and not number and not operator and ch in gr.operators:
+        elif not name and not number and not operator and ch in tp.operators:
             operator = True
             lexema += ch
 
-        elif ch not in gr.blanks:
+        elif ch not in tp.blanks:
             tokens.add(ch, ch, line, pos)
 
         i += 1
@@ -189,4 +217,4 @@ def scanner(text, args = ["none"]):
         string_of_names = tostring(names, ", ")
         log += f"Names detected ({len(names)}): {string_of_names}\n"
 
-    return tokens, errors, log
+    return tokens, errors, log, tp

@@ -20,7 +20,7 @@ STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
 
-USE, WAIT = "use", "wait"
+USE, WAIT = "using", "wait"
 INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
 TRY, EXCEPT = "try", "except"
@@ -53,7 +53,7 @@ classes = [CLASS, SELF]
 bools = [AND, OR, NOT, TRUE, FALSE]
 
 primitives = [FLOAT, INT, COMPLEX, STRING, NULL]
-std_funcs = preprocess + conditionals + loops + functions + classes + bools
+std_funcs = preprocess + process + conditionals + loops + functions + classes + bools
 operators = tolist(one_char_symbols) + two_char_symbols
 
 protected = primitives + std_funcs + operators

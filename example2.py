@@ -12,7 +12,11 @@ def binput(prompt = '', default = ''):
 	return bool(input(prompt, default))
 
 def update_std():
-	subprocess.call([sys.executable, "-m", "pip", "install", "eggdriver"])
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def include(file_name = ''):
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
 
 def root():
 	theta=pi/3

@@ -95,20 +95,20 @@ class TokenType:
     def EOZ(self, line, pos): # End Of Zone
         return Token("@EOZ@", gr.eof, line, pos)
 
-def get_token_ID(lexema):
+def get_token_ID(lexema, module = gr):
 
-    for token in gr.protected_tokens:
+    for token in module.protected_tokens:
 
         if lexema == token[0]:
             return token[1]
 
-    return gr.identifier
+    return module.identifier
 
-def get_token_Symbol(lexema):
+def get_token_Symbol(lexema, module = gr):
 
-    for token in gr.protected_tokens:
+    for token in module.protected_tokens:
 
         if lexema == token[1]:
             return token[0]
     
-    return str(gr.identifier)
+    return str(module.identifier)

@@ -1,24 +1,45 @@
+import importlib as imp
+
 from adam.utils import tolist, tokenize
 
-from adam.templates.spanish import *
+class Template():
+    def __init__(self, name = "english"):
+        template = name
+        
+        # from adam.templates.{template} import *
+        module_name = "adam.templates." + template
+        template = imp.import_module(module_name)
 
-preprocess = [USE, WAIT]
-process = [INCLUDE, FROM, AS, PASS, IN]
-conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
-loops = [WHILE, FOR, BREAK, CONTINUE]
-functions = [OPERATOR, RETURN]
-classes = [CLASS, SELF]
-bools = [AND, OR, NOT, TRUE, FALSE]
+        self.commentaries = template.commentaries 
+        self.strings = template.strings
+        self.alphabet = template.alphabet
+        self.digits = template.digits
+        self.floating = template.floating
+        self.alphanum = template.alphanum
+        self.identifier = template.identifier
+        self.blanks = template.blanks
+        self.special_functions = template.special_functions
 
-primitives = [FLOAT, INT, COMPLEX, STRING, NULL]
-std_funcs = preprocess + conditionals + loops + functions + classes + bools
-operators = tolist(one_char_symbols) + two_char_symbols
+        self.USE = template.USE
+        self.WAIT = template.WAIT
+        
+        preprocess = [self.USE, self.WAIT]
+        process = [template.INCLUDE, template.FROM, template.AS, template.PASS, template.IN]
+        conditionals = [template.IF, template.ELIF, template.ELSE, template.TRY, template.EXCEPT]
+        loops = [template.WHILE, template.FOR, template.BREAK, template.CONTINUE]
+        functions = [template.OPERATOR, template.RETURN]
+        classes = [template.CLASS, template.SELF]
+        bools = [template.AND, template.OR, template.NOT, template.TRUE, template.FALSE]
 
-protected = primitives + std_funcs + operators
+        self.primitives = [template.FLOAT, template.INT, template.COMPLEX, template.STRING, template.NULL]
+        std_funcs = preprocess + process + conditionals + loops + functions + classes + bools
+        self.operators = tolist(template.one_char_symbols) + template.two_char_symbols
 
-protected_tokens = tokenize(protected)
-protected_IDs = list(range(len(protected)))
+        self.protected = self.primitives + std_funcs + self.operators
 
-codes = [identifier, eof]
+        self.protected_tokens = tokenize(self.protected)
+        self.protected_IDs = list(range(len(self.protected)))
 
-ALL = primitives + codes + protected_IDs
+        self.codes = [template.identifier, template.eof]
+
+        self.ALL = self.primitives + self.codes + self.protected_IDs

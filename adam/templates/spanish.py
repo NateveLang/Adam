@@ -1,3 +1,5 @@
+compiler_name = "adam"
+
 mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 alphabet = mayusc + mayusc.lower() + "_"
 digits = "0123456789"
@@ -16,7 +18,7 @@ STRING = "cadena"
 DOCSTRING = "documentacion"
 NULL = "nada"
 
-USE, WAIT = "usa", "espera"
+USE, WAIT = "usando", "espera"
 INCLUDE, FROM, AS, PASS, IN = "importa", "desde", "como", "pasa", "en"
 IF, ELIF, ELSE = "si", "sino", "sifalso"
 TRY, EXCEPT = "intenta", "excepto"
@@ -28,6 +30,17 @@ AND, OR, NOT, TRUE, FALSE = "y", "o", "no", "verdadero", "falso"
 identifier = 300
 eof = 400
 
+traducciones = """
+imprime = print
+recibe = input
+Matriz = Matrix
+
+deriva = derive
+sen = sin
+serie_sen = sin_serie
+serie_cos = cos_serie
+"""
+
 special_functions = """
 def recibe_numero(prompt = '', default = ''):
 \treturn float(input(prompt, default))
@@ -37,4 +50,4 @@ def recibe_booleano(prompt = '', default = ''):
 
 def actualiza_std():
 \tsubprocess.call(["py", "-m", "pip", "install", "eggdriver"])
-"""
+""" + traducciones

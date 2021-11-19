@@ -30,3 +30,6 @@ def DeclarationError(line, message):
 
 def RuntimeError(line, message):
     return Error(line, message, "Runtime")
+
+def NotFoundError(line, message):
+    return Error(line, message, "NotFound")

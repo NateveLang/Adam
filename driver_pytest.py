@@ -10,7 +10,3 @@ def compile(*args):
 
 def run(*args):
     subprocess.run([py, "-m", "adam", "run"] + list(args))
-
-"""
-py -m PyInstaller --onefile --name Adam C:\Users\Alumno\Adam\adam\__main__.py
-"""

@@ -20,9 +20,9 @@ def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass
 
     start_compilation = time.time()
 
-    tokens, errors, lex_log = scanner(module, args)
+    tokens, errors, lex_log, tp = scanner(module, args)
     tree, tokens, errors = parser(tokens, errors)
-    errors = generator(tree, file, errors, main, exceptions, args)
+    errors = generator(tree, file, errors, main, exceptions, args, tp)
 
     now = time.time()
     compilation_time = now - start_compilation
@@ -53,10 +53,10 @@ def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass
         miliseconds = "True"
 
     if miliseconds == "True":
-        print(f"Runtime: {1000 * runtime} miliseconds")
+        print(f"Machine time: {1000 * runtime} miliseconds")
         print(f"Compilation time: {1000 * compilation_time} miliseconds\n")
     else:
-        print(f"Runtime: {runtime} seconds")
+        print(f"Machine time: {runtime} seconds")
         print(f"Compilation time: {compilation_time} seconds\n")
     
     f = open(driver_file + ".py", "w")
