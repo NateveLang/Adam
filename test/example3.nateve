@@ -1,18 +1,20 @@
-~Nateve Example 2~
+~Nateve Example 3~
+
+using "spanish"
 
 theta = pi/3
-print(sin(theta), cos(theta), tan(theta))
+imprime(sen(theta), cos(theta), tan(theta))
 
-p = sin_serie
+p = serie_sen
+imprime(p.eval(theta))
+
+deriva(p)
+
 print(p.eval(theta))
 
-derive(p)
-
-print(p.eval(theta))
-
-import numpy as np
+importa numpy como np
 x = "hello"
-c = Matrix("""
+c = Matriz("""
 | 1 1 2 3 4 |
 | 0 1 2 3 4 |
 | 1 1 2 3 4 |
