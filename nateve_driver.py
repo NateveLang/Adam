@@ -1,1 +1,1 @@
-import test/example1
+import example2

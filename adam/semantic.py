@@ -1,6 +1,6 @@
 import sys
 
-from adam import lex, code
+from adam import code
 import adam.grammar as gr
 from adam.error import SemanticError, DeclarationError
 from adam.zones import Zone
@@ -22,7 +22,11 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
         
         if d.relative_line > last_line:
             content = depth * tab + code.join(code_line)
-            print(content, file = file)
+            
+            if file == None:
+                code.run_python(content)
+            else:
+                print(content, file = file)
 
             last_line = d.relative_line
             code_line = []
@@ -53,10 +57,18 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
 
             if not first_line:
                 content = (depth_2 + 1) * tab + code.join(code_line)
-                print(content, file = file)
+
+                if file == None:
+                    code.run_python(content)
+                else:
+                    print(content, file = file)
             else:
                 content = depth_2 * tab + code.join(code_line)
-                print(content, file = file)
+
+                if file == None:
+                    code.run_python(content)
+                else:
+                    print(content, file = file)
             
             last_line = s.relative_line
             code_line = []
@@ -76,13 +88,10 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
     return errors
 
 # middle code generator
-def generator(tree, file_name, errors, main = "root()", exceptions = "except:\n\tpass"):
-
-    file_name = file_name + ".py"
-    file = open(file_name, "w")
+def generator(tree, file_name, errors, main = "root()", exceptions = "except:\n\tpass", args = ["none"]):
+    direct_run_mode = "direct" in args
 
     if errors > 0:
-        file.close()
         return errors
 
     init = """try:
@@ -97,12 +106,25 @@ except ImportError:
 {exceptions}
 """
 
-    print(init, file = file)
-    print(gr.special_functions, file = file)
+    if direct_run_mode:
+        code.run_python(init)
+        code.run_python(gr.special_functions)
 
-    errors = navigator(tree, -1, 1, file, errors)
+        errors = navigator(tree, -1, 1, None, errors)
 
-    print(close, file = file)
+        code.run_python(close)
 
-    file.close()
+    else:
+        file_name = file_name + ".py"
+        file = open(file_name, "w")
+
+        print(init, file = file)
+        print(gr.special_functions, file = file)
+
+        errors = navigator(tree, -1, 1, file, errors)
+
+        print(close, file = file)
+
+        file.close()
+
     return errors

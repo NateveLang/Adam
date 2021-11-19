@@ -9,9 +9,9 @@ from adam.error import RuntimeError, FileError, ArgumentError
 # Functions
 
 driver_file = "nateve_driver"
-vars_file = "C:/Users/Alumno/Adam/adam/nateve_vars"
+vars_file = "adam/nateve_vars"
 
-def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = ""):
+def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass", driver = ""):
 
     start = time.time()
 
@@ -20,9 +20,9 @@ def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = 
 
     start_compilation = time.time()
 
-    tokens, errors, lex_log = scanner(module, arg)
+    tokens, errors, lex_log = scanner(module, args)
     tree, tokens, errors = parser(tokens, errors)
-    errors = generator(tree, file, errors, main, exceptions)
+    errors = generator(tree, file, errors, main, exceptions, args)
 
     now = time.time()
     compilation_time = now - start_compilation
@@ -38,7 +38,7 @@ def build(file, arg,  main = "root()", exceptions = "except:\n\tpass", driver = 
     
     print(log, end = "")
 
-    if arg == "-v":
+    if "dev" in args:
         print(tokens)
         tree.display()
 
@@ -72,12 +72,21 @@ def execute_driver():
     except:
         subprocess.call([sys.executable, "-m", driver_file + ".py"])
 
-def get_argument(position):
+def get_argument(position, plural = False):
+
+    if plural:
+
+        try:
+            return sys.argv[position:]
+        except:
+            return None
 
     try:
         return sys.argv[position]
     except:
         return None
+
+
 
 # Main code
 
@@ -91,6 +100,7 @@ if len(params) >= 2:
             file = sys.argv[2]
 
             arg = get_argument(3)
+            args = get_argument(3, True)
 
             # Switch command
             
@@ -113,7 +123,7 @@ if len(params) >= 2:
                 file = build(file, arg)
             
             elif command == "run":
-                file = build(file, arg, driver = "import {}")
+                file = build(file, args, driver = "import {}")
                 execute_driver()
             
             elif command == "compile":

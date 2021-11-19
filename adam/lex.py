@@ -8,8 +8,8 @@ F = False
 
 # Main code
 
-def scanner(text, command = None):
-    dev_mode = command in ["dev"]
+def scanner(text, args = ["none"]):
+    dev_mode = "dev" in args
 
     commentary, string, name, number, float, operator, docstring =  F, F, F, F, F, F, 0
 
