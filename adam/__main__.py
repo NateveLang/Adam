@@ -79,12 +79,12 @@ def get_argument(position, plural = False):
         try:
             return sys.argv[position:]
         except:
-            return None
+            return ["none"]
 
     try:
         return sys.argv[position]
     except:
-        return None
+        return "none"
 
 
 
