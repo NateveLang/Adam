@@ -17,19 +17,19 @@ Nateve is an compiled language. Its first compiler, Adam, is fully built using P
 
 ### 1. Simple and easy to use
 
-    Just install the package and start coding.
+Just install the package and start coding.
 
 ### 2. Intuitive and easy to understand
 
-    Quickly understand the language and its features. 
+Quickly understand the language and its features.
 
 ### 3. 100% free and open source
 
-    The language is free and open source. You can use it for any purpose. See the [license](LICENSE).
+The language is free and open source. You can use it for any purpose. See the [license](LICENSE).
 
 ### 4. 100% customizable
 
-    You can customize the language to your needs. You can make your own language from scratch. See the [Welcome to the templates](#welcome-to-the-templates) section for more information.
+You can customize the language to your needs. You can make your own language from scratch. See the [Welcome to the templates](#welcome-to-the-templates) section for more information.
 
 ### Options of command line (Nateve)
 
