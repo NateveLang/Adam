@@ -13,7 +13,7 @@ Nateve is a new general domain programming language open source inspired by lang
 
 Nateve is an compiled language. Its first compiler, Adam, is fully built using Python 3.8.
 
-## Principal features
+## Nateve principal features
 
 ### 1. Simple and easy to use
 
@@ -31,15 +31,6 @@ The language is free and open source. You can use it for any purpose. See the [l
 
 You can customize the language to your needs. You can make your own language from scratch. See the [Welcome to Nateve templates](#welcome-to-nateve-templates) section for more information.
 
-## Options of command line (Nateve)
-
-1. `build`: Transpile Nateve source code to Python 3.8
-2. `run`: Run Nateve source code
-3. `compile`: Compile Nateve source code to an executable file (.exe)
-4. `run-init-loop`: Run Nateve source code with an initial source and a loop source
-5. `set-time-unit`: Set Adam time unit to seconds or miliseconds (default: milisecond)
-6. `-v`: Activate verbose mode
-
 ## Welcome to Nateve templates
 
 Nateve Language includes a set of templates that can be used to customize Nateve. Templates are Python modules included in the templates subpackage. You can also create your own templates.
@@ -48,13 +39,13 @@ A template is a Python module that contains a set of words translations, functio
 
 Learn more about templates in the [templates use](#using-templates) section.
 
-## Templates Advantages
+## Why use Nateve templates?
 
 ### 1. Customization
 
 You can customize the language to your needs. Feel free to create your own templates or modify existing templates.
 
-## 2. Team work
+### 2. Team work
 
 Your team can work together using different languages in the same file or project. For example, you can start coding in English and then switch to French.
 
@@ -62,7 +53,16 @@ It makes it easier to work together. Different team members can work on the same
 
 ### 3. Easy to share
 
-Your templates can be used by other developers. You can share your templates with the community.
+Your templates can be used by other developers. You can easily share your templates with the community.
+
+## Options of command line
+
+1. `build`: Transpile Nateve source code to Python 3.8
+2. `run`: Run Nateve source code
+3. `compile`: Compile Nateve source code to an executable file (.exe)
+4. `run-init-loop`: Run Nateve source code with an initial source and a loop source
+5. `set-time-unit`: Set Adam time unit to seconds or miliseconds (default: milisecond)
+6. `-v`: Activate verbose mode
 
 ## Nateve Tutorial
 
