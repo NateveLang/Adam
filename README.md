@@ -31,7 +31,7 @@ The language is free and open source. You can use it for any purpose. See the [l
 
 You can customize the language to your needs. You can make your own language from scratch. See the [Welcome to Nateve templates](#welcome-to-nateve-templates) section for more information.
 
-### Options of command line (Nateve)
+## Options of command line (Nateve)
 
 1. `build`: Transpile Nateve source code to Python 3.8
 2. `run`: Run Nateve source code
