@@ -20,7 +20,7 @@ NULL = "nada"
 
 USE, WAIT = "usando", "espera"
 INCLUDE, FROM, AS, PASS, IN = "importa", "desde", "como", "pasa", "en"
-IF, ELIF, ELSE = "si", "sino", "sifalso"
+IF, ELIF, ELSE = "si", "sino", "delocontrario"
 TRY, EXCEPT = "intenta", "excepto"
 WHILE, FOR, BREAK, CONTINUE = "mientras", "para", "rompe", "sigue"
 OPERATOR, RETURN = "define", "retorna"

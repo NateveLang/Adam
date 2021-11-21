@@ -13,6 +13,7 @@ def scanner(text, args = ["none"]):
     dev_mode = "dev" in args
 
     tp = temp.Template("english")
+    templates = [tp]
 
     commentary, string, name, number, float, operator, using, docstring =  F, F, F, F, F, F, F, 0
 
@@ -43,8 +44,13 @@ def scanner(text, args = ["none"]):
             if string:
 
                 if using:
+                    tp = None
                     tp = temp.Template(lexema)
-                    using = False
+
+                    if tp not in templates:
+                        templates += [tp]
+
+                    using = F
                 else:
                     tokens.add(lexema, gr.STRING, line, pos)
                     
@@ -53,29 +59,33 @@ def scanner(text, args = ["none"]):
                 string = F
             
             elif number:
+
                 if float:
                     tokens.add(lexema + "0", gr.FLOAT, line, pos, last_line)
                 else:
                     tokens.add(lexema, gr.INT, line, pos, last_line)
+
                 number = F
                 float = F
             
             elif name:
                 lexema, errors = tr.translate(lexema, errors, tp)
-
+                
                 if lexema == gr.USE:
                     using = True
                 else:
                     tokens.add(lexema, get_token_ID(lexema), line, pos)
 
                 name = F
-            
+                
             elif operator:
                 id = get_token_ID(lexema)
 
                 if id == gr.identifier:
+
                     for lex in lexema:
                         tokens.add(lex, get_token_ID(lex), line, pos, last_line)
+
                 else:
                     tokens.add(lexema, id, line, pos, last_line)
                 
@@ -109,8 +119,13 @@ def scanner(text, args = ["none"]):
                 i += 1
             else:
                 if using:
+                    tp = None
                     tp = temp.Template(lexema)
-                    using = False
+                    
+                    if tp not in templates:
+                        templates += [tp]
+                    
+                    using = F
                 else:
                     tokens.add(lexema, gr.STRING, line, pos)
 
@@ -150,7 +165,7 @@ def scanner(text, args = ["none"]):
         elif name and ch not in tp.alphanum:
             lexema, errors = tr.translate(lexema, errors, tp)
 
-            if lexema == tp.USE:
+            if lexema == gr.USE:
                 using = True
             else:
                 tokens.add(lexema, get_token_ID(lexema), line, pos)
@@ -198,7 +213,7 @@ def scanner(text, args = ["none"]):
 
         elif ch not in tp.blanks:
             tokens.add(ch, ch, line, pos)
-
+        
         i += 1
         pos += 1
 
@@ -217,4 +232,4 @@ def scanner(text, args = ["none"]):
         string_of_names = tostring(names, ", ")
         log += f"Names detected ({len(names)}): {string_of_names}\n"
 
-    return tokens, errors, log, tp
+    return tokens, errors, log, templates

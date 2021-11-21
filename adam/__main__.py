@@ -20,9 +20,9 @@ def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass
 
     start_compilation = time.time()
 
-    tokens, errors, lex_log, tp = scanner(module, args)
+    tokens, errors, lex_log, templates = scanner(module, args)
     tree, tokens, errors = parser(tokens, errors)
-    errors = generator(tree, file, errors, main, exceptions, args, tp)
+    errors = generator(tree, file, errors, main, exceptions, args, templates)
 
     now = time.time()
     compilation_time = now - start_compilation

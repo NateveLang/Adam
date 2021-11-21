@@ -20,7 +20,7 @@ NULL = "nul"
 
 USE, WAIT = "utiliser", "attendre"
 INCLUDE, FROM, AS, PASS, IN = "inclure", "de", "comme", "passer", "dans"
-IF, ELIF, ELSE = "si", "sinon", "défaut"
+IF, ELIF, ELSE = "si", "sinon", "defaut"
 TRY, EXCEPT = "tenter", "except"
 WHILE, FOR, BREAK, CONTINUE = "tantque", "pour", "sauter", "continuer"
 OPERATOR, RETURN = "definir", "retourner"
@@ -32,21 +32,21 @@ eof = 400
 
 traductions = """
 imprimer = print
-entrée = input
+entree = input
 Matriz = Matrix
 
-série_sin = sin_serie
-série_cos = cos_serie
+serie_sin = sin_serie
+serie_cos = cos_serie
 """
 
 special_functions = f"""
-def nentrée(prompt = '', default = ''):
+def nentree(prompt = '', default = ''):
 \treturn float(input(prompt, default))
 
-def bentrée(prompt = '', default = ''):
+def bentree(prompt = '', default = ''):
 \treturn bool(input(prompt, default))
 
-def reáctualiser_std():
+def reactualiser_std():
 \tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
 def inclure(file_name = ''):

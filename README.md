@@ -50,53 +50,53 @@ In this tutorial, we will learn how to use Nateve step by step.
 
 ### Step 1: Create a new Nateve project
 
-    ```cmd
-    $> cd my-project
-    $> COPY CON main.nateve
-    ```
+```bash
+$> cd my-project
+$> COPY CON main.nateve
+```
 
 #### Hello World program
 
-    ```python
-    print("Hello, World!")
-    ```
+```python
+print("Hello, World!")
+```
 
 #### Is prime? program
 
-    ```python
-    def is_prime(n) {
-        if n == 1 {
+```python
+def is_prime(n) {
+    if n == 1 {
+        return False
+    }
+    for i in range(2, n) {
+        if n % i == 0 {
             return False
         }
-        for i in range(2, n) {
-            if n % i == 0 {
-                return False
-            }
-        }
-        return True
     }
+    return True
+}
 
-    n = ninput("Enter a number: ")
+n = ninput("Enter a number: ")
 
-    if is_prime(n) {
-        print("It is a prime number.")
-    }
-    else {
-        print("It is not a prime number.")
-    }
-    ```
+if is_prime(n) {
+    print("It is a prime number.")
+}
+else {
+    print("It is not a prime number.")
+}
+```
 
 ### Comments
 
 If you want to comment your code, you can use:
 
-    ```nateve
-    ~ This is a single line comment ~
+```nateve
+~ This is a single line comment ~
 
-    ~
-        And this a multiline comment
-    ~
-    ```
+~
+    And this a multiline comment
+~
+```
 
 ### Variables
 
@@ -104,24 +104,24 @@ This language uses variables. For declaring variables, you just need to write th
 
 For example:
 
-    ```python
-    a = 1                          ~ Interger ~
-    b = 1.0                        ~ Float ~
-    c = 1 + 2j                     ~ Complex ~
-    d = "hello"                    ~ String ~
-    e = True                       ~ Boolean ~
-    f = [1,2,3]                    ~ List ~
-    g = (1,2)                      ~ Tuple ~
-    h = Vector([1,2,3])            ~ Vector ~
-    i = Polynomial("1 +2x +x^2")   ~ Polynomial ~
-    j = Matrix("""
-    | 1 1 2 3 4 |
-    | 0 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    """)                           ~ Matrix ~
-    ```
+```python
+a = 1                          ~ Interger ~
+b = 1.0                        ~ Float ~
+c = 1 + 2j                     ~ Complex ~
+d = "hello"                    ~ String ~
+e = True                       ~ Boolean ~
+f = [1,2,3]                    ~ List ~
+g = (1,2)                      ~ Tuple ~
+h = Vector([1,2,3])            ~ Vector ~
+i = Polynomial("1 +2x +x^2")   ~ Polynomial ~
+j = Matrix("""
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+""")                           ~ Matrix ~
+```
 
 Nateve allows data type as Integer, Float, Complex, Boolean, String, List, Tuple, None, Vector, Polynomial and Matrix.
 
@@ -131,11 +131,11 @@ The Lists allow to use all the data types before mentioned, as well as lists and
 
 Also, they allow to get an item through the next notation:
 
-    ```python
-    value_list = [1,2,3,4,5,6,7,8,9]
-    value_list[0]       ~ Output: 1 ~
-    value_list[0 : 4]   ~ Output: [1,2,3,4] ~
-    ```
+```python
+value_list = [1,2,3,4,5,6,7,8,9]
+value_list[0]       ~ Output: 1 ~
+value_list[0 : 4]   ~ Output: [1,2,3,4] ~
+```
 
 > The struct of **List Call** is `example_list[<Start> : <End> + 1]`
 
@@ -143,35 +143,35 @@ Also, they allow to get an item through the next notation:
 
 For declaring a function, you have to use the next syntax:
 
-    ``` Python
-    def example_function(<argument1>, <argument2>, ...) {
-        <sentence1>
-        <sentence2>
-        ...
-        return <Return Value>
-    }  
-    ```
+```python
+def example_function(argument1, argument2, ...) {
+    sentence1
+    sentence2
+    ...
+    return Return_Value
+}  
+```
 
 ### Conditionals
 
 Regarding the conditionals, the syntax structure is:
 
-    ```python
-    if <Condition> {
-        <Consequence>
-    }
-    elif <Condition> {
-        <Other Consequence>
-    }
-    ...
-    else {
-        <Default Consequence>
-    }
-    ```
+```python
+if condition {
+    consequence
+}
+elif condition {
+    other_consequence
+}
+...
+else {
+    default_consequence
+}
+```
 
 For example:
 
-    ```python
+```python
 if x <= 1 and x % 3 == 0 {
     a = 0
 }
@@ -181,7 +181,7 @@ elif x == 9 {
 else {
     a = 2
 }
-    ```
+```
 
 ### Loops
 
@@ -189,31 +189,31 @@ In order to use loops, you have to use the next syntax:
 
 #### While Loop
 
-    ```python
-    while <condition> {
-        <sentence1>
-        <sentence2>
-        ...
-    }  
-    ```
+```python
+while condition {
+    sentence1
+    sentence2
+    ...
+}  
+```
 
 #### For Loop
 
-    ```python
-    for <iterator> in <iterable> {
-        <sentence1>
-        <sentence2>
-        ...
-    }  
-    ```
+```python
+for iterator in iterable {
+    sentence1
+    sentence2
+    ...
+}  
+```
 
 ## Using Templates
 
 One of the most important features of Nateve is the use of templates. Templates are a way to write code in a more readable way. They are words translations written in Python. In order to use templates, you just have to write the protected word "using", and then, write the name of the template. For example:
 
-    ```c++
-    using "template_name"
-    ```
+```c++
+using "template_name"
+```
 
 Nateve includes the following standard templates:
 
@@ -223,186 +223,224 @@ Nateve includes the following standard templates:
 
 You also can use your own templates. Just create a file with the name of the template and write the code of the template in the file. Here is a blank template:
 
-    ```python
-    # The name of the compiler. This line is required. Do not change it.
-    compiler_name = "adam"
+```python
+# The name of the compiler. This line is required. Do not change it.
+compiler_name = "adam"
 
-    """
-    The following code is the translation of the code.
-    You can write your code here and modify the content of the variables.
-    Do not change the name of the variables.
-    """
+"""
+The following code is the translation of the code.
+You can write your code here and modify the content of the variables.
+Do not change the name of the variables.
+"""
 
-    # All the symbols that the compiler uses.
-    mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-    alphabet = mayusc + mayusc.lower() + "_"
-    digits = "0123456789"
-    alphanum = alphabet + digits
-    blanks = "/t /n"
-    strings = ["'", '"', '"""', "'''"]
-    commentaries = "~"
-    floating = "."
-    one_char_symbols = "+-*/%=<>()[]{}#$@,."
-    two_char_symbols = ["//", "==", "<=", ">="]
+# All the symbols that the compiler uses.
+mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+alphabet = mayusc + mayusc.lower() + "_"
+digits = "0123456789"
+alphanum = alphabet + digits
+blanks = "/t /n"
+strings = ["'", '"', '"""', "'''"]
+commentaries = "~"
+floating = "."
+one_char_symbols = "+-*/%=<>()[]{}#$@,."
+two_char_symbols = ["//", "==", "<=", ">="]
 
-    # All the data types that the compiler uses.
-    FLOAT = "float"
-    INT = "int"
-    COMPLEX = "complex"
-    STRING = "string"
-    DOCSTRING = "docstring"
-    NULL = "none"
+# All the data types that the compiler uses.
+FLOAT = "float"
+INT = "int"
+COMPLEX = "complex"
+STRING = "string"
+DOCSTRING = "docstring"
+NULL = "none"
 
-    # All the keywords that the compiler uses.
-    USE, WAIT = "using", "wait"
-    INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
-    IF, ELIF, ELSE = "if", "elif", "else"
-    TRY, EXCEPT = "try", "except"
-    WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
-    OPERATOR, RETURN = "def", "return"
-    CLASS, SELF = "class", "self"
-    AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
+# All the keywords that the compiler uses.
+USE, WAIT = "using", "wait"
+INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
+IF, ELIF, ELSE = "if", "elif", "else"
+TRY, EXCEPT = "try", "except"
+WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
+OPERATOR, RETURN = "def", "return"
+CLASS, SELF = "class", "self"
+AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 
-    # All the status codes that the compiler uses.
-    identifier = 300
-    eof = 400
+# All the status codes that the compiler uses.
+identifier = 300
+eof = 400
 
-    # All extra functions that the compiler uses. Feel free to add your own functions.
-    # The string special_functions is used to write these functions.
-    # You can use variables in it using the fstring notation.
-    # For example: include function calls the variable compiler_name.
-    special_functions = f"""
-    def ninput(prompt = '', default = ''):
-    \treturn float(input(prompt, default))
+# All extra functions that the compiler uses. Feel free to add your own functions.
+# The string special_functions is used to write these functions.
+# You can use variables in it using the fstring notation.
+# For example: include function calls the variable compiler_name.
+special_functions = f"""
+def ninput(prompt = '', default = ''):
+\treturn float(input(prompt, default))
 
-    def binput(prompt = '', default = ''):
-    \treturn bool(input(prompt, default))
+def binput(prompt = '', default = ''):
+\treturn bool(input(prompt, default))
 
-    def update_std():
-    \tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+def update_std():
+\tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
-    def include(file_name = ''):
-    \tfile = file_name.split('.')[0]
-    \tsubprocess.call([sys.executable, '-m', '{compiler_name}', 'build', file])
-    """ 
-    ```
+def include(file_name = ''):
+\tfile = file_name.split('.')[0]
+\tsubprocess.call([sys.executable, '-m', '{compiler_name}', 'build', file])
+""" 
+```
 
 ## Some Examples
 
-    ```python
-    ~Nateve Example 1~
+```python
+~Nateve Example 1~
 
-    update_std()  ~update std library~
+update_std()  ~update std library~
 
-    for i in range(2) {
-        print(i)
-    }
+for i in range(2) {
+    print(i)
+}
 
-    install("matplotlib")
+install("matplotlib")
 
-    try {
-        print(2/0)
-    }
-        
-    except {
-        print("xd")
-    }
-    ```
-
-Output:
-
-    ```bash
-    0
-    1
-    matplotlib successfully installed
-    xd
-    ```
-
-    ```python
-    ~Nateve Example 2~
-
-    theta = pi/3
-    print(sin(theta), cos(theta), tan(theta))
-
-    p = sin_serie
-    print(p.eval(theta))
-
-    derive(p)
-
-    print(p.eval(theta))
-
-    import numpy as np
-    x = "hello"
-    c = Matrix("""
-    | 1 1 2 3 4 |
-    | 0 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    """)
-    c.display()
-
-    a = Vector("[ 1 2 3 4 5 6 30 0 9]")
-    a.display()
-    ```
+try {
+    print(2/0)
+}
+    
+except {
+    print("xd")
+}
+```
 
 Output:
 
-    ```bash
-    0.8660254037844386 0.5000000000000001 1.73205080756887
-    0.8660254037844386
-    0.5000000000000001
-    | 1 1 2 3 4 |
-    | 0 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    [ 1 2 3 4 5 6 30 0 9 ]
-    ```
+```bash
+0
+1
+matplotlib successfully installed
+xd
+```
 
-    ```c++
-    ~Nateve Example 3~
+```python
+~Nateve Example 2~
 
-    using "spanish"
+theta = pi/3
+print(sin(theta), cos(theta), tan(theta))
 
-    theta = pi/3
-    imprime(sen(theta), cos(theta), tan(theta))
+p = sin_serie
+print(p.eval(theta))
 
-    p = serie_sen
-    imprime(p.eval(theta))
+derive(p)
 
-    deriva(p)
+print(p.eval(theta))
 
-    imprime(p.eval(theta))
+import numpy as np
+x = "hello"
+c = Matrix("""
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+""")
+c.display()
 
-    importa numpy como np
-    x = "hello"
-    c = Matriz("""
-    | 1 1 2 3 4 |
-    | 0 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    """)
-    c.display()
-
-    a = Vector("[ 1 2 3 4 5 6 30 0 9]")
-    a.display()
-    ```
+a = Vector("[ 1 2 3 4 5 6 30 0 9]")
+a.display()
+```
 
 Output:
 
-    ```bash
-    0.8660254037844386 0.5000000000000001 1.73205080756887
-    0.8660254037844386
-    0.5000000000000001
-    | 1 1 2 3 4 |
-    | 0 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    | 1 1 2 3 4 |
-    [ 1 2 3 4 5 6 30 0 9 ]
-    ```
+```bash
+0.8660254037844386 0.5000000000000001 1.73205080756887
+0.8660254037844386
+0.5000000000000001
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+[ 1 2 3 4 5 6 30 0 9 ]
+```
+
+```python
+~Nateve Example 3~
+
+using "spanish"
+
+theta = pi/3
+imprime(sen(theta), cos(theta), tan(theta))
+
+p = serie_sen
+imprime(p.eval(theta))
+
+deriva(p)
+
+imprime(p.eval(theta))
+
+importa numpy como np
+x = "hello"
+c = Matriz("""
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+""")
+c.display()
+
+a = Vector("[ 1 2 3 4 5 6 30 0 9]")
+a.display()
+```
+
+Output:
+
+```bash
+0.8660254037844386 0.5000000000000001 1.73205080756887
+0.8660254037844386
+0.5000000000000001
+| 1 1 2 3 4 |
+| 0 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+| 1 1 2 3 4 |
+[ 1 2 3 4 5 6 30 0 9 ]
+```
+
+```python
+~Nateve Example 4~
+
+using "spanish"
+
+amo_Nateve = verdadero
+
+si  amo_Nateve == verdadero {
+    imprime("Yo amo Nateve!")
+}
+
+delocontrario {
+    imprime("Odio Nateve :c")
+}
+
+usando "english"
+
+if 1 < 3 {
+    print("YES")
+}
+else {
+    print("NO")
+}
+
+using "french"
+
+v = "Bonjour"
+imprimer(v, "Nateve!")
+```
+
+Output:
+
+```bash
+Yo amo Nateve!
+YES
+Bonjour Nateve!
+```
 
 ## Feedback
 

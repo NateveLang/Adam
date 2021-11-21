@@ -5,6 +5,20 @@ except ImportError:
 	print('ImportError')
 
 
+def ninput(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def binput(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def update_std():
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def include(file_name = ''):
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
+
+
 def recibe_numero(prompt = '', default = ''):
 	return float(input(prompt, default))
 

@@ -4,10 +4,10 @@ from adam.utils import tolist, tokenize
 
 class Template():
     def __init__(self, name = "english"):
-        template = name
+        self.template_name = name
         
         # from adam.templates.{template} import *
-        module_name = "adam.templates." + template
+        module_name = "adam.templates." + self.template_name
         template = imp.import_module(module_name)
 
         self.commentaries = template.commentaries 
@@ -23,7 +23,7 @@ class Template():
         self.USE = template.USE
         self.WAIT = template.WAIT
         
-        preprocess = [self.USE, self.WAIT]
+        preprocess = [template.USE, self.WAIT]
         process = [template.INCLUDE, template.FROM, template.AS, template.PASS, template.IN]
         conditionals = [template.IF, template.ELIF, template.ELSE, template.TRY, template.EXCEPT]
         loops = [template.WHILE, template.FOR, template.BREAK, template.CONTINUE]
