@@ -68,12 +68,32 @@ Your templates can be used by other developers. You can easily share your templa
 
 In this tutorial, we will learn how to use Nateve step by step.
 
-### Step 1: Create a new Nateve project
+### Step 0: Learn the basics
+
+We recommend read this README.md file.
+
+### Step 1: Installation
+
+Recommend Installation:
+
+#### Clone the repo
+
+```bash
+$> git clone ...
+```
+
+#### Add to path
+
+#### Add your favorite templates
+
+### Step 2: Create a new Nateve file
 
 ```bash
 $> cd my-project
 $> COPY CON main.nateve
 ```
+
+### Quick start examples
 
 #### Hello World program
 
@@ -290,7 +310,7 @@ eof = 400
 # All extra functions that the compiler uses. Feel free to add your own functions.
 # The string special_functions is used to write these functions.
 # You can use variables in it using the fstring notation.
-# For example: include function calls the variable compiler_name.
+# For example: "include" function calls the variable compiler_name.
 special_functions = f"""
 def ninput(prompt = '', default = ''):
 \treturn float(input(prompt, default))
