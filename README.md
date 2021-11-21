@@ -29,7 +29,7 @@ The language is free and open source. You can use it for any purpose. See the [l
 
 ### 4. 100% customizable
 
-You can customize the language to your needs. You can make your own language from scratch. See the [Welcome to the templates](#welcome-to-the-templates) section for more information.
+You can customize the language to your needs. You can make your own language from scratch. See the [Welcome to Nateve templates](#welcome-to-nateve-templates) section for more information.
 
 ### Options of command line (Nateve)
 
@@ -40,9 +40,29 @@ You can customize the language to your needs. You can make your own language fro
 5. `set-time-unit`: Set Adam time unit to seconds or miliseconds (default: milisecond)
 6. `-v`: Activate verbose mode
 
-## Welcome to the templates
+## Welcome to Nateve templates
 
-Nateve Language includes a set of templates that can be used to customize Nateve. Templates are Python modules included in the templates package.
+Nateve Language includes a set of templates that can be used to customize Nateve. Templates are Python modules included in the templates subpackage. You can also create your own templates.
+
+A template is a Python module that contains a set of words translations, functions definitions, and many other customizations. Every template can be used to customize Nateve. You just need to import the template with the `using` command and then use the template in the Nateve source code.
+
+Learn more about templates in the [templates use](#using-templates) section.
+
+## Templates Advantages
+
+### 1. Customization
+
+You can customize the language to your needs. Feel free to create your own templates or modify existing templates.
+
+## 2. Team work
+
+Your team can work together using different languages in the same file or project. For example, you can start coding in English and then switch to French.
+
+It makes it easier to work together. Different team members can work on the same project using their native languages.
+
+### 3. Easy to share
+
+Your templates can be used by other developers. You can share your templates with the community.
 
 ## Nateve Tutorial
 
@@ -90,7 +110,7 @@ else {
 
 If you want to comment your code, you can use:
 
-```nateve
+```bash
 ~ This is a single line comment ~
 
 ~
@@ -133,11 +153,9 @@ Also, they allow to get an item through the next notation:
 
 ```python
 value_list = [1,2,3,4,5,6,7,8,9]
-value_list[0]       ~ Output: 1 ~
-value_list[0 : 4]   ~ Output: [1,2,3,4] ~
+print(value_list[0])      ~ Output: 1 ~
+print(value_list[0 : 4])  ~ Output: [1,2,3,4] ~
 ```
-
-> The struct of **List Call** is `example_list[<Start> : <End> + 1]`
 
 ### Functions
 
@@ -149,7 +167,9 @@ def example_function(argument1, argument2, ...) {
     sentence2
     ...
     return Return_Value
-}  
+} 
+
+example_function(argument1, argument2, ...) ~ Call the function ~
 ```
 
 ### Conditionals
@@ -422,7 +442,7 @@ delocontrario {
 usando "english"
 
 if 1 < 3 {
-    print("YES")
+    print("Try Nateve!")
 }
 else {
     print("NO")
@@ -438,7 +458,7 @@ Output:
 
 ```bash
 Yo amo Nateve!
-YES
+Try Nateve!
 Bonjour Nateve!
 ```
 
