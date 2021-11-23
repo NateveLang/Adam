@@ -1,0 +1,27 @@
+~Nateve Example 4~
+
+using "spanish"
+
+amo_Nateve = verdadero
+
+si  amo_Nateve == verdadero {
+    imprime("Yo amo Nateve!")
+}
+
+delocontrario {
+    imprime("Odio Nateve :c")
+}
+
+usando "english"
+
+if 1 < 3 {
+    print("YES")
+}
+else {
+    print("NO")
+}
+
+using "french"
+
+v = "Bonjour"
+imprimer(v, "Nateve!")

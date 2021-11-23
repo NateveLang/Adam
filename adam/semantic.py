@@ -7,12 +7,14 @@ from adam.error import SemanticError, DeclarationError
 from adam.zones import Zone
 
 def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
+
     last_line = line
     code_line = []
     tab = "\t"
 
     if zone.type == "function":
         code_line += [gr.OPERATOR]
+
     elif zone.type == "class":
         code_line += [gr.CLASS]
 
@@ -35,9 +37,11 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
         if type(d) == Zone:
             errors += SemanticError(d.line, "Declaring a zone into another a declaration")
             break
+
         elif d.name == zone.name:
             errors += DeclarationError(d.line, "Calling a name into its declaration sentence")
             break
+
         else:
 
             if d.ID == gr.STRING:
@@ -63,6 +67,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
                     code.run_python(content)
                 else:
                     print(content, file = file)
+
             else:
                 content = depth_2 * tab + code.join(code_line)
 
@@ -76,10 +81,13 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
 
         if type(s) == Zone:
             errors = navigator(s, depth_2, last_line, file, errors)
+
         elif s.ID == gr.STRING:
             code_line += [f'"{s.symbol}"']
+
         elif s.ID == gr.DOCSTRING:
             code_line += ['"""' + s.symbol + '"""']
+
         else:
             code_line += [f"{s.symbol}"]
         
@@ -127,7 +135,16 @@ except ImportError:
             print(tp.special_functions, file = file)
 
         errors = navigator(tree, -1, 1, file, errors)
-
+        
+        file.close()
+        file = open(file_name, "r")
+        assembler = open("nateve_assembler.py", "w")
+        text = file.read()
+        print(text, file = assembler)
+        file.close()
+        assembler.close()
+        file = open(file_name, "a")
+        
         print(close, file = file)
 
         file.close()
