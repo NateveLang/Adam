@@ -22,6 +22,6 @@ def join(code_line):
         return ""
 
 def run_python(code_lines = "", input = None):
-    _code = "; ".join(code_lines.split("\n"))
+    _code = "; ".join(code_lines.split("\n")) + "\n"
 
     subprocess.run([sys.executable, "-c", _code], input = input)

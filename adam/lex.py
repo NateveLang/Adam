@@ -24,8 +24,9 @@ def scanner(text, args = ["none"]):
     lexema = ""
     string_ch = ""
 
-    text += "\n ~eof tokens for security~ ~including the \n, DO NOT REMOVE THE EXTRA \n~"
-
+    security_tokens = "\n ~eof tokens for security~ ~including the \n, DO NOT REMOVE THE EXTRA \n~"
+    text = security_tokens + text + security_tokens
+    
     i = 0
     while i < len(text):
 

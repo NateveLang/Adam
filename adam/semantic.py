@@ -136,16 +136,8 @@ except ImportError:
 
         errors = navigator(tree, -1, 1, file, errors)
         
-        file.close()
-        file = open(file_name, "r")
-        assembler = open("nateve_assembler.py", "w")
-        text = file.read()
-        print(text, file = assembler)
-        file.close()
-        assembler.close()
-        file = open(file_name, "a")
-        
-        print(close, file = file)
+        if "moduled" not in args:
+            print(close, file = file)
 
         file.close()
 
