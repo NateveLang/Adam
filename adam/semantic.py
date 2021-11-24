@@ -109,7 +109,9 @@ def generator(tree, file_name, errors, main = "", exceptions = "\tpass", args = 
 except ImportError:
 \tprint('ImportError')
 """
-
+    
+    file_name = file_name.split("/")[-1]
+    
     close = f"""try:
 \t{file_name}()
 {main}
