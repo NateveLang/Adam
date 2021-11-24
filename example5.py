@@ -37,11 +37,12 @@ sen = sin
 serie_sen = sin_serie
 serie_cos = cos_serie
 
-def root():
+class example5():
 	print("a")
 	imprime("Hola")
 try:
-	root()
+	example5()
+
 except:
 	pass
 

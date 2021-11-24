@@ -13,12 +13,12 @@ class Assembler():
         self.modules.append(module_name)
 
     def assemble(self):
-        file = open(driver_file, "a")
+        file = open(driver_file + ".py", "a")
         
         for module_name in self.modules:
             m = Module(module_name)
             text = m.content + "file_name = root\n"
-            file.write(text)
+            pass
 
         file.close()
 
@@ -28,7 +28,7 @@ class Module():
         self.name = name
 
         file_name = build(name, "none", driver = "import {}")
-        file = open(file_name, "r")
+        file = open(file_name + ".py", "r")
 
         self.content = file.read() + "\n"
 

@@ -97,7 +97,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
     return errors
 
 # middle code generator
-def generator(tree, file_name, errors, main = "root()", exceptions = "except:\n\tpass", args = ["none"], templates = [temp.Template("english")]):
+def generator(tree, file_name, errors, main = "", exceptions = "\tpass", args = ["none"], templates = [temp.Template("english")]):
     direct_run_mode = "direct" in args
 
     if errors > 0:
@@ -111,7 +111,9 @@ except ImportError:
 """
 
     close = f"""try:
-\t{main}
+\t{file_name}()
+{main}
+except:
 {exceptions}
 """
 

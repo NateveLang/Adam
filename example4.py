@@ -72,7 +72,7 @@ Matriz = Matrix
 serie_sin = sin_serie
 serie_cos = cos_serie
 
-def root():
+class example4():
 	amo_Nateve=True
 	if amo_Nateve==True:
 		imprime("Yo amo Nateve!")
@@ -89,7 +89,9 @@ def root():
 	v="Bonjour"
 	imprimer(v,"Nateve!")
 try:
-	root()
+	example4()
+
 except:
 	pass
 
+print(example4.v)

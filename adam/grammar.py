@@ -20,8 +20,8 @@ STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
 
-USE, WAIT = "using", "wait"
-INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
+USE, WAIT, INCLUDE = "using", "wait", "include"
+IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
 TRY, EXCEPT = "try", "except"
 WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
@@ -44,8 +44,8 @@ def include(file_name = ''):
 \tsubprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
 """
 
-preprocess = [USE, WAIT]
-process = [INCLUDE, FROM, AS, PASS, IN]
+preprocess = [USE, WAIT, INCLUDE]
+process = [IMPORT, FROM, AS, PASS, IN]
 conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
 loops = [WHILE, FOR, BREAK, CONTINUE]
 functions = [OPERATOR, RETURN]

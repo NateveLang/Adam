@@ -8,7 +8,7 @@ from adam.run import driver_file
 
 vars_file = "adam/nateve_vars"
 
-def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass", driver = ""):
+def build(file, args = ["none"],  main = "", exceptions = "\tpass", driver = ""):
 
     dev_mode = "dev" in args
     verbose_mode = ("-v" in args) or ("--verbose" in args)
@@ -22,7 +22,7 @@ def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass
     start_compilation = time.time()
 
     tokens, errors, lex_log, templates = scanner(module, args)
-    tree, tokens, errors = parser(tokens, errors)
+    tree, tokens, errors = parser(tokens, file, errors)
     errors = generator(tree, file, errors, main, exceptions, args, templates)
 
     if display_status_mode:

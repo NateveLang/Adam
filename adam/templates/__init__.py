@@ -22,9 +22,10 @@ class Template():
 
         self.USE = template.USE
         self.WAIT = template.WAIT
+        self.INCLUDE = template.INCLUDE
         
-        preprocess = [template.USE, self.WAIT]
-        process = [template.INCLUDE, template.FROM, template.AS, template.PASS, template.IN]
+        preprocess = [template.USE, template.WAIT, template.INCLUDE]
+        process = [template.IMPORT, template.FROM, template.AS, template.PASS, template.IN]
         conditionals = [template.IF, template.ELIF, template.ELSE, template.TRY, template.EXCEPT]
         loops = [template.WHILE, template.FOR, template.BREAK, template.CONTINUE]
         functions = [template.OPERATOR, template.RETURN]

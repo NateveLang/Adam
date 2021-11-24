@@ -294,8 +294,8 @@ DOCSTRING = "docstring"
 NULL = "none"
 
 # All the keywords that the transpiler uses.
-USE, WAIT = "using", "wait"
-INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
+USE, WAIT, INCLUDE = "using", "wait", "include"
+IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
 TRY, EXCEPT = "try", "except"
 WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"

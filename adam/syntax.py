@@ -4,7 +4,7 @@ from adam.zones import Zone
 
 # Main code
 
-def parser(tokens, errors):
+def parser(tokens, file_name = "root", errors = 0):
     n = len(tokens)
     expected_types = gr.ALL
     expecting = False
@@ -17,7 +17,7 @@ def parser(tokens, errors):
     tokens.append(eof_token)
 
     #Initialize the tree
-    tree = Zone("root", 0, "function")
+    tree = Zone(file_name, 0, "class")
     tk = [Token('(', get_token_ID('('), -1, 2, 1), Token(')', get_token_ID(')'), -1, 3, 1), Token(':', ':', -1, 1, 1)]
     
     for t in tk:
