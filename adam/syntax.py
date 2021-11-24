@@ -71,6 +71,10 @@ def parser(tokens, file_name = "root", errors = 0):
             expected_types = [gr.INT, gr.FLOAT]
             expecting = True
 
+        elif token.equal(gr.INCLUDE):
+            expected_types = [gr.STRING]
+            expecting = True
+
         elif token.symbol in gr.conditionals + [gr.WHILE, gr.FOR]:
             zone = Zone(token.symbol, token.line, parent = zone)
             declaration = True

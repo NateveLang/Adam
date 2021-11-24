@@ -9,15 +9,17 @@ F = False
 
 # Main code
 
-def scanner(text, args = ["none"]):
+def scanner(text = "", args = ["none"]):
     dev_mode = "dev" in args
 
     tp = temp.Template("english")
     templates = [tp]
 
-    commentary, string, name, number, float, operator, using, docstring =  F, F, F, F, F, F, F, 0
+    commentary, string, name, number, float, operator = F, F, F, F, F, F
+    using, including, docstring =  F, F, 0
 
     tokens = Tokens()
+    modules = []
     errors = 0
     line, pos = 1, 1
 
@@ -25,7 +27,7 @@ def scanner(text, args = ["none"]):
     string_ch = ""
 
     security_tokens = "\n ~eof tokens for security~ ~including the \n, DO NOT REMOVE THE EXTRA \n~"
-    text = security_tokens + text + security_tokens
+    text = security_tokens + text + "\npass\n" + security_tokens
     
     i = 0
     while i < len(text):
@@ -52,6 +54,9 @@ def scanner(text, args = ["none"]):
                         templates += [tp]
 
                     using = F
+                elif including:
+                    modules.append(lexema)
+                    including = F
                 else:
                     tokens.add(lexema, gr.STRING, line, pos)
                     
@@ -74,6 +79,8 @@ def scanner(text, args = ["none"]):
                 
                 if lexema == gr.USE:
                     using = True
+                elif lexema == gr.INCLUDE:
+                    including = True
                 else:
                     tokens.add(lexema, get_token_ID(lexema), line, pos)
 
@@ -127,6 +134,9 @@ def scanner(text, args = ["none"]):
                         templates += [tp]
                     
                     using = F
+                elif including:
+                    modules.append(lexema)
+                    including = F
                 else:
                     tokens.add(lexema, gr.STRING, line, pos)
 
@@ -168,6 +178,8 @@ def scanner(text, args = ["none"]):
 
             if lexema == gr.USE:
                 using = True
+            elif lexema == gr.INCLUDE:
+                including = True
             else:
                 tokens.add(lexema, get_token_ID(lexema), line, pos)
 
@@ -233,4 +245,4 @@ def scanner(text, args = ["none"]):
         string_of_names = tostring(names, ", ")
         log += f"Names detected ({len(names)}): {string_of_names}\n"
 
-    return tokens, errors, log, templates
+    return tokens, errors, log, templates, modules

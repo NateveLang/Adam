@@ -1,5 +1,7 @@
 print("a")
 
+include "example4.nateve"
+
 using "spanish"
 
 imprime("Hola")

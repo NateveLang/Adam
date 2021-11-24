@@ -1,7 +1,7 @@
 import sys, subprocess
 
 from adam.run import execute_driver
-from adam.build import build
+from adam.assembly import Assembler
 from adam.error import RuntimeError, FileError, ArgumentError
 
 def get_argument(position, plural = False):
@@ -50,10 +50,12 @@ if len(params) >= 2:
                 f.close()
             
             elif command == "build":
-                file = build(file, arg)
+                assembler = Assembler(file, [arg])
+                assembler.assemble()
             
             elif command == "run":
-                file = build(file, args, driver = "import {}")
+                assembler = Assembler(file, [arg])
+                assembler.assemble()
                 execute_driver()
             
             elif command == "compile":
@@ -62,7 +64,9 @@ if len(params) >= 2:
 
                     arg2 = get_argument(4)
 
-                    file = build(file, arg2, driver = "import {}")
+                    assembler = Assembler(file, [arg2])
+                    assembler.assemble()
+                    
                     subprocess.call([sys.executable, "-m", "PyInstaller", "--onefile", "--name", f'{arg}', f'{file}.py'])
                 else:
                     ArgumentError(None, "no executable file name specified")
@@ -72,10 +76,10 @@ if len(params) >= 2:
                 if len(params) >= 4:
 
                     arg2 = get_argument(4)
-
-                    file = build(file, arg2)
-                    file2 = build(arg, arg2, driver = "import " + file + "\nwhile True:\n\timport {}")
-
+                    """
+                    file, modules = build(file, arg2)
+                    file2, modules = build(arg, arg2, driver = "import " + file + "\nwhile True:\n\timport {}")
+                    """
                     execute_driver()
 
                 else:

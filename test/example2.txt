@@ -18,7 +18,7 @@ def include(file_name = ''):
 	file = file_name.split('.')[0]
 	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
 
-def root():
+class example2():
 	theta=pi/3
 	print(sin(theta),cos(theta),tan(theta))
 	p=sin_serie
@@ -37,8 +37,10 @@ def root():
 	c.display()
 	a=Vector("[ 1 2 3 4 5 6 30 0 9]")
 	a.display()
+	pass
 try:
-	root()
+	example2()
+
 except:
 	pass
 

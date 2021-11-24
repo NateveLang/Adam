@@ -18,7 +18,7 @@ def include(file_name = ''):
 	file = file_name.split('.')[0]
 	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
 
-def root():
+class example1():
 	update_std()
 	for i in range(2):
 		print(i)
@@ -30,8 +30,10 @@ def root():
 	except:
 		print("xd")
 	
+	pass
 try:
-	root()
+	example1()
+
 except:
 	pass
 

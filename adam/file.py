@@ -4,7 +4,7 @@ def read_module(path):
     src = None
 
     try:
-        with open(path, mode='r', encoding='utf-8') as file:
+        with open(path, 'r') as file:
             lines = file.readlines()
 
         src = ''.join([str(line) for line in lines])

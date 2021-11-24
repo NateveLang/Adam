@@ -40,6 +40,7 @@ serie_cos = cos_serie
 class example5():
 	print("a")
 	imprime("Hola")
+	pass
 try:
 	example5()
 

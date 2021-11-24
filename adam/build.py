@@ -16,12 +16,15 @@ def build(file, args = ["none"],  main = "", exceptions = "\tpass", driver = "")
 
     start = time.time()
 
-    module = read_module(file)
+    text = read_module(file)
     file = file.split(".")[0]
+
+    if text == None:
+        text = ""
 
     start_compilation = time.time()
 
-    tokens, errors, lex_log, templates = scanner(module, args)
+    tokens, errors, lex_log, templates, modules = scanner(text, args)
     tree, tokens, errors = parser(tokens, file, errors)
     errors = generator(tree, file, errors, main, exceptions, args, templates)
 
@@ -69,4 +72,4 @@ def build(file, args = ["none"],  main = "", exceptions = "\tpass", driver = "")
     f.write(driver.format(file))
     f.close()
 
-    return file
+    return file, modules
