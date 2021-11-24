@@ -1,1 +1,2 @@
-# Private files
+example*.py
+.editorconfig

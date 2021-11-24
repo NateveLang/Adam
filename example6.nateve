@@ -1,0 +1,8 @@
+using "spanish"
+
+imprime("Nateve example 6")
+
+incluye "example5.nateve"
+
+m = Matriz([Vector([1, 0]), Vector([0, 1])])
+m.display()

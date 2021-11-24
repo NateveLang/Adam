@@ -1,11 +1,11 @@
 import driver_pytest as dp
 
-n = 5
+n = 6
 
 def test_build():
     for i in range(1, n + 1):
-        dp.build("test/example" + str(i) + ".nateve")
-        f1 = open("test/example" + str(i) + ".py", "r")
+        dp.build("example" + str(i) + ".nateve")
+        f1 = open("example" + str(i) + ".py", "r")
         f2 = open("test/example" + str(i) + ".txt", "r")
         assert f1.read() == f2.read()
         f1.close()
@@ -13,8 +13,8 @@ def test_build():
 
 def test_compile():
     for i in range(1, n + 1):
-        dp.compile("test/example" + str(i) + ".nateve")
+        dp.compile("example" + str(i) + ".nateve")
 
 def test_run():
     for i in range(1, n + 1):
-        dp.run("test/example" + str(i) + ".nateve")
+        dp.run("example" + str(i) + ".nateve")

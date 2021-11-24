@@ -7,8 +7,6 @@ from adam.utils import tostring
 
 F = False
 
-# Main code
-
 def scanner(text = "", args = ["none"]):
     dev_mode = "dev" in args
 
