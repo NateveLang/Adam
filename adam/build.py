@@ -9,7 +9,11 @@ from adam.run import driver_file
 vars_file = "adam/nateve_vars"
 
 def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass", driver = ""):
-    
+
+    dev_mode = "dev" in args
+    verbose_mode = ("-v" in args) or ("--verbose" in args)
+    display_status_mode = verbose_mode or dev_mode
+
     start = time.time()
 
     module = read_module(file)
@@ -21,43 +25,45 @@ def build(file, args = ["none"],  main = "root()", exceptions = "except:\n\tpass
     tree, tokens, errors = parser(tokens, errors)
     errors = generator(tree, file, errors, main, exceptions, args, templates)
 
-    now = time.time()
-    compilation_time = now - start_compilation
+    if display_status_mode:
+        now = time.time()
+        compilation_time = now - start_compilation
 
-    log = lex_log
+        log = lex_log
 
-    if errors != 0:
-        stat = -1
+        if errors != 0:
+            stat = -1
+            
+        else:
+            stat = 0
+
+        print(f"Compilation finished with status {stat}")
         
-    else:
-        stat = 0
+        print(log, end = "")
 
-    print(f"Compilation finished with status {stat}")
-    
-    print(log, end = "")
-
-    if "dev" in args:
+    if dev_mode:
         print(tokens)
         tree.display()
 
-    now = time.time()
-    runtime = now - start
+    if display_status_mode:
+        now = time.time()
+        runtime = now - start
     
-    try:
-        f = open(vars_file)
-        miliseconds = f.read().strip()
-        f.close()
+        try:
+            f = open(vars_file)
+            miliseconds = f.read().strip()
+            f.close()
 
-    except:
-        miliseconds = "True"
+        except:
+            miliseconds = "True"
 
-    if miliseconds == "True":
-        print(f"Machine time: {1000 * runtime} miliseconds")
-        print(f"Compilation time: {1000 * compilation_time} miliseconds\n")
+        if miliseconds == "True":
+            print(f"Machine time: {1000 * runtime} miliseconds")
+            print(f"Compilation time: {1000 * compilation_time} miliseconds\n")
 
-    else:
-        print(f"Machine time: {runtime} seconds")
-        print(f"Compilation time: {compilation_time} seconds\n")
+        else:
+            print(f"Machine time: {runtime} seconds")
+            print(f"Compilation time: {compilation_time} seconds\n")
     
     f = open(driver_file + ".py", "w")
     f.write(driver.format(file))
