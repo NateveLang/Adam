@@ -1,4 +1,4 @@
-compiler_name = "adam"
+transpiler_name = "adam"
 
 mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 alphabet = mayusc + mayusc.lower() + "_"

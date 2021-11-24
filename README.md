@@ -1,6 +1,6 @@
 # Adam
 
-Adam is a Nateve Programming Language compiler developed using Python.
+Adam is a Nateve Programming Language transpiler developed using Python.
 
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 ![docker publish](https://github.com/NateveLanguage/Adam/actions/workflows/docker-publish.yml/badge.svg)
@@ -11,7 +11,7 @@ Adam is a Nateve Programming Language compiler developed using Python.
 
 Nateve is a new general domain programming language open source inspired by languages like Python, C++, JavaScript, and Wolfram Mathematica.
 
-Nateve is an compiled language. Its first compiler, Adam, is fully built using Python 3.8.
+Nateve is an transpiled language. Its first transpiler, Adam, is fully built using Python 3.8.
 
 ## Nateve principal features
 
@@ -59,7 +59,7 @@ Your templates can be used by other developers. You can easily share your templa
 
 1. `build`: Transpile Nateve source code to Python 3.8
 2. `run`: Run Nateve source code
-3. `compile`: Compile Nateve source code to an executable file (.exe)
+3. `transpile`: Transpile Nateve source code to an executable file (.exe)
 4. `run-init-loop`: Run Nateve source code with an initial source and a loop source
 5. `set-time-unit`: Set Adam time unit to seconds or miliseconds (default: milisecond)
 6. `-v`: Activate verbose mode
@@ -264,8 +264,8 @@ Nateve includes the following standard templates:
 You also can use your own templates. Just create a file with the name of the template and write the code of the template in the file. Here is a blank template:
 
 ```python
-# The name of the compiler. This line is required. Do not change it.
-compiler_name = "adam"
+# The name of the transpiler. This line is required. Do not change it.
+transpiler_name = "adam"
 
 """
 The following code is the translation of the code.
@@ -273,7 +273,7 @@ You can write your code here and modify the content of the variables.
 Do not change the name of the variables.
 """
 
-# All the symbols that the compiler uses.
+# All the symbols that the transpiler uses.
 mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 alphabet = mayusc + mayusc.lower() + "_"
 digits = "0123456789"
@@ -285,7 +285,7 @@ floating = "."
 one_char_symbols = "+-*/%=<>()[]{}#$@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
-# All the data types that the compiler uses.
+# All the data types that the transpiler uses.
 FLOAT = "float"
 INT = "int"
 COMPLEX = "complex"
@@ -293,7 +293,7 @@ STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
 
-# All the keywords that the compiler uses.
+# All the keywords that the transpiler uses.
 USE, WAIT = "using", "wait"
 INCLUDE, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
@@ -303,14 +303,14 @@ OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
 AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 
-# All the status codes that the compiler uses.
+# All the status codes that the transpiler uses.
 identifier = 300
 eof = 400
 
-# All extra functions that the compiler uses. Feel free to add your own functions.
+# All extra functions that the transpiler uses. Feel free to add your own functions.
 # The string special_functions is used to write these functions.
 # You can use variables in it using the fstring notation.
-# For example: "include" function calls the variable compiler_name.
+# For example: "include" function calls the variable transpiler_name.
 special_functions = f"""
 def ninput(prompt = '', default = ''):
 \treturn float(input(prompt, default))
@@ -323,7 +323,7 @@ def update_std():
 
 def include(file_name = ''):
 \tfile = file_name.split('.')[0]
-\tsubprocess.call([sys.executable, '-m', '{compiler_name}', 'build', file])
+\tsubprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
 """ 
 ```
 

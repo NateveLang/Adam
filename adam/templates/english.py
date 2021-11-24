@@ -1,4 +1,4 @@
-compiler_name = "adam"
+transpiler_name = "adam"
 
 mayusc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabet = mayusc + mayusc.lower() + "_"
@@ -42,5 +42,5 @@ def update_std():
 
 def include(file_name = ''):
 \tfile = file_name.split('.')[0]
-\tsubprocess.call([sys.executable, '-m', '{compiler_name}', 'build', file])
+\tsubprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
 """
