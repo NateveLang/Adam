@@ -7,6 +7,7 @@ alphanum = alphabet + digits
 blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
+vectors = "[]"
 commentaries = "~"
 floating = "."
 one_char_symbols = "+-*/%=<>()[]{}#@,."

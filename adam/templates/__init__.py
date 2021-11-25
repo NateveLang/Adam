@@ -12,6 +12,7 @@ class Template():
 
 		self.commentaries = template.commentaries 
 		self.matrices = template.matrices
+		self.vectors = template.vectors
 		self.strings = template.strings
 		self.alphabet = template.alphabet
 		self.digits = template.digits

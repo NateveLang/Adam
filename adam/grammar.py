@@ -9,9 +9,10 @@ alphanum = alphabet + digits
 blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
+vectors = "[]"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#@,."
+one_char_symbols = "+-*/%=<>(){}#@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "float"

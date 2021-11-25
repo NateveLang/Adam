@@ -33,3 +33,6 @@ def RuntimeError(line, message):
 
 def NotFoundError(line, message):
     return Error(line, message, "NotFound")
+
+def ValueError(line, message):
+	return Error(line, message, "Value")

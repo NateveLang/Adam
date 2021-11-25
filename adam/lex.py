@@ -8,261 +8,285 @@ from adam.utils import tostring
 F = False
 
 def scanner(text = "", args = ["none"]):
-    dev_mode = "dev" in args
+	dev_mode = "dev" in args
 
-    tp = temp.Template("english")
-    templates = [tp]
+	tp = temp.Template("english")
+	templates = [tp]
 
-    commentary, string, name, number, float, matrix, operator = F, F, F, F, F, F, F
-    using, including, docstring =  F, F, 0
+	commentary, string, name, number, float = F, F, F, F, F
+	matrix, vector, operator = F, F, F
+	using, including, docstring, waiting_close_bracket =  F, F, 0, 0
 
-    tokens = Tokens()
-    modules = []
-    errors = 0
-    line, pos = 1, 1
+	tokens = Tokens()
+	modules = []
+	errors = 0
+	line, pos = 1, 1
 
-    lexema = ""
-    string_ch = ""
+	lexema = ""
+	string_ch = ""
 
-    security_tokens = "\n ~eof tokens for security~ ~including the \n, DO NOT REMOVE THE EXTRA \n~"
-    text = security_tokens + text + "\npass\n" + security_tokens
-    
-    i = 0
-    while i < len(text):
+	security_tokens = "\n ~eof tokens for security~ ~including the \n, DO NOT REMOVE THE EXTRA \n~"
+	text = security_tokens + text + "\npass\n" + security_tokens
+	
+	i = 0
+	while i < len(text):
 
-        ch = text[i]
+		ch = text[i]
 
-        tokens_num = len(tokens)
+		tokens_num = len(tokens)
 
-        if tokens_num > 0:
-            last_line = tokens[tokens_num - 1][4]
+		if tokens_num > 0:
+			last_line = tokens[tokens_num - 1][4]
 
-        if docstring > 0 and ch != string_ch:
-            lexema += ch
+		if docstring > 0 and ch != string_ch:
+			lexema += ch
 
-        elif ch == tp.matrices:
-                
-            if matrix:
-                tokens.add(lexema, gr.MATRIX, line, pos, last_line)
-                lexema = ""
-                matrix = F
-            else:
-                matrix = True
+		elif ch == tp.matrices:
+				
+			if matrix:
+				tokens.add(lexema, gr.MATRIX, line, pos, last_line)
+				lexema = ""
+				matrix = F
+			else:
+				matrix = True
 
-        elif ch == "\n":
+		elif ch == "\n":
 
-            if string:
+			if string:
 
-                if using:
-                    tp = None
-                    tp = temp.Template(lexema)
+				if using:
+					tp = None
+					tp = temp.Template(lexema)
 
-                    if tp not in templates:
-                        templates += [tp]
+					if tp not in templates:
+						templates += [tp]
 
-                    using = F
+					using = F
 
-                elif including:
-                    modules.append(lexema)
-                    including = F
+				elif including:
+					modules.append(lexema)
+					including = F
 					
-                else:
-                    tokens.add(lexema, gr.STRING, line, pos)
-                    
-                lexema = ""
-                string_ch = ""
-                string = F
-            
-            elif number:
+				else:
+					tokens.add(lexema, gr.STRING, line, pos)
+					
+				lexema = ""
+				string_ch = ""
+				string = F
+			
+			elif vector:
+				tokens.add(lexema, gr.VECTOR, line, pos, last_line)
+				lexema = ""
+				waiting_close_bracket = 0
+				vector = F
 
-                if float:
-                    tokens.add(lexema + "0", gr.FLOAT, line, pos, last_line)
-                else:
-                    tokens.add(lexema, gr.INT, line, pos, last_line)
+			elif number:
 
-                number = F
-                float = F
-            
-            elif name:
-                lexema, errors = tr.translate(lexema, errors, tp)
-                
-                if lexema == gr.USE:
-                    using = True
-                elif lexema == gr.INCLUDE:
-                    including = True
-                else:
-                    tokens.add(lexema, get_token_ID(lexema), line, pos)
+				if float:
+					tokens.add(lexema + "0", gr.FLOAT, line, pos, last_line)
+				else:
+					tokens.add(lexema, gr.INT, line, pos, last_line)
 
-                name = F
-                
-            elif operator:
-                id = get_token_ID(lexema)
+				number = F
+				float = F
+			
+			elif name:
+				lexema, errors = tr.translate(lexema, errors, tp)
+				
+				if lexema == gr.USE:
+					using = True
+				elif lexema == gr.INCLUDE:
+					including = True
+				else:
+					tokens.add(lexema, get_token_ID(lexema), line, pos)
 
-                if id == gr.identifier:
+				name = F
+				
+			elif operator:
+				id = get_token_ID(lexema)
 
-                    for lex in lexema:
-                        tokens.add(lex, get_token_ID(lex), line, pos, last_line)
+				if id == gr.identifier:
 
-                else:
-                    tokens.add(lexema, id, line, pos, last_line)
-                
-                operator = F
+					for lex in lexema:
+						tokens.add(lex, get_token_ID(lex), line, pos, last_line)
 
-            if matrix:
-                lexema += ch
-            else:
-                lexema = ""
+				else:
+					tokens.add(lexema, id, line, pos, last_line)
+				
+				operator = F
 
-            line += 1
-            pos = 1
+			if matrix:
+				lexema += ch
 
-        elif docstring > 0 and ch == string_ch:
-            docstring -= 1
+			else:
+				lexema = ""
 
-            if docstring == 0:
-                tokens.add(lexema, gr.DOCSTRING, line, pos)
-                string_ch = ""
-                lexema = ""
+			line += 1
+			pos = 1
 
-        elif commentary and ch not in tp.commentaries:
-            pass
+		elif docstring > 0 and ch == string_ch:
+			docstring -= 1
 
-        elif commentary and ch in tp.commentaries:
-            commentary = F
+			if docstring == 0:
+				tokens.add(lexema, gr.DOCSTRING, line, pos)
+				string_ch = ""
+				lexema = ""
 
-        elif matrix:
-            lexema += ch
+		elif commentary and ch not in tp.commentaries:
+			pass
 
-        elif string and ch not in tp.strings:
-            lexema += ch
+		elif commentary and ch in tp.commentaries:
+			commentary = F
 
-        elif string and ch == string_ch:
+		elif vector:
+			lexema += ch
 
-            if text[i + 1] == string_ch:
-                docstring = 3
-                i += 1
+			if ch == tp.vectors[1]:
+				waiting_close_bracket -=1
 
-            else:
-                    
-                if using:
-                    tp = None
-                    tp = temp.Template(lexema)
-                    
-                    if tp not in templates:
-                        templates += [tp]
-                    
-                    using = F
+				if waiting_close_bracket == 0:
+					tokens.add(lexema, gr.VECTOR, line, pos, last_line)
+					lexema = ""
+					vector = F
 
-                elif including:
-                    modules.append(lexema)
-                    including = F
+		elif matrix:
+			lexema += ch
 
-                else:
-                    tokens.add(lexema, gr.STRING, line, pos)
+		elif string and ch not in tp.strings:
+			lexema += ch
 
-                lexema = ""
-                string_ch = ""
-            
-            string = F
-        
-        elif float and ch in tp.digits:
-            lexema += ch
+		elif string and ch == string_ch:
 
-        elif float and ch in tp.floating:
-            errors += LexicalError(line, f"two {gr.floating} in float definition")
-            break
+			if text[i + 1] == string_ch:
+				docstring = 3
+				i += 1
 
-        elif number and not float and ch in (tp.digits + tp.floating):
-            lexema += ch
+			else:
+					
+				if using:
+					tp = None
+					tp = temp.Template(lexema)
+					
+					if tp not in templates:
+						templates += [tp]
+					
+					using = F
 
-            if ch in tp.floating:
-                float = True
+				elif including:
+					modules.append(lexema)
+					including = F
 
-        elif number and ch not in (tp.digits + tp.floating):
+				else:
+					tokens.add(lexema, gr.STRING, line, pos)
 
-            if float:
-                tokens.add(lexema + "0", gr.FLOAT, line, pos, last_line)
-            else:
-                tokens.add(lexema, gr.INT, line, pos, last_line)
+				lexema = ""
+				string_ch = ""
+			
+			string = F
+		
+		elif float and ch in tp.digits:
+			lexema += ch
 
-            lexema = ""
-            i -= 1
-            pos -= 1
-            number, float = F, F
-        
-        elif name and ch in tp.alphanum:
-            lexema += ch
+		elif float and ch in tp.floating:
+			errors += LexicalError(line, f"two {gr.floating} in float definition")
+			break
 
-        elif name and ch not in tp.alphanum:
-            lexema, errors = tr.translate(lexema, errors, tp)
+		elif number and not float and ch in (tp.digits + tp.floating):
+			lexema += ch
 
-            if lexema == gr.USE:
-                using = True
-            elif lexema == gr.INCLUDE:
-                including = True
-            else:
-                tokens.add(lexema, get_token_ID(lexema), line, pos)
+			if ch in tp.floating:
+				float = True
 
-            lexema = ""
-            i -= 1
-            pos -= 1
-            name = F
-        
-        elif operator and ch in tp.operators:
-            lexema += ch
+		elif number and ch not in (tp.digits + tp.floating):
 
-        elif operator and ch not in tp.operators:
-            id = get_token_ID(lexema)
+			if float:
+				tokens.add(lexema + "0", gr.FLOAT, line, pos, last_line)
+			else:
+				tokens.add(lexema, gr.INT, line, pos, last_line)
 
-            if id == gr.identifier:
-                for lex in lexema:
-                    tokens.add(lex, get_token_ID(lex), line, pos, last_line)
-            else:
-                tokens.add(lexema, id, line, pos, last_line)
+			lexema = ""
+			i -= 1
+			pos -= 1
+			number, float = F, F
+		
+		elif name and ch in tp.alphanum:
+			lexema += ch
 
-            lexema = ""
-            i -= 1
-            pos -= 1
-            operator = F
+		elif name and ch not in tp.alphanum:
+			lexema, errors = tr.translate(lexema, errors, tp)
 
-        elif not commentary and ch in tp.commentaries:
-            commentary = True
+			if lexema == gr.USE:
+				using = True
+			elif lexema == gr.INCLUDE:
+				including = True
+			else:
+				tokens.add(lexema, get_token_ID(lexema), line, pos)
 
-        elif not string and ch in tp.strings:
-            string = True
-            string_ch = ch
+			lexema = ""
+			i -= 1
+			pos -= 1
+			name = F
+		
+		elif operator and ch in tp.operators:
+			lexema += ch
 
-        elif not name and ch in tp.alphabet:
-            name = True
-            lexema += ch
+		elif operator and ch not in tp.operators:
+			id = get_token_ID(lexema)
 
-        elif not name and not number and ch in tp.digits:
-            number = True
-            lexema += ch
+			if id == gr.identifier:
+				for lex in lexema:
+					tokens.add(lex, get_token_ID(lex), line, pos, last_line)
+			else:
+				tokens.add(lexema, id, line, pos, last_line)
 
-        elif not name and not number and not operator and ch in tp.operators:
-            operator = True
-            lexema += ch
+			lexema = ""
+			i -= 1
+			pos -= 1
+			operator = F
 
-        elif ch not in tp.blanks:
-            tokens.add(ch, ch, line, pos)
-        
-        i += 1
-        pos += 1
+		elif not commentary and ch in tp.commentaries:
+			commentary = True
 
-    if errors > 0:
-        print("Traceback:", tokens)
+		elif not string and ch in tp.strings:
+			string = True
+			string_ch = ch
 
-    tokens.set_last_line(line, pos)
+		elif not vector and ch == tp.vectors[0]:
+			vector = True
+			lexema += ch
+			waiting_close_bracket += 1
 
-    log = ""
+		elif not name and ch in tp.alphabet:
+			name = True
+			lexema += ch
 
-    if dev_mode:
-        log += f"Last line: {line} Last column: {pos}\n"
-        log += f"Tokens detected: {len(tokens)}\n"
+		elif not name and not number and ch in tp.digits:
+			number = True
+			lexema += ch
 
-        names = tokens.get_names()
-        string_of_names = tostring(names, ", ")
-        log += f"Names detected ({len(names)}): {string_of_names}\n"
+		elif not name and not number and not operator and ch in tp.operators:
+			operator = True
+			lexema += ch
 
-    return tokens, errors, log, templates, modules
+		elif ch not in tp.blanks:
+			tokens.add(ch, ch, line, pos)
+		
+		i += 1
+		pos += 1
+
+	if errors > 0:
+		print("Traceback:", tokens)
+
+	tokens.set_last_line(line, pos)
+
+	log = ""
+
+	if dev_mode:
+		log += f"Last line: {line} Last column: {pos}\n"
+		log += f"Tokens detected: {len(tokens)}\n"
+
+		names = tokens.get_names()
+		string_of_names = tostring(names, ", ")
+		log += f"Names detected ({len(names)}): {string_of_names}\n"
+
+	return tokens, errors, log, templates, modules

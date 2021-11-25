@@ -20,18 +20,40 @@ imprime(a)
 imprime("b = ")
 imprime(b)
 
-c = a.times(b)
+c = a.dot(b)
 
 imprime("a * b =")
 imprime(c)
-~
-usando "english"
-x, y, z = 1, 2, 3
-a="""
+
+imprime("a + b =")
+print(a.plus(b))
+
+d = [1, 2, 3, 4, 5]
+imprime(d)
+
+e = [0, 1, 0, 1, 0]
+imprime(e)
+
+f = d.dot(e)
+imprime(f)
+
+g = d.plus(e)
+imprime(g)
+
+using "english"
+
+def r(x, y, z){
+	return $
 |x|
 |y|
 |z|
-""".replace("x", str(x)).replace("y", str(y)).replace("z", str(z))
-j = matrix(a)
+$
+}
+
+x, y, z = 1, 5, 3
+
+j = r(x, y, z)
+
 print(j)
-~
+
+print(j.scale(2))

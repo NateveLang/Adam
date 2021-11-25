@@ -1,29 +1,10 @@
 try:
 	from eggdriver import *
+	from adam.types import *
 	import sys, os, subprocess
 except ImportError:
 	print('ImportError')
 
-
-class vector(Vector):
-	def __init__(self, *args):
-		super().__init__(*args)
-
-class matrix(Matrix):
-	def __init__(self, *args):
-		super().__init__(*args)
-	def times(self, b):
-		import numpy as np
-		a = np.array(self)
-		b2 = np.array(b)
-		c = a @ b2
-		temp =[]
-		for i in c:
-			temp.append(vector(i))
-		return matrix(temp)
-	def __str__(self):
-		self.display()
-		return ""
 
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
@@ -38,21 +19,229 @@ def include(file_name = ''):
 	file = file_name.split('.')[0]
 	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
 
-class example1():
-	update_std()
-	for i in range(2):
-		print(i)
+
+def recibe_numero(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def recibe_booleano(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def actualiza_std():
+	subprocess.call(["py", "-m", "pip", "install", "eggdriver"])
+
+imprime = print
+recibe = input
+matriz = matrix
+
+deriva = derive
+sen = sin
+serie_sen = sin_serie
+serie_cos = cos_serie
+
+
+def ninput(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def binput(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def update_std():
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def include(file_name = ''):
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
+
+
+def nentree(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def bentree(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def reactualiser_std():
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def inclure(file_name = ''):
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
+
+imprimer = print
+entree = input
+
+serie_sin = sin_serie
+serie_cos = cos_serie
+
+class example4():
+	amo_Nateve=True
+	if amo_Nateve==True:
+		imprime("Yo amo Nateve!")
 	
-	install("matplotlib")
-	try:
-		print(2/0)
+	else:
+		imprime("Odio Nateve :c")
 	
-	except:
-		print("xd")
+	if 1<3:
+		print("YES")
 	
+	else:
+		print("NO")
+	
+	v="Bonjour"
+	imprimer(v,"Nateve!")
 	pass
 try:
-	example1()
+	example4()
+
+except:
+	pass
+
+
+
+try:
+	from eggdriver import *
+	from adam.types import *
+	import sys, os, subprocess
+except ImportError:
+	print('ImportError')
+
+
+def ninput(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def binput(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def update_std():
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def include(file_name = ''):
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
+
+
+def recibe_numero(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def recibe_booleano(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def actualiza_std():
+	subprocess.call(["py", "-m", "pip", "install", "eggdriver"])
+
+imprime = print
+recibe = input
+matriz = matrix
+
+deriva = derive
+sen = sin
+serie_sen = sin_serie
+serie_cos = cos_serie
+
+class example5():
+	print("a")
+	imprime("Hola")
+	pass
+try:
+	example5()
+
+except:
+	pass
+
+
+
+try:
+	from eggdriver import *
+	from adam.types import *
+	import sys, os, subprocess
+except ImportError:
+	print('ImportError')
+
+
+def ninput(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def binput(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def update_std():
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def include(file_name = ''):
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
+
+
+def recibe_numero(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def recibe_booleano(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def actualiza_std():
+	subprocess.call(["py", "-m", "pip", "install", "eggdriver"])
+
+imprime = print
+recibe = input
+matriz = matrix
+
+deriva = derive
+sen = sin
+serie_sen = sin_serie
+serie_cos = cos_serie
+
+
+def ninput(prompt = '', default = ''):
+	return float(input(prompt, default))
+
+def binput(prompt = '', default = ''):
+	return bool(input(prompt, default))
+
+def update_std():
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+
+def include(file_name = ''):
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
+
+class example6():
+	imprime("Nateve example 6")
+	a=matrix("""
+| 1 5 |
+| 0 2 |
+""")
+	b=matrix("""
+|0 1|
+|1 0|
+""")
+	imprime("a = ")
+	imprime(a)
+	imprime("b = ")
+	imprime(b)
+	c=a.dot(b)
+	imprime("a * b =")
+	imprime(c)
+	d=vector([1, 2, 3, 4, 5])
+	imprime(d)
+	e=vector([0, 1, 0, 1, 0])
+	imprime(e)
+	f=d.dot(e)
+	imprime(f)
+	g=d.plus(e)
+	imprime(g)
+	def r(x,y,z):
+			 return matrix("""
+|x|
+|y|
+|z|
+""".replace('x', str(x)).replace('y', str(y)).replace('z', str(z)))
+	
+	x,y,z=1,5,3
+	j=r(x,y,z)
+	print(j)
+	print(a.plus(b))
+	pass
+try:
+	example6()
 
 except:
 	pass

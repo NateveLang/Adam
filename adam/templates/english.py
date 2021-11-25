@@ -7,6 +7,7 @@ alphanum = alphabet + digits
 blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
+vectors = "[]"
 commentaries = "~"
 floating = "."
 one_char_symbols = "+-*/%=<>()[]{}#@,."
@@ -33,29 +34,7 @@ AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 identifier = 300
 eof = 400
 
-types = """
-class vector(Vector):
-	def __init__(self, *args):
-		super().__init__(*args)
-
-class matrix(Matrix):
-	def __init__(self, *args):
-		super().__init__(*args)
-	def times(self, b):
-		import numpy as np
-		a = np.array(self)
-		b2 = np.array(b)
-		c = a @ b2
-		temp =[]
-		for i in c:
-			temp.append(vector(i))
-		return matrix(temp)
-	def __str__(self):
-		self.display()
-		return ""
-"""
-
-special_functions = types + f"""
+special_functions = f"""
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
 
