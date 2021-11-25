@@ -5,6 +5,10 @@ except ImportError:
 	print('ImportError')
 
 
+class vector(Vector):
+	def __init__(self, *args):
+		super().__init__(*args)
+
 class matrix(Matrix):
 	def __init__(self, *args):
 		super().__init__(*args)
@@ -15,7 +19,7 @@ class matrix(Matrix):
 		c = a @ b
 		temp =[]
 		for i in c:
-			temp.append(Vector(i))
+			temp.append(vector(i))
 		return matrix(temp)
 	def __str__(self):
 		self.display()
@@ -54,6 +58,10 @@ serie_sen = sin_serie
 serie_cos = cos_serie
 
 
+class vector(Vector):
+	def __init__(self, *args):
+		super().__init__(*args)
+
 class matrix(Matrix):
 	def __init__(self, *args):
 		super().__init__(*args)
@@ -64,7 +72,7 @@ class matrix(Matrix):
 		c = a @ b
 		temp =[]
 		for i in c:
-			temp.append(Vector(i))
+			temp.append(vector(i))
 		return matrix(temp)
 	def __str__(self):
 		self.display()
@@ -135,6 +143,10 @@ except ImportError:
 	print('ImportError')
 
 
+class vector(Vector):
+	def __init__(self, *args):
+		super().__init__(*args)
+
 class matrix(Matrix):
 	def __init__(self, *args):
 		super().__init__(*args)
@@ -145,7 +157,7 @@ class matrix(Matrix):
 		c = a @ b
 		temp =[]
 		for i in c:
-			temp.append(Vector(i))
+			temp.append(vector(i))
 		return matrix(temp)
 	def __str__(self):
 		self.display()
@@ -202,6 +214,10 @@ except ImportError:
 	print('ImportError')
 
 
+class vector(Vector):
+	def __init__(self, *args):
+		super().__init__(*args)
+
 class matrix(Matrix):
 	def __init__(self, *args):
 		super().__init__(*args)
@@ -212,7 +228,7 @@ class matrix(Matrix):
 		c = a @ b
 		temp =[]
 		for i in c:
-			temp.append(Vector(i))
+			temp.append(vector(i))
 		return matrix(temp)
 	def __str__(self):
 		self.display()

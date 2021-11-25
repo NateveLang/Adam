@@ -33,34 +33,38 @@ identifier = 300
 eof = 400
 
 types = """
+class vector(Vector):
+	def __init__(self, *args):
+		super().__init__(*args)
+
 class matrix(Matrix):
-\tdef __init__(self, *args):
-\t\tsuper().__init__(*args)
-\tdef times(self, b):
-\t\timport numpy as np
-\t\ta = np.array(self)
-\t\tb = np.array(b)
-\t\tc = a @ b
-\t\ttemp =[]
-\t\tfor i in c:
-\t\t\ttemp.append(Vector(i))
-\t\treturn matrix(temp)
-\tdef __str__(self):
-\t\tself.display()
-\t\treturn ""
+	def __init__(self, *args):
+		super().__init__(*args)
+	def times(self, b):
+		import numpy as np
+		a = np.array(self)
+		b = np.array(b)
+		c = a @ b
+		temp =[]
+		for i in c:
+			temp.append(vector(i))
+		return matrix(temp)
+	def __str__(self):
+		self.display()
+		return ""
 """
 
 special_functions = types + f"""
 def ninput(prompt = '', default = ''):
-\treturn float(input(prompt, default))
+	return float(input(prompt, default))
 
 def binput(prompt = '', default = ''):
-\treturn bool(input(prompt, default))
+	return bool(input(prompt, default))
 
 def update_std():
-\tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
 def include(file_name = ''):
-\tfile = file_name.split('.')[0]
-\tsubprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
+	file = file_name.split('.')[0]
+	subprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
 """
