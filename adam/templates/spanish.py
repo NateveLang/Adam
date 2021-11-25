@@ -5,10 +5,11 @@ alphabet = mayusc + mayusc.lower() + "_"
 digits = "0123456789"
 alphanum = alphabet + digits
 blanks = "/t /n"
-strings = "\"\'"
+strings = ["'", '"', '"""', "'''"]
+matrices = "$"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#$@,."
+one_char_symbols = "+-*/%=<>()[]{}#@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "decimal"
@@ -17,6 +18,8 @@ COMPLEX = "complejo"
 STRING = "cadena"
 DOCSTRING = "documentacion"
 NULL = "nada"
+
+MATRIX = "Matriz"
 
 USE, WAIT, INCLUDE = "usando", "espera", "incluye"
 IMPORT, FROM, AS, PASS, IN = "importa", "desde", "como", "pasa", "en"

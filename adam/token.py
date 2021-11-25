@@ -1,4 +1,5 @@
 import adam.grammar as gr
+from adam.error import SyntaxError
 from adam.utils import tostring
 
 class Token(list):
@@ -41,6 +42,7 @@ class Token(list):
 
         if self.ID in expected_types:
             return True
+            
         else:
             types = ""
 
@@ -50,7 +52,8 @@ class Token(list):
 
                 types += tostring(expected_types[i])
             
-            SyntaxError(f"{self.line}, column {self.position}", f"{types} expected")
+            line = self.line
+            SyntaxError(line, f"{types} expected")
             return False
     
     def is_protected(self):

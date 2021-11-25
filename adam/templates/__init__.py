@@ -11,6 +11,7 @@ class Template():
         template = imp.import_module(module_name)
 
         self.commentaries = template.commentaries 
+        self.matrices = template.matrices
         self.strings = template.strings
         self.alphabet = template.alphabet
         self.digits = template.digits
@@ -32,7 +33,7 @@ class Template():
         classes = [template.CLASS, template.SELF]
         bools = [template.AND, template.OR, template.NOT, template.TRUE, template.FALSE]
 
-        self.primitives = [template.FLOAT, template.INT, template.COMPLEX, template.STRING, template.NULL]
+        self.primitives = [template.FLOAT, template.INT, template.COMPLEX, template.MATRIX, template.STRING, template.NULL]
         std_funcs = preprocess + process + conditionals + loops + functions + classes + bools
         self.operators = tolist(template.one_char_symbols) + template.two_char_symbols
 

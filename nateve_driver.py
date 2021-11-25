@@ -67,7 +67,6 @@ def inclure(file_name = ''):
 
 imprimer = print
 entree = input
-Matriz = Matrix
 
 serie_sin = sin_serie
 serie_cos = cos_serie
@@ -189,7 +188,10 @@ serie_cos = cos_serie
 
 class example6():
 	imprime("Nateve example 6")
-	m=Matriz([Vector([1,0]),Vector([0,1])])
+	m=Matrix("""
+| 1 0 |
+| 0 1 |
+""")
 	m.display()
 	pass
 try:

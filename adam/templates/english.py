@@ -6,9 +6,10 @@ digits = "0123456789"
 alphanum = alphabet + digits
 blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
+matrices = "$"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#$@,."
+one_char_symbols = "+-*/%=<>()[]{}#@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "float"
@@ -17,6 +18,8 @@ COMPLEX = "complex"
 STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
+
+MATRIX = "Matrix"
 
 USE, WAIT, INCLUDE = "using", "wait", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"

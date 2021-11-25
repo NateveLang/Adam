@@ -8,9 +8,10 @@ digits = "0123456789"
 alphanum = alphabet + digits
 blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
+matrices = "$"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#$@,."
+one_char_symbols = "+-*/%=<>()[]{}#@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "float"
@@ -19,6 +20,8 @@ COMPLEX = "complex"
 STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
+
+MATRIX = "Matrix"
 
 USE, WAIT, INCLUDE = "using", "wait", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
@@ -52,7 +55,7 @@ functions = [OPERATOR, RETURN]
 classes = [CLASS, SELF]
 bools = [AND, OR, NOT, TRUE, FALSE]
 
-primitives = [FLOAT, INT, COMPLEX, STRING, NULL]
+primitives = [FLOAT, INT, COMPLEX, MATRIX, STRING, NULL]
 std_funcs = preprocess + process + conditionals + loops + functions + classes + bools
 operators = tolist(one_char_symbols) + two_char_symbols
 

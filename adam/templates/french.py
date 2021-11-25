@@ -6,9 +6,10 @@ digits = "0123456789"
 alphanum = alphabet + digits
 blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
+matrices = "$"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#$@,."
+one_char_symbols = "+-*/%=<>()[]{}#@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "flottant"
@@ -17,6 +18,8 @@ COMPLEX = "complexe"
 STRING = "chaine"
 DOCSTRING = "docchaine"
 NULL = "nul"
+
+MATRIX = "Matrix"
 
 USE, WAIT, INCLUDE = "utiliser", "attendre", "inclure"
 IMPORT, FROM, AS, PASS, IN = "inclure", "de", "comme", "passer", "dans"
@@ -33,7 +36,6 @@ eof = 400
 traductions = """
 imprimer = print
 entree = input
-Matriz = Matrix
 
 serie_sin = sin_serie
 serie_cos = cos_serie

@@ -13,7 +13,7 @@ def scanner(text = "", args = ["none"]):
     tp = temp.Template("english")
     templates = [tp]
 
-    commentary, string, name, number, float, operator = F, F, F, F, F, F
+    commentary, string, name, number, float, matrix, operator = F, F, F, F, F, F, F
     using, including, docstring =  F, F, 0
 
     tokens = Tokens()
@@ -39,7 +39,16 @@ def scanner(text = "", args = ["none"]):
 
         if docstring > 0 and ch != string_ch:
             lexema += ch
-        
+
+        elif ch == tp.matrices:
+                
+            if matrix:
+                tokens.add(lexema, gr.MATRIX, line, pos, last_line)
+                lexema = ""
+                matrix = F
+            else:
+                matrix = True
+
         elif ch == "\n":
 
             if string:
@@ -52,9 +61,11 @@ def scanner(text = "", args = ["none"]):
                         templates += [tp]
 
                     using = F
+
                 elif including:
                     modules.append(lexema)
                     including = F
+					
                 else:
                     tokens.add(lexema, gr.STRING, line, pos)
                     
@@ -96,8 +107,12 @@ def scanner(text = "", args = ["none"]):
                     tokens.add(lexema, id, line, pos, last_line)
                 
                 operator = F
-            
-            lexema = ""
+
+            if matrix:
+                lexema += ch
+            else:
+                lexema = ""
+
             line += 1
             pos = 1
 
@@ -114,7 +129,10 @@ def scanner(text = "", args = ["none"]):
 
         elif commentary and ch in tp.commentaries:
             commentary = F
-        
+
+        elif matrix:
+            lexema += ch
+
         elif string and ch not in tp.strings:
             lexema += ch
 
@@ -123,7 +141,9 @@ def scanner(text = "", args = ["none"]):
             if text[i + 1] == string_ch:
                 docstring = 3
                 i += 1
+
             else:
+                    
                 if using:
                     tp = None
                     tp = temp.Template(lexema)
@@ -132,9 +152,11 @@ def scanner(text = "", args = ["none"]):
                         templates += [tp]
                     
                     using = F
+
                 elif including:
                     modules.append(lexema)
                     including = F
+
                 else:
                     tokens.add(lexema, gr.STRING, line, pos)
 

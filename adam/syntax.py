@@ -44,6 +44,7 @@ def parser(tokens, file_name = "root", errors = 0):
             
         else:
             expected_types = gr.ALL
+            expecting = True
         
         assert len(token) > 3
 
@@ -66,10 +67,10 @@ def parser(tokens, file_name = "root", errors = 0):
         elif token.equal(gr.USE):
             expected_types = [gr.STRING]
             expecting = True
-
-        elif token.equal(gr.WAIT):
-            expected_types = [gr.INT, gr.FLOAT]
-            expecting = True
+        
+        #elif token.equal(gr.WAIT):
+        #    expected_types = [gr.INT, gr.FLOAT]
+        #    expecting = True
 
         elif token.equal(gr.INCLUDE):
             expected_types = [gr.STRING]
