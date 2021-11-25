@@ -14,13 +14,13 @@ print(p.eval(theta))
 
 importa numpy como np
 x = "hello"
-c = Matriz("""
+c = $
 | 1 1 2 3 4 |
 | 0 1 2 3 4 |
 | 1 1 2 3 4 |
 | 1 1 2 3 4 |
 | 1 1 2 3 4 |
-""")
+$
 c.display()
 
 a = Vector("[ 1 2 3 4 5 6 30 0 9]")

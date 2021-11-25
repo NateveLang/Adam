@@ -10,8 +10,8 @@ a = $
 $
 
 b = $
-|0|
-|1|
+|0 1|
+|1 0|
 $
 
 imprime("a = ")
@@ -24,3 +24,14 @@ c = a.times(b)
 
 imprime("a * b =")
 imprime(c)
+~
+usando "english"
+x, y, z = 1, 2, 3
+a="""
+|x|
+|y|
+|z|
+""".replace("x", str(x)).replace("y", str(y)).replace("z", str(z))
+j = matrix(a)
+print(j)
+~

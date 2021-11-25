@@ -19,11 +19,12 @@ STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
 MATRIX = "matrix"
+VECTOR = "vector"
 
 USE, WAIT, INCLUDE = "using", "wait", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
-TRY, EXCEPT = "try", "except"
+TRY, EXCEPT, WITH = "try", "except", "with"
 WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
 OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
@@ -43,8 +44,8 @@ class matrix(Matrix):
 	def times(self, b):
 		import numpy as np
 		a = np.array(self)
-		b = np.array(b)
-		c = a @ b
+		b2 = np.array(b)
+		c = a @ b2
 		temp =[]
 		for i in c:
 			temp.append(vector(i))

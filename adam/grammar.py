@@ -21,11 +21,12 @@ STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
 MATRIX = "matrix"
+VECTOR = "vector"
 
 USE, WAIT, INCLUDE = "using", "wait", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
-TRY, EXCEPT = "try", "except"
+TRY, EXCEPT, WITH = "try", "except", "with"
 WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
 OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
@@ -48,13 +49,13 @@ def include(file_name = ''):
 
 preprocess = [USE, WAIT, INCLUDE]
 process = [IMPORT, FROM, AS, PASS, IN]
-conditionals = [IF, ELIF, ELSE, TRY, EXCEPT]
+conditionals = [IF, ELIF, ELSE, TRY, EXCEPT, WITH]
 loops = [WHILE, FOR, BREAK, CONTINUE]
 functions = [OPERATOR, RETURN]
 classes = [CLASS, SELF]
 bools = [AND, OR, NOT, TRUE, FALSE]
 
-primitives = [FLOAT, INT, COMPLEX, MATRIX, STRING, NULL]
+primitives = [FLOAT, INT, COMPLEX, MATRIX, VECTOR, STRING, NULL]
 std_funcs = preprocess + process + conditionals + loops + functions + classes + bools
 operators = tolist(one_char_symbols) + two_char_symbols
 

@@ -29,13 +29,13 @@ class Template():
 		
 		preprocess = [template.USE, template.WAIT, template.INCLUDE]
 		process = [template.IMPORT, template.FROM, template.AS, template.PASS, template.IN]
-		conditionals = [template.IF, template.ELIF, template.ELSE, template.TRY, template.EXCEPT]
+		conditionals = [template.IF, template.ELIF, template.ELSE, template.TRY, template.EXCEPT, template.WITH]
 		loops = [template.WHILE, template.FOR, template.BREAK, template.CONTINUE]
 		functions = [template.OPERATOR, template.RETURN]
 		classes = [template.CLASS, template.SELF]
 		bools = [template.AND, template.OR, template.NOT, template.TRUE, template.FALSE]
 
-		self.primitives = [template.FLOAT, template.INT, template.COMPLEX, template.MATRIX, template.STRING, template.NULL]
+		self.primitives = [template.FLOAT, template.INT, template.COMPLEX, template.MATRIX, template.VECTOR, template.STRING, template.NULL]
 		std_funcs = preprocess + process + conditionals + loops + functions + classes + bools
 		self.operators = tolist(template.one_char_symbols) + template.two_char_symbols
 
