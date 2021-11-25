@@ -4,9 +4,23 @@ imprime("Nateve example 6")
 
 incluye "example5.nateve"
 
-m = $
-| 1 0 |
-| 0 1 |
+a = $
+| 1 5 |
+| 0 2 |
 $
 
-m.display()
+b = $
+|0|
+|1|
+$
+
+imprime("a = ")
+imprime(a)
+
+imprime("b = ")
+imprime(b)
+
+c = a.times(b)
+
+imprime("a * b =")
+imprime(c)

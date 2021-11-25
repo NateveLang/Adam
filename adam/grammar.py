@@ -20,8 +20,7 @@ COMPLEX = "complex"
 STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
-
-MATRIX = "Matrix"
+MATRIX = "matrix"
 
 USE, WAIT, INCLUDE = "using", "wait", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"

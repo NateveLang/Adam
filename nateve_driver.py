@@ -5,6 +5,22 @@ except ImportError:
 	print('ImportError')
 
 
+class matrix(Matrix):
+	def __init__(self, *args):
+		super().__init__(*args)
+	def times(self, b):
+		import numpy as np
+		a = np.array(self)
+		b = np.array(b)
+		c = a @ b
+		temp =[]
+		for i in c:
+			temp.append(Vector(i))
+		return matrix(temp)
+	def __str__(self):
+		self.display()
+		return ""
+
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
 
@@ -30,13 +46,29 @@ def actualiza_std():
 
 imprime = print
 recibe = input
-Matriz = Matrix
+matriz = matrix
 
 deriva = derive
 sen = sin
 serie_sen = sin_serie
 serie_cos = cos_serie
 
+
+class matrix(Matrix):
+	def __init__(self, *args):
+		super().__init__(*args)
+	def times(self, b):
+		import numpy as np
+		a = np.array(self)
+		b = np.array(b)
+		c = a @ b
+		temp =[]
+		for i in c:
+			temp.append(Vector(i))
+		return matrix(temp)
+	def __str__(self):
+		self.display()
+		return ""
 
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
@@ -103,6 +135,22 @@ except ImportError:
 	print('ImportError')
 
 
+class matrix(Matrix):
+	def __init__(self, *args):
+		super().__init__(*args)
+	def times(self, b):
+		import numpy as np
+		a = np.array(self)
+		b = np.array(b)
+		c = a @ b
+		temp =[]
+		for i in c:
+			temp.append(Vector(i))
+		return matrix(temp)
+	def __str__(self):
+		self.display()
+		return ""
+
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
 
@@ -128,7 +176,7 @@ def actualiza_std():
 
 imprime = print
 recibe = input
-Matriz = Matrix
+matriz = matrix
 
 deriva = derive
 sen = sin
@@ -154,6 +202,22 @@ except ImportError:
 	print('ImportError')
 
 
+class matrix(Matrix):
+	def __init__(self, *args):
+		super().__init__(*args)
+	def times(self, b):
+		import numpy as np
+		a = np.array(self)
+		b = np.array(b)
+		c = a @ b
+		temp =[]
+		for i in c:
+			temp.append(Vector(i))
+		return matrix(temp)
+	def __str__(self):
+		self.display()
+		return ""
+
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
 
@@ -179,7 +243,7 @@ def actualiza_std():
 
 imprime = print
 recibe = input
-Matriz = Matrix
+matriz = matrix
 
 deriva = derive
 sen = sin
@@ -188,11 +252,21 @@ serie_cos = cos_serie
 
 class example6():
 	imprime("Nateve example 6")
-	m=Matrix("""
-| 1 0 |
-| 0 1 |
+	a=matrix("""
+| 1 5 |
+| 0 2 |
 """)
-	m.display()
+	b=matrix("""
+|0|
+|1|
+""")
+	imprime("a = ")
+	imprime(a)
+	imprime("b = ")
+	imprime(b)
+	c=a.times(b)
+	imprime("a * b =")
+	imprime(c)
 	pass
 try:
 	example6()

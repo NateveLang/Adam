@@ -18,8 +18,7 @@ COMPLEX = "complejo"
 STRING = "cadena"
 DOCSTRING = "documentacion"
 NULL = "nada"
-
-MATRIX = "Matriz"
+MATRIX = "matriz"
 
 USE, WAIT, INCLUDE = "usando", "espera", "incluye"
 IMPORT, FROM, AS, PASS, IN = "importa", "desde", "como", "pasa", "en"
@@ -36,7 +35,7 @@ eof = 400
 traducciones = """
 imprime = print
 recibe = input
-Matriz = Matrix
+matriz = matrix
 
 deriva = derive
 sen = sin

@@ -49,7 +49,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             elif d.ID == gr.DOCSTRING:
                 code_line += ['"""' + d.symbol + '"""']
             elif d.ID == gr.MATRIX:
-                code_line += ['Matrix("""' + d.symbol + '""")']
+                code_line += ['matrix("""' + d.symbol + '""")']
             else:
                 code_line += [d.symbol]
     
@@ -91,7 +91,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             code_line += ['"""' + s.symbol + '"""']
 
         elif s.ID == gr.MATRIX:
-                code_line += ['Matrix("""' + s.symbol + '""")']
+                code_line += ['matrix("""' + s.symbol + '""")']
 
         else:
             code_line += [f"{s.symbol}"]

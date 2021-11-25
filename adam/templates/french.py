@@ -18,8 +18,7 @@ COMPLEX = "complexe"
 STRING = "chaine"
 DOCSTRING = "docchaine"
 NULL = "nul"
-
-MATRIX = "Matrix"
+MATRIX = "matrix"
 
 USE, WAIT, INCLUDE = "utiliser", "attendre", "inclure"
 IMPORT, FROM, AS, PASS, IN = "inclure", "de", "comme", "passer", "dans"

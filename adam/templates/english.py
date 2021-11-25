@@ -18,8 +18,7 @@ COMPLEX = "complex"
 STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
-
-MATRIX = "Matrix"
+MATRIX = "matrix"
 
 USE, WAIT, INCLUDE = "using", "wait", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
@@ -33,7 +32,25 @@ AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 identifier = 300
 eof = 400
 
-special_functions = f"""
+types = """
+class matrix(Matrix):
+\tdef __init__(self, *args):
+\t\tsuper().__init__(*args)
+\tdef times(self, b):
+\t\timport numpy as np
+\t\ta = np.array(self)
+\t\tb = np.array(b)
+\t\tc = a @ b
+\t\ttemp =[]
+\t\tfor i in c:
+\t\t\ttemp.append(Vector(i))
+\t\treturn matrix(temp)
+\tdef __str__(self):
+\t\tself.display()
+\t\treturn ""
+"""
+
+special_functions = types + f"""
 def ninput(prompt = '', default = ''):
 \treturn float(input(prompt, default))
 
