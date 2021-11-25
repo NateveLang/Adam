@@ -43,7 +43,7 @@ imprime(g)
 using "english"
 
 def r(x, y, z){
-	return $
+return $
 |x|
 |y|
 |z|
@@ -56,4 +56,10 @@ j = r(x, y, z)
 
 print(j)
 
-print(j.scale(2))
+k = $
+|2 0 0|
+|0 2 0|
+|0 0 2|
+$
+
+print(k.dot(j))

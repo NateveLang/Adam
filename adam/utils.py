@@ -1,28 +1,34 @@
 import subprocess
 
 def tokenize(lexemas):
-    tokens = []
+	tokens = []
 
-    for i in range(len(lexemas)):
-        tokens.append([lexemas[i], i])
-        
-    return tokens
+	for i in range(len(lexemas)):
+		tokens.append([lexemas[i], i])
+		
+	return tokens
 
 def tolist(string):
-    arr = []
+	arr = []
 
-    for i in string:
-        arr.append(i)
+	for i in string:
+		arr.append(i)
 
-    return arr
+	return arr
 
 def tostring(array, separator = ""):
-    s = ""
+	s = ""
 
-    for i in range(len(array)):
-        s += array[i]
+	if type(array) == tuple:
+		array = list(array)
 
-        if i != len(array) - 1:
-            s += separator
+	elif type(array) not in [list, tuple]:
+		array = [str(array)]
+		
+	for i in range(len(array)):
+		s += array[i]
 
-    return s
+		if i != len(array) - 1:
+			s += separator
+
+	return s

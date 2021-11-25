@@ -220,6 +220,8 @@ class example6():
 	c=a.dot(b)
 	imprime("a * b =")
 	imprime(c)
+	imprime("a + b =")
+	print(a.plus(b))
 	d=vector([1, 2, 3, 4, 5])
 	imprime(d)
 	e=vector([0, 1, 0, 1, 0])
@@ -229,7 +231,7 @@ class example6():
 	g=d.plus(e)
 	imprime(g)
 	def r(x,y,z):
-			 return matrix("""
+		return matrix("""
 |x|
 |y|
 |z|
@@ -238,7 +240,12 @@ class example6():
 	x,y,z=1,5,3
 	j=r(x,y,z)
 	print(j)
-	print(a.plus(b))
+	k=matrix("""
+|2 0 0|
+|0 2 0|
+|0 0 2|
+""")
+	print(k.dot(j))
 	pass
 try:
 	example6()
