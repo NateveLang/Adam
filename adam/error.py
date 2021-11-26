@@ -39,3 +39,6 @@ def ValueError(line, message):
 
 def TemplateNotFoundError(line, message):
     return Error(line, message, "TemplateNotFound")
+
+def NotSupportedLanguageError(line, message):
+    return Error(line, message, "NotSupportedLanguage")

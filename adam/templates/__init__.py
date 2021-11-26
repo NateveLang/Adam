@@ -1,6 +1,7 @@
 import importlib as imp
 
-from adam.error import TemplateNotFoundError
+from adam.error import TemplateNotFoundError, NotFoundError
+from adam.grammar import transpiler_name
 from adam.utils import tolist, tokenize
 
 class Template():
@@ -57,6 +58,7 @@ class Template():
 			self.ALL = self.primitives + self.codes + self.protected_IDs
 
 		except ModuleNotFoundError:
-			self.errors += TemplateNotFoundError(None, f"Template {self.template_name} not found in templates location")
+			self.errors += TemplateNotFoundError(None, f"Template '{self.template_name}' not found in templates location")
 
-
+		except ImportError:
+			self.errors += NotFoundError(None, f"Some template variables are missing. Check the '/{transpiler_name}/templates/{self.template_name}.*' files")
