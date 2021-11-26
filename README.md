@@ -90,7 +90,7 @@ $> git clone ...
 
 ```bash
 $> cd my-project
-$> COPY CON main.nateve
+$> COPY CON main.nate
 ```
 
 ### Quick start examples
@@ -150,31 +150,36 @@ b = 1.0                        ~ Float ~
 c = 1 + 2j                     ~ Complex ~
 d = "hello"                    ~ String ~
 e = True                       ~ Boolean ~
-f = [1,2,3]                    ~ List ~
+f = [1,2,3]                    ~ Vector ~
 g = (1,2)                      ~ Tuple ~
-h = Vector([1,2,3])            ~ Vector ~
-i = Polynomial("1 +2x +x^2")   ~ Polynomial ~
-j = Matrix("""
+h = Polynomial("1 +2x +x^2")   ~ Polynomial ~
+i = $
 | 1 1 2 3 4 |
 | 0 1 2 3 4 |
 | 1 1 2 3 4 |
 | 1 1 2 3 4 |
 | 1 1 2 3 4 |
-""")                           ~ Matrix ~
+$                              ~ Matrix ~
 ```
 
-Nateve allows data type as Integer, Float, Complex, Boolean, String, List, Tuple, None, Vector, Polynomial and Matrix.
+Nateve allows data type as Integer, Float, Complex, Boolean, String, Tuple, None, Vector, Polynomial and Matrix.
 
-### Lists
+### Vectors
 
-The Lists allow to use all the data types before mentioned, as well as lists and functions.
+The Vectors allow to use all the data types before mentioned, as well as lists and functions.
 
 Also, they allow to get an item through the next notation:
 
 ```python
-value_list = [1,2,3,4,5,6,7,8,9]
-print(value_list[0])      ~ Output: 1 ~
-print(value_list[0 : 4])  ~ Output: [1,2,3,4] ~
+value_list = [1,2,3,4,5]
+value_list2 = [0,1,0,1,0]
+
+print(value_list[0])                ~ Output: 1 ~
+print(value_list[0 : 4])            ~ Output: [1 2 3 4] ~
+
+print(value_list.dot(value_list2))  ~ Output: 6 ~
+
+print(value_list.add(value_list2))  ~ Output: [1 3 3 5 5] ~
 ```
 
 ### Functions

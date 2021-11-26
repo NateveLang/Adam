@@ -2,7 +2,7 @@ using "spanish"
 
 imprime("Nateve example 6")
 
-incluye "example5.nateve"
+incluye "example5.nate"
 
 a = $
 | 1 5 |

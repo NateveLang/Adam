@@ -4,7 +4,7 @@ n = 6
 
 def test_build():
     for i in range(1, n + 1):
-        dp.build("example" + str(i) + ".nateve")
+        dp.build("example" + str(i) + ".nate")
         f1 = open("example" + str(i) + ".py", "r")
         f2 = open("test/example" + str(i) + ".py", "r")
         assert f1.read() == f2.read()
@@ -13,8 +13,8 @@ def test_build():
 
 def test_compile():
     for i in range(1, n + 1):
-        dp.compile("example" + str(i) + ".nateve")
+        dp.compile("example" + str(i) + ".nate")
 
 def test_run():
     for i in range(1, n + 1):
-        dp.run("example" + str(i) + ".nateve")
+        dp.run("example" + str(i) + ".nate")

@@ -1,6 +1,6 @@
 print("a")
 
-include "example4.nateve"
+include "example4.nate"
 
 using "spanish"
 
