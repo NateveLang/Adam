@@ -16,6 +16,7 @@ blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
 vectors = "[]"
+embedded = "°"
 commentaries = "~"
 floating = "."
 one_char_symbols = "+-*/%=<>()[]{}#@,."

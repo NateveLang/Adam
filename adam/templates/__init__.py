@@ -10,16 +10,18 @@ class Template():
 		module_name = "adam.templates." + self.template_name
 		template = imp.import_module(module_name)
 
-		self.commentaries = template.commentaries 
-		self.matrices = template.matrices
-		self.vectors = template.vectors
-		self.strings = template.strings
 		self.alphabet = template.alphabet
 		self.digits = template.digits
-		self.floating = template.floating
 		self.alphanum = template.alphanum
-		self.identifier = template.identifier
 		self.blanks = template.blanks
+		self.strings = template.strings
+		self.matrices = template.matrices
+		self.vectors = template.vectors
+		self.embedded = template.embedded
+		self.commentaries = template.commentaries
+		self.floating = template.floating
+		
+		self.identifier = template.identifier
 
 		special_functions = template.special_functions.replace(4 * " ", "\t") # Indent with tabs
 		self.special_functions = special_functions

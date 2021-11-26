@@ -81,7 +81,7 @@ class example4():
 		imprime("Odio Nateve :c")
 	
 	if 1<3:
-		print("YES")
+		print("Try Nateve!")
 	
 	else:
 		print("NO")
@@ -138,8 +138,7 @@ serie_sen = sin_serie
 serie_cos = cos_serie
 
 class example5():
-	print("a")
-	imprime("Hola")
+	imprime("Nateve example 5")
 	pass
 try:
 	example5()
@@ -190,21 +189,26 @@ serie_sen = sin_serie
 serie_cos = cos_serie
 
 
-def ninput(prompt = '', default = ''):
+def nentree(prompt = '', default = ''):
 	return float(input(prompt, default))
 
-def binput(prompt = '', default = ''):
+def bentree(prompt = '', default = ''):
 	return bool(input(prompt, default))
 
-def update_std():
+def reactualiser_std():
 	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
-def include(file_name = ''):
+def inclure(file_name = ''):
 	file = file_name.split('.')[0]
 	subprocess.call([sys.executable, '-m', 'adam', 'build', file])
 
+imprimer = print
+entree = input
+
+serie_sin = sin_serie
+serie_cos = cos_serie
+
 class example6():
-	imprime("Nateve example 6")
 	a=matrix("""
 | 1 5 |
 | 0 2 |
@@ -239,13 +243,13 @@ class example6():
 	
 	x,y,z=1,5,3
 	j=r(x,y,z)
-	print(j)
+	imprimer(j)
 	k=matrix("""
 |2 0 0|
 |0 2 0|
 |0 0 2|
 """)
-	print(k.dot(j))
+	imprimer(k.dot(j))
 	pass
 try:
 	example6()

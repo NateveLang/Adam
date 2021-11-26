@@ -182,6 +182,42 @@ print(value_list.dot(value_list2))  ~ Output: 6 ~
 print(value_list.add(value_list2))  ~ Output: [1 3 3 5 5] ~
 ```
 
+### Matrices
+
+The Matrices are a special type of vectors of vectors.
+
+```python
+a = $
+| 1 5 |
+| 0 2 |
+$
+
+b = $
+|0 1|
+|1 0|
+$
+
+print(a)
+~ Output:
+| 1 5 |
+| 0 2 |
+~
+
+c = a.dot(b)
+print(c)
+~ Output:
+| 5 1 |
+| 2 0 |
+~
+
+d = a.plus(b)
+print(d)
+~ Output:
+| 1 6 |
+| 1 2 |
+~
+```
+
 ### Functions
 
 For declaring a function, you have to use the next syntax:
@@ -279,15 +315,18 @@ Do not change the name of the variables.
 """
 
 # All the symbols that the transpiler uses.
-mayusc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+mayusc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabet = mayusc + mayusc.lower() + "_"
 digits = "0123456789"
 alphanum = alphabet + digits
 blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
+matrices = "$"
+vectors = "[]"
+embedded = "°"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#$@,."
+one_char_symbols = "+-*/%=<>()[]{}#@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 # All the data types that the transpiler uses.
@@ -297,12 +336,14 @@ COMPLEX = "complex"
 STRING = "string"
 DOCSTRING = "docstring"
 NULL = "none"
+MATRIX = "matrix"
+VECTOR = "vector"
 
 # All the keywords that the transpiler uses.
 USE, WAIT, INCLUDE = "using", "wait", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
-TRY, EXCEPT = "try", "except"
+TRY, EXCEPT, WITH = "try", "except", "with"
 WHILE, FOR, BREAK, CONTINUE = "while", "for", "break", "continue"
 OPERATOR, RETURN = "def", "return"
 CLASS, SELF = "class", "self"
@@ -318,18 +359,18 @@ eof = 400
 # For example: "include" function calls the variable transpiler_name.
 special_functions = f"""
 def ninput(prompt = '', default = ''):
-\treturn float(input(prompt, default))
+    return float(input(prompt, default))
 
 def binput(prompt = '', default = ''):
-\treturn bool(input(prompt, default))
+    return bool(input(prompt, default))
 
 def update_std():
-\tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
+    subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
 def include(file_name = ''):
-\tfile = file_name.split('.')[0]
-\tsubprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
-""" 
+    file = file_name.split('.')[0]
+    subprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
+"""
 ```
 
 ## Some Examples
@@ -485,6 +526,132 @@ Output:
 Yo amo Nateve!
 Try Nateve!
 Bonjour Nateve!
+```
+
+```python
+~Nateve Example 5~
+
+include "example4.nate"
+
+using "spanish"
+
+imprime("Nateve example 5")
+```
+
+Output:
+
+```bash
+Yo amo Nateve!
+Try Nateve!
+Bonjour Nateve!
+Nateve example 5
+```
+
+```python
+~Nateve Example 6~
+
+using "spanish"
+
+incluye "example5.nate"
+
+a = $
+| 1 5 |
+| 0 2 |
+$
+
+b = $
+|0 1|
+|1 0|
+$
+
+imprime("a = ")
+imprime(a)
+
+imprime("b = ")
+imprime(b)
+
+c = a.dot(b)
+
+imprime("a * b =")
+imprime(c)
+
+imprime("a + b =")
+print(a.plus(b))
+
+d = [1, 2, 3, 4, 5]
+imprime(d)
+
+e = [0, 1, 0, 1, 0]
+imprime(e)
+
+f = d.dot(e)
+imprime(f)
+
+g = d.plus(e)
+imprime(g)
+
+~ using spanish, "y" means "and".
+Then, we need to use other template like french ~
+
+using "french"
+
+definir r(x, y, z){
+retourner $
+|x|
+|y|
+|z|
+$
+}
+
+x, y, z = 1, 5, 3
+
+j = r(x, y, z)
+
+imprimer(j)
+
+k = $
+|2 0 0|
+|0 2 0|
+|0 0 2|
+$
+
+imprimer(k.dot(j))
+```
+
+Output:
+
+```bash
+Yo amo Nateve!
+Try Nateve!
+Bonjour Nateve!
+Nateve example 5
+a =
+| 1 5 |
+| 0 2 |
+
+b =
+| 0 1 |
+| 1 0 |
+
+a * b =
+| 5 1 |
+| 2 0 |
+
+a + b =
+| 1 6 |
+
+[1, 2, 3, 4, 5]
+[0, 1, 0, 1, 0]
+6
+[1, 3, 3, 5, 5]
+| 1 |
+| 5 |
+| 3 |
+
+| 2 |
+| 10 |
+| 6 |
+
 ```
 
 ## Feedback

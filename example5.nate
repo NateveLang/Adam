@@ -1,7 +1,5 @@
-print("a")
-
 include "example4.nate"
 
 using "spanish"
 
-imprime("Hola")
+imprime("Nateve example 5")

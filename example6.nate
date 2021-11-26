@@ -1,7 +1,5 @@
 using "spanish"
 
-imprime("Nateve example 6")
-
 incluye "example5.nate"
 
 a = $
@@ -40,10 +38,13 @@ imprime(f)
 g = d.plus(e)
 imprime(g)
 
-using "english"
+~ using spanish, "y" means "and".
+Then, we need to use other template like french ~
 
-def r(x, y, z){
-return $
+using "french"
+
+definir r(x, y, z){
+retourner $
 |x|
 |y|
 |z|
@@ -54,7 +55,7 @@ x, y, z = 1, 5, 3
 
 j = r(x, y, z)
 
-print(j)
+imprimer(j)
 
 k = $
 |2 0 0|
@@ -62,4 +63,4 @@ k = $
 |0 0 2|
 $
 
-print(k.dot(j))
+imprimer(k.dot(j))
