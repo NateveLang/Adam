@@ -16,8 +16,7 @@ def update_std():
 	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
 class example7():
-	print([ 2,3 ])#nqs running
-	pass
+	print([ 2,3 ])# NQS running
 try:
 	example7()
 

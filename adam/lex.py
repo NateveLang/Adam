@@ -183,6 +183,11 @@ Returns a list of tokens, wich are used by the parser.
                     tp = None
                     tp = temp.Template(lexema)
                     
+                    errors += tp.errors
+                    
+                    if errors > 0:
+                        break
+
                     if tp not in templates:
                         templates += [tp]
                     

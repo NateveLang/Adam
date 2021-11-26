@@ -36,3 +36,6 @@ def NotFoundError(line, message):
 
 def ValueError(line, message):
 	return Error(line, message, "Value")
+
+def TemplateNotFoundError(line, message):
+    return Error(line, message, "TemplateNotFound")
