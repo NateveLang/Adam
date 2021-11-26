@@ -188,8 +188,8 @@ For declaring a function, you have to use the next syntax:
 
 ```python
 def example_function(argument1, argument2, ...) {
-    sentence1
-    sentence2
+    ~ sentence1 ~
+    ~ sentence2 ~
     ...
     return Return_Value
 } 
@@ -203,14 +203,14 @@ Regarding the conditionals, the syntax structure is:
 
 ```python
 if condition {
-    consequence
+    ~ consequence ~
 }
 elif condition {
-    other_consequence
+    ~ other_consequence ~
 }
 ...
 else {
-    default_consequence
+    ~  default_consequence ~
 }
 ```
 
@@ -236,8 +236,8 @@ In order to use loops, you have to use the next syntax:
 
 ```python
 while condition {
-    sentence1
-    sentence2
+    ~ sentence1 ~
+    ~ sentence2 ~
     ...
 }  
 ```
@@ -246,8 +246,8 @@ while condition {
 
 ```python
 for iterator in iterable {
-    sentence1
-    sentence2
+    ~ sentence1 ~
+    ~ sentence2 ~
     ...
 }  
 ```
