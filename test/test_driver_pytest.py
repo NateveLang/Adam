@@ -1,6 +1,6 @@
 import driver_pytest as dp
 
-n = 6
+n = 7
 
 def test_build():
     for i in range(1, n + 1):

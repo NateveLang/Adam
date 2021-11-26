@@ -8,10 +8,10 @@ blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
 vectors = "[]"
-embedded = "°"
+embedded = "#"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#@,."
+one_char_symbols = "+-*/%=<>()[]{}@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "flottant"
@@ -32,6 +32,7 @@ OPERATOR, RETURN = "definir", "retourner"
 CLASS, SELF = "classe", "self"
 AND, OR, NOT, TRUE, FALSE = "et", "ou", "non", "vrai", "faux"
 
+embedding = 200
 identifier = 300
 eof = 400
 
@@ -52,8 +53,4 @@ def bentree(prompt = '', default = ''):
 
 def reactualiser_std():
 \tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
-
-def inclure(file_name = ''):
-\tfile = file_name.split('.')[0]
-\tsubprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
 """ + traductions

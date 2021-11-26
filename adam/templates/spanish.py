@@ -8,10 +8,10 @@ blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
 vectors = "[]"
-embedded = "°"
+embedded = "#"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#@,."
+one_char_symbols = "+-*/%=<>()[]{}@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "decimal"
@@ -32,6 +32,7 @@ OPERATOR, RETURN = "define", "retorna"
 CLASS, SELF = "clase", "esto"
 AND, OR, NOT, TRUE, FALSE = "y", "o", "no", "verdadero", "falso"
 
+embedding = 200
 identifier = 300
 eof = 400
 

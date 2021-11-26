@@ -32,8 +32,8 @@ def parser(tokens, file_name = "root", errors = 0):
     i = 0
     while i < n:
         token = tokens[i]
-
-        # SyntaxError
+        """
+        # SyntaxError, doen't work well with the new lexer
         if expecting:
 
             if token.is_expected(expected_types):
@@ -45,7 +45,7 @@ def parser(tokens, file_name = "root", errors = 0):
         else:
             expected_types = gr.ALL
             expecting = True
-        
+        """
         assert len(token) > 3
 
         if function_declaration:

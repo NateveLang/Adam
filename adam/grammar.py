@@ -10,10 +10,10 @@ blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
 vectors = "[]"
-embedded = "°"
+embedded = "#`"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>(){}#@,."
+one_char_symbols = "+-*/%=<>(){}@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 FLOAT = "float"
@@ -43,10 +43,6 @@ def binput(prompt = '', default = ''):
 
 def update_std():
 \tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
-
-def include(file_name = ''):
-\tfile = file_name.split('.')[0]
-\tsubprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
 """
 
 preprocess = [USE, WAIT, INCLUDE]
@@ -66,8 +62,9 @@ protected = primitives + std_funcs + operators
 protected_tokens = tokenize(protected)
 protected_IDs = list(range(len(protected)))
 
+embedding = 200
 identifier = 300
 eof = 400
-codes = [identifier, eof]
+codes = [embedding, identifier, eof]
 
 ALL = primitives + codes + protected_IDs

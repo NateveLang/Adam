@@ -16,10 +16,10 @@ blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
 vectors = "[]"
-embedded = "°"
+embedded = "#"
 commentaries = "~"
 floating = "."
-one_char_symbols = "+-*/%=<>()[]{}#@,."
+one_char_symbols = "+-*/%=<>()[]{}@,."
 two_char_symbols = ["//", "==", "<=", ">="]
 
 # All the data types that the transpiler uses.
@@ -43,13 +43,13 @@ CLASS, SELF = "class", "self"
 AND, OR, NOT, TRUE, FALSE = "and", "or", "not", "True", "False"
 
 # All the status codes that the transpiler uses.
+embedding = 200
 identifier = 300
 eof = 400
 
 # All extra functions that the transpiler uses. Feel free to add your own functions.
 # The string special_functions is used to write these functions.
 # You can use variables in it using the fstring notation.
-# For example: "include" function calls the variable transpiler_name.
 special_functions = f"""
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
@@ -59,8 +59,4 @@ def binput(prompt = '', default = ''):
 
 def update_std():
 	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
-
-def include(file_name = ''):
-	file = file_name.split('.')[0]
-	subprocess.call([sys.executable, '-m', '{transpiler_name}', 'build', file])
 """

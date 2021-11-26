@@ -22,6 +22,7 @@ class Template():
 		self.floating = template.floating
 		
 		self.identifier = template.identifier
+		self.embedding = template.embedding
 
 		special_functions = template.special_functions.replace(4 * " ", "\t") # Indent with tabs
 		self.special_functions = special_functions
@@ -47,6 +48,6 @@ class Template():
 		self.protected_tokens = tokenize(self.protected)
 		self.protected_IDs = list(range(len(self.protected)))
 
-		self.codes = [template.identifier, template.eof]
+		self.codes = [template.embedding , template.identifier, template.eof]
 
 		self.ALL = self.primitives + self.codes + self.protected_IDs
