@@ -1,12 +1,15 @@
 import sys
 
-from adam import code
-import adam.grammar as gr
-import adam.templates as temp
 from adam.error import SemanticError, DeclarationError
+from adam.embedding import Language
+import adam.templates as temp
 from adam.zones import Zone
+import adam.grammar as gr
+from adam import code
 
 def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
+
+    embedded_language = Language("nqs")
 
     last_line = line
     code_line = []
@@ -26,9 +29,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
         if d.relative_line > last_line:
             content = depth * tab + code.join(code_line)
             
-            if file == None:
-                code.run_python(content)
-            else:
+            if file != None:
                 print(content, file = file)
 
             last_line = d.relative_line
@@ -45,7 +46,15 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
         else:
             
             if d.ID == gr.embedding:
-                code_line += ["# NQS running"]
+                generated_code = embedded_language.build(d)
+                gc = generated_code.split("\n")
+                content = ""
+
+                for gc_line in gc:
+                    content += (depth + 2) * tab + gc_line + "\n"
+
+                if file != None:
+                    print(content, file = file)
 
             elif d.ID == gr.STRING:
                 code_line += [f'"{d.symbol}"']
@@ -92,17 +101,13 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             if not first_line:
                 content = (depth_2 + 1) * tab + code.join(code_line)
 
-                if file == None:
-                    code.run_python(content)
-                else:
+                if file != None:
                     print(content, file = file)
 
             else:
                 content = depth_2 * tab + code.join(code_line)
 
-                if file == None:
-                    code.run_python(content)
-                else:
+                if file != None:
                     print(content, file = file)
             
             last_line = s.relative_line
@@ -112,7 +117,15 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             errors = navigator(s, depth_2, last_line, file, errors)
 
         elif s.ID == gr.embedding:
-            code_line += ["# NQS running"]
+            generated_code = embedded_language.build(d)
+            gc = generated_code.split("\n")
+            content = ""
+
+            for gc_line in gc:
+                content += (depth + 2) * tab + gc_line + "\n"
+
+            if file != None:
+                print(content, file = file)
 
         elif s.ID == gr.STRING:
             code_line += [f'"{s.symbol}"']

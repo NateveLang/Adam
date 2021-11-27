@@ -5,7 +5,4 @@ _required_data = None
 def _build(code):
     text = code.symbol
 
-    return """
-print('a')
-# NQS running"
-"""
+    return text
