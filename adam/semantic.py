@@ -10,8 +10,6 @@ from    adam.zones import       Zone
 
 def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
 
-    embedded_language = Language("nqs")
-
     last_line = line
     code_line = []
     tab = "\t"
@@ -47,7 +45,13 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
         else:
             
             if d.ID == gr.embedding:
-                generated_code = embedded_language.build(d)
+                words = d.symbol
+                lines = words.split("\n")
+                lang = lines[2]
+                new_lines = lines[3:]
+                words = "\n".join(new_lines)
+                embedded_language = Language(lang)
+                generated_code = embedded_language.build(words)
                 gc = generated_code.split("\n")
                 content = ""
 
@@ -118,7 +122,13 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             errors = navigator(s, depth_2, last_line, file, errors)
 
         elif s.ID == gr.embedding:
-            generated_code = embedded_language.build(s)
+            words = s.symbol
+            lines = words.split("\n")
+            lang = lines[2]
+            new_lines = lines[3:]
+            words = "\n".join(new_lines)
+            embedded_language = Language(lang)
+            generated_code = embedded_language.build(words)
             gc = generated_code.split("\n")
             content = ""
 

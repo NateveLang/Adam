@@ -7,6 +7,7 @@ Required for drawing circuits~
 sleep(1000)
 
 #
+nqs
 q0  q1
     X
 H

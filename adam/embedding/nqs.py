@@ -9,10 +9,9 @@ _author = "Emmanuel Norambuena"
 _required_data = None
 
 def _build(code):
-    text = code.symbol
     
     f = open(_driver_file + ".nqa", "w")
-    f.write(text)
+    f.write(code)
     f.close()
     
     result = compile(_driver_file)
