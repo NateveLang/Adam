@@ -1,4 +1,5 @@
-from eggdriver import Vector, Matrix
+from eggdriver import Matrix, Vector
+
 from adam.error import ValueError
 	
 class vector(Vector):
@@ -38,6 +39,11 @@ print(y)
 """
 
 	def __init__(self, *args):
+		args = list(args)
+
+		if type(args[0]) == str:
+			args[0] = args[0].strip("\n")
+
 		super().__init__(*args)
 
 	def dot(self, b):

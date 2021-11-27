@@ -1,10 +1,11 @@
 import time
 
-from adam.file import  read_module
-from adam.lex import scanner
-from adam.syntax import parser
-from adam.semantic import generator
-from adam.run import driver_file
+from adam.file import       read_module
+from adam.lex import        scanner
+from adam.run import        driver_file
+from adam.semantic import   generator
+from adam.syntax import     parser
+
 
 vars_file = "adam/nateve_vars"
 

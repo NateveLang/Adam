@@ -1,6 +1,6 @@
-import sys, subprocess
+import subprocess, sys
 
-import adam.grammar as gr
+import  adam.grammar as gr
 
 def join(code_line):
 

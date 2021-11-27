@@ -1,7 +1,7 @@
 import importlib as imp
 
-from adam.error import NotSupportedLanguageError, NotFoundError
-from adam.grammar import transpiler_name
+from adam.error import		NotFoundError, NotSupportedLanguageError
+from adam.grammar import	transpiler_name
 
 def void(x):
     pass
@@ -28,11 +28,11 @@ class Language():
 
 			result = function(self, lang)
 
-		except ModuleNotFoundError:
-			self.errors += NotSupportedLanguageError(None, f"Language '{self.language_name}' is not supported yet. Please make sure the language template exists in the embedding location")
-
 		except ImportError:
 			self.errors += NotFoundError(None, f"Some language variables are missing. Check the '/{transpiler_name}/embedding/{self.language_name}.*' files")
+			
+		except ModuleNotFoundError:
+			self.errors += NotSupportedLanguageError(None, f"Language '{self.language_name}' is not supported yet. Please make sure the language template exists in the embedding location")
 
 		return result
 

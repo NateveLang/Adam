@@ -1,4 +1,4 @@
-import sys, subprocess
+import subprocess, sys
 
 driver_file = "nateve_driver"
 

@@ -1,9 +1,9 @@
-import adam.grammar as gr
-import adam.templates as temp
-import adam.translation as tr
-from adam.token import Tokens, get_token_ID
-from adam.error import LexicalError
-from adam.utils import tostring
+from    adam.error import   LexicalError
+import  adam.grammar as     gr
+import  adam.templates as   temp
+from    adam.token import   get_token_ID, Tokens
+import  adam.translation as tr
+from    adam.utils import   tostring
 
 F = False
 
@@ -32,6 +32,10 @@ Returns a list of tokens, wich are used by the parser.
 
     security_tokens = "\n ~eof tokens for security~ ~including the \\n, DO NOT REMOVE THE EXTRA \\n~ print('', end = '')\n"
     text = security_tokens + text + "\npass\n" + security_tokens
+
+    text = text.replace(gr.embedded, gr.embedded + "\n")
+    # It allows to use the # character in the same line of the embedded code.
+    # We can not do the same for the $ character, because it is used into embedded code.
     
     i = 0
     while i < len(text):

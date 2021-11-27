@@ -1,6 +1,6 @@
-import adam.grammar as gr
-from adam.error import NotFoundError
-from adam.token import get_token_ID
+from    adam.error import   NotFoundError
+import  adam.grammar as     gr
+from    adam.token import   get_token_ID
 
 def translate(lexema, errors, tp):
 

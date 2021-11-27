@@ -1,11 +1,12 @@
 import sys
 
-from adam.error import SemanticError, DeclarationError
-from adam.embedding import Language
-import adam.templates as temp
-from adam.zones import Zone
-import adam.grammar as gr
-from adam import code
+from    adam import             code
+from    adam.embedding import   Language
+from    adam.error import       SemanticError, DeclarationError
+import  adam.grammar as         gr
+import  adam.templates as       temp
+from    adam.zones import       Zone
+
 
 def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
 

@@ -1,4 +1,4 @@
-from adam.utils import tolist, tokenize
+from adam.utils import tokenize, tolist
 
 transpiler_name = "adam"
 

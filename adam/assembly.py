@@ -1,7 +1,7 @@
-import math, os
+import math, os, subprocess, sys
 
-from adam.run import execute_driver, driver_file
 from adam.build import build
+from adam.run import execute_driver, driver_file
 
 class Module():
     
@@ -59,6 +59,10 @@ class Assembler():
         file.write(text)
 
         file.close()
+
+    def compile(self, name):
+        self.assemble()
+        subprocess.call([sys.executable, "-m", "PyInstaller", "--onefile", "--name", f'{name}', f'{self.file}.py'])
 
     def run(self):
         self.assemble()

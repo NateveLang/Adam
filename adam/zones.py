@@ -1,7 +1,7 @@
 import sys
 
-import adam.grammar as gr
-from adam.error import *
+from    adam.error import   *
+import  adam.grammar as     gr
 
 class Zone():
     def __init__(self, name: str, line: int, type: str = "auto", parent = None):

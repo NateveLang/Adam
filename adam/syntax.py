@@ -1,6 +1,6 @@
-import adam.grammar as gr
-from adam.token import Token, TokenType, get_token_ID
-from adam.zones import Zone
+import  adam.grammar as     gr
+from    adam.token import   get_token_ID, Token, TokenType
+from    adam.zones import   Zone
 
 # Main code
 

@@ -1,6 +1,6 @@
-import adam.grammar as gr
-from adam.error import SyntaxError
-from adam.utils import tostring
+from    adam.error import   SyntaxError
+import  adam.grammar as     gr
+from    adam.utils import   tostring
 
 class Token(list):
     def __init__(self, lexema, ID, line, position, relative_line = -1):
