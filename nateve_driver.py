@@ -21,10 +21,10 @@ class example7():
 	from qiskit import QuantumCircuit, execute, Aer
 	from qiskit.visualization import plot_histogram
 	circuit = QuantumCircuit(2,2)
-	circuit.x(2)
-	circuit.h(0)
-	circuit.cx(0,1)
-	circuit.measure(0,1)
+	circuit.x(1)
+	circuit.h(-1)
+	circuit.cx(-1,0)
+	circuit.measure(-1,1)
 	s=1024
 	backend=Aer.get_backend('qasm_simulator')
 	job=execute(circuit, backend, shots=s)

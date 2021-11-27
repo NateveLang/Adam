@@ -6,8 +6,8 @@ def quantum(gate: str,n):
 	t = ""
 	global T
 	N = ed.floor(n)
-	n1 = str(N)
-	n2 = str(N+1)
+	n1 = str(N - 1)
+	n2 = str(N)
 
 	if len(gate) == 1:
 		t = T + gate.lower() + "(" + n1 + ")\n"
