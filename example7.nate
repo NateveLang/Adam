@@ -1,4 +1,9 @@
-~install("qiskit")~
+~install("qiskit")
+
+install("pylatexenc")
+
+Required for drawing circuits~
+
 sleep(1000)
 
 #

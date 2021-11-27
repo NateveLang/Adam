@@ -1,4 +1,8 @@
+import os
+
 from nqs.core.kernel import compile
+
+_driver_file = "nateve_nqs_driver"
 
 _author = "Emmanuel Norambuena"
 
@@ -7,8 +11,13 @@ _required_data = None
 def _build(code):
     text = code.symbol
     
-    f = open("nateve_nqs_driver.nqa", "w")
+    f = open(_driver_file + ".nqa", "w")
     f.write(text)
     f.close()
+    
+    result = compile(_driver_file)
 
-    return compile("nateve_nqs_driver")
+    if os.path.exists(_driver_file + ".nqa"):
+        os.remove(_driver_file + ".nqa")
+
+    return result

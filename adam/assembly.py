@@ -1,7 +1,7 @@
-import math
+import math, os
 
+from adam.run import execute_driver, driver_file
 from adam.build import build
-from adam.run import driver_file
 
 class Module():
     
@@ -33,6 +33,14 @@ class Assembler():
         for module_name in module.modules_names:
             self.add_module(module_name)
 
+    def __str__(self):
+        result = ""
+
+        for module in self.modules:
+            result += module.__str__() + "\n"
+
+        return result
+
     def assemble(self):
         file = open(driver_file + ".py", "w")
         
@@ -52,10 +60,10 @@ class Assembler():
 
         file.close()
 
-    def __str__(self):
-        result = ""
+    def run(self):
+        self.assemble()
+        execute_driver()
 
-        for module in self.modules:
-            result += module.__str__() + "\n"
-
-        return result
+        if os.path.exists(driver_file + ".py"):
+            os.remove(driver_file + ".py")
+    
