@@ -23,7 +23,7 @@ NULL = "nada"
 MATRIX = "matriz"
 VECTOR = "vector"
 
-USE, WAIT, INCLUDE = "usando", "espera", "incluye"
+USE, INCLUDE = "usando", "incluye"
 IMPORT, FROM, AS, PASS, IN = "importa", "desde", "como", "pasa", "en"
 IF, ELIF, ELSE = "si", "sino", "delocontrario"
 TRY, EXCEPT, WITH = "intenta", "excepto", "con"

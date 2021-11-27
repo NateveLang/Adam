@@ -25,7 +25,7 @@ NULL = "none"
 MATRIX = "matrix"
 VECTOR = "vector"
 
-USE, WAIT, INCLUDE = "using", "wait", "include"
+USE, INCLUDE = "using", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
 TRY, EXCEPT, WITH = "try", "except", "with"
@@ -45,7 +45,7 @@ def update_std():
 \tsubprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 """
 
-preprocess = [USE, WAIT, INCLUDE]
+preprocess = [USE, INCLUDE]
 process = [IMPORT, FROM, AS, PASS, IN]
 conditionals = [IF, ELIF, ELSE, TRY, EXCEPT, WITH]
 loops = [WHILE, FOR, BREAK, CONTINUE]

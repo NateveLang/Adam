@@ -340,7 +340,7 @@ MATRIX = "matrix"
 VECTOR = "vector"
 
 # All the keywords that the transpiler uses.
-USE, WAIT, INCLUDE = "using", "wait", "include"
+USE, INCLUDE = "using", "include"
 IMPORT, FROM, AS, PASS, IN = "import", "from", "as", "pass", "in"
 IF, ELIF, ELSE = "if", "elif", "else"
 TRY, EXCEPT, WITH = "try", "except", "with"

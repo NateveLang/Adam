@@ -1,4 +1,5 @@
 install("qiskit")
+sleep(1000)
 
 #
 q0  q1

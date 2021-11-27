@@ -33,10 +33,9 @@ class Template():
 			self.special_functions = special_functions
 
 			self.USE = template.USE
-			self.WAIT = template.WAIT
 			self.INCLUDE = template.INCLUDE
 			
-			preprocess = [template.USE, template.WAIT, template.INCLUDE]
+			preprocess = [template.USE, template.INCLUDE]
 			process = [template.IMPORT, template.FROM, template.AS, template.PASS, template.IN]
 			conditionals = [template.IF, template.ELIF, template.ELSE, template.TRY, template.EXCEPT, template.WITH]
 			loops = [template.WHILE, template.FOR, template.BREAK, template.CONTINUE]

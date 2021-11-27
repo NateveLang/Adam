@@ -23,7 +23,7 @@ NULL = "nul"
 MATRIX = "matrix"
 VECTOR = "vector"
 
-USE, WAIT, INCLUDE = "utiliser", "attendre", "inclure"
+USE, INCLUDE = "utiliser", "inclure"
 IMPORT, FROM, AS, PASS, IN = "inclure", "de", "comme", "passer", "dans"
 IF, ELIF, ELSE = "si", "sinon", "defaut"
 TRY, EXCEPT, WITH = "tenter", "except", "avec" 
