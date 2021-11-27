@@ -1,8 +1,6 @@
-print([2,3])
+install("qiskit")
 
 #
-~.nqa file code~
-
 q0  q1
     X
 H
@@ -11,7 +9,4 @@ c1
 $host qasm_simulator
 $hist true
 $draw true
-,
 #
-
-using "spanish"

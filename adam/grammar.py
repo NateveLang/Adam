@@ -10,7 +10,7 @@ blanks = "/t /n"
 strings = ["'", '"', '"""', "'''"]
 matrices = "$"
 vectors = "[]"
-embedded = "#`"
+embedded = "#"
 commentaries = "~"
 floating = "."
 one_char_symbols = "+-*/%=<>(){}@,."

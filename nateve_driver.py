@@ -16,19 +16,28 @@ def update_std():
 	subprocess.call([sys.executable, '-m', 'pip', 'install', 'eggdriver'])
 
 class example7():
+	print("",end="")
 	from user.index import Index
+	from qiskit import QuantumCircuit, execute, Aer
+	from qiskit.visualization import plot_histogram, display
+	circuit = QuantumCircuit(2,2)
+	circuit.x(2)
+	circuit.h(0)
+	circuit.cx(0,1)
+	circuit.measure(0,1)
+	s=1024
+	backend=Aer.get_backend('qasm_simulator')
+	job=execute(circuit, backend, shots=s)
+	result=job.result()
+	counts=result.get_counts(circuit)
+	graph=plot_histogram(counts)
+	display(graph)
+	circuit.draw('mpl')
 	
 
-	print([ 2,3 ])matrix("""
-~.nqa file code~
-
-q0  q1
-    X
-H
-.---X
-c1
-host qasm_simulator
-""".replace('nqa', str(nqa)).replace('file', str(file)).replace('code', str(code)).replace('q0', str(q0)).replace('q1', str(q1)).replace('X', str(X)).replace('H', str(H)).replace('X', str(X)).replace('c1', str(c1)).replace('host', str(host)).replace('qasm_simulator', str(qasm_simulator)))
+	install("qiskit")
+	pass
+	print("",end="")
 try:
 	example7()
 

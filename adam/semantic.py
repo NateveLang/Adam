@@ -117,7 +117,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             errors = navigator(s, depth_2, last_line, file, errors)
 
         elif s.ID == gr.embedding:
-            generated_code = embedded_language.build(d)
+            generated_code = embedded_language.build(s)
             gc = generated_code.split("\n")
             content = ""
 

@@ -30,7 +30,7 @@ Returns a list of tokens, wich are used by the parser.
     lexema = ""
     string_ch = ""
 
-    security_tokens = "\n ~eof tokens for security~ ~including the \n, DO NOT REMOVE THE EXTRA \n~"
+    security_tokens = "\n ~eof tokens for security~ ~including the \\n, DO NOT REMOVE THE EXTRA \\n~ print('', end = '')\n"
     text = security_tokens + text + "\npass\n" + security_tokens
     
     i = 0
@@ -46,7 +46,7 @@ Returns a list of tokens, wich are used by the parser.
         if docstring > 0 and ch != string_ch:
             lexema += ch
 
-        elif ch == tp.embedded:
+        elif ch in tp.embedded:
 
             if embedding:
                 tokens.add(lexema, gr.embedding, line, pos, last_line)
@@ -56,7 +56,7 @@ Returns a list of tokens, wich are used by the parser.
             else:
                 embedding = True
 
-        elif ch == tp.matrices:
+        elif not embedding and ch == tp.matrices:
                 
             if matrix:
                 tokens.add(lexema, gr.MATRIX, line, pos, last_line)
@@ -132,7 +132,7 @@ Returns a list of tokens, wich are used by the parser.
                 operator = F
 
             if matrix or embedding:
-                lexema += ch
+                lexema += "\n"
 
             else:
                 lexema = ""
@@ -154,6 +154,9 @@ Returns a list of tokens, wich are used by the parser.
         elif commentary and ch in tp.commentaries:
             commentary = F
 
+        elif embedding:
+            lexema += ch
+
         elif vector:
             lexema += ch
 
@@ -164,8 +167,8 @@ Returns a list of tokens, wich are used by the parser.
                     tokens.add(lexema, gr.VECTOR, line, pos, last_line)
                     lexema = ""
                     vector = F
-
-        elif matrix or embedding:
+        
+        elif matrix:
             lexema += ch
 
         elif string and ch not in tp.strings:
@@ -295,7 +298,7 @@ Returns a list of tokens, wich are used by the parser.
         i += 1
         pos += 1
 
-    if errors > 0:
+    if errors > 0 and dev_mode:
         print("Traceback:", tokens)
 
     tokens.set_last_line(line, pos)
