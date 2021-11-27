@@ -1,4 +1,4 @@
-install("qiskit")
+~install("qiskit")~
 sleep(1000)
 
 #

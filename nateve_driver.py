@@ -19,7 +19,7 @@ class example7():
 	print("",end="")
 	from user.index import Index
 	from qiskit import QuantumCircuit, execute, Aer
-	from qiskit.visualization import plot_histogram, display
+	from qiskit.visualization import plot_histogram
 	circuit = QuantumCircuit(2,2)
 	circuit.x(2)
 	circuit.h(0)
@@ -30,12 +30,11 @@ class example7():
 	job=execute(circuit, backend, shots=s)
 	result=job.result()
 	counts=result.get_counts(circuit)
-	graph=plot_histogram(counts)
-	display(graph)
+	plot_histogram(counts)
 	circuit.draw('mpl')
 	
 
-	install("qiskit")
+	sleep(1000)
 	pass
 	print("",end="")
 try:

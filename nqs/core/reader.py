@@ -12,8 +12,7 @@ def settings(command: str, param):
   elif command == "shots":
     t = "s=" + param
   elif command == "hist":
-    t = "graph=plot_histogram(counts)\n"
-    t += "display(graph)\n"
+    t = "plot_histogram(counts)\n"
   elif command == "draw":
     t = "circuit.draw('mpl')\n"
   elif command == "inject":

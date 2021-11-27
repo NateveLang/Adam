@@ -54,7 +54,7 @@ def compile(name: str):
 				elif i == "\n":
 					qdef = 2
 					T += "from qiskit import QuantumCircuit, execute, Aer\n"
-					T += "from qiskit.visualization import plot_histogram, display\n"
+					T += "from qiskit.visualization import plot_histogram\n"
 					T += "circuit = QuantumCircuit(" + str(Q) + "," + str(Q) + ")\n"
 
 			elif qdef == 2:
