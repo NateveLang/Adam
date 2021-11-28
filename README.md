@@ -82,7 +82,7 @@ Recommend Installation:
 #### Clone the repo
 
 ```bash
-$> git clone ...
+$> git clone https://github.com/NateveLang/Adam.git
 ```
 
 #### Add to path
