@@ -3,6 +3,7 @@
 Adam is a Nateve Programming Language transpiler developed using Python.
 
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
+[![documentation Status](https://readthedocs.org/projects/nateve/badge/?version=latest)](https://nateve.readthedocs.io/en/latest/?badge=latest)
 ![docker publish](https://github.com/NateveLanguage/Adam/actions/workflows/docker-publish.yml/badge.svg)
 ![tests](https://github.com/NateveLanguage/Adam/actions/workflows/python-app.yml/badge.svg)
 [![hits count](http://hits.dwyl.com/NateveLanguage/Adam.svg?style=flat-square)](http://hits.dwyl.com/NateveLanguage/Adam)
@@ -12,6 +13,8 @@ Adam is a Nateve Programming Language transpiler developed using Python.
 Nateve is a new general domain programming language open source inspired by languages like Python, C++, JavaScript, and Wolfram Mathematica.
 
 Nateve is an transpiled language. Its first transpiler, Adam, is fully built using Python 3.8.
+
+For detailed info, see the [Nateve documentation](https://nateve.readthedocs.io/).
 
 ## Nateve principal features
 
