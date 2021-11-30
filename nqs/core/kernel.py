@@ -1,7 +1,8 @@
-from nqs.core.reader import settings
-from nqs.core.quantum import quantum
-from eggdriver.resources.extensions import nqa
-from eggdriver.resources.parser import Parser
+from eggdriver.resources.extensions import	nqa
+from eggdriver.resources.parser import		Parser
+
+from nqs.core.quantum import	quantum
+from nqs.core.reader import		settings
 
 def compile(name: str):
 	lines = nqa.getLines(name)
@@ -27,7 +28,7 @@ def compile(name: str):
 				else:
 					m = 2
 
-			elif s == 1: #settings mode on
+			elif s == 1: # Settings mode on
 
 				if i != " ":
 					command += i

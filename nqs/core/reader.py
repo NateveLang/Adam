@@ -1,6 +1,7 @@
-from eggdriver.library import nqsCommands, eggConsoleCommands
-from nqs.core.functions import Func, clear
+from eggdriver.library import           eggConsoleCommands, nqsCommands
 from eggdriver.resources.console import sleep
+
+from nqs.core.functions import clear, Func
 
 def settings(command: str, param):
   t = ""

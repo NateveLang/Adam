@@ -1,8 +1,9 @@
-from nqs.developer.run import run
-from nqs.core.kernel import compile
+from eggdriver.resources.console    import display, get, sleep
+from eggdriver.resources.constants  import *
 from eggdriver.resources.extensions import nqa
-from eggdriver.resources.console import display, get, sleep
-from eggdriver.resources.constants import *
+
+from nqs.core.kernel import   compile
+from nqs.developer.run import run
 
 def developerDisplay(name: str):
     content = nqa.read(name)
