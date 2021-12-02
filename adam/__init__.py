@@ -1,3 +1,9 @@
+"""
+__init__.py
+
+Initialization file for adam package.
+"""
+
 author = "eanorambuena"
 author_email = "eanorambuena@uc.cl"
 

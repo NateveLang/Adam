@@ -1,3 +1,10 @@
+"""
+__main__.py
+
+The entry point of the program. It drives the program, and allows to
+use the program in console.
+"""
+
 author = "eanorambuena"
 author_email = "eanorambuena@uc.cl"
 
@@ -30,6 +37,14 @@ from adam.error import      ArgumentError, FileError, RuntimeError
 from adam.run import        execute_driver
 
 def get_argument(position, plural = False):
+    """
+Get an argument from command line, with a specific position.
+You can get more than one argument, if you set 'plural' to True.
+
+It receives the following arguments:
+    position: The position of the argument in the command line.
+    plural:   If you want to get more than one argument, set it to True.
+"""
 
     if plural:
 
