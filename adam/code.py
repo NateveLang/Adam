@@ -2,6 +2,7 @@
 code.py
 
 This module contains the following functions:
+    join
     
 """
 

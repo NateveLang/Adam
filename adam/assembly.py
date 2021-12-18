@@ -99,8 +99,6 @@ This method returns a string representation of the Assembler class.
 This method is used to assemble the modules into a final python file.
 """
     
-        for module in self.modules:
-            module.assemble()
         file = open(driver_file + ".py", "w")
         
         text = ""
@@ -114,8 +112,10 @@ This method is used to assemble the modules into a final python file.
 
         for module in self.modules:
             text += module.content + "\n"
+
+        n_text = math.floor(len(text) / 2) # Skip modules double-counting 
         
-        file.write(text)
+        file.write(text[:n_text])
 
         file.close()
 
@@ -175,3 +175,4 @@ This method returns a string representation of the Module class.
 """
 
         return f"Module {self.name}"
+

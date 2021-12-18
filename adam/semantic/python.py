@@ -185,10 +185,28 @@ def generator(tree, file_name, errors, main = "", exceptions = "\tpass", args = 
 
     init = """try:
 \tfrom eggdriver import *
-\tfrom adam.types import *
-\timport sys, os, subprocess
 except ImportError:
-\tprint('ImportError')
+\tprint('ImportError: Failing to import eggdriver')
+
+try:
+\tfrom adam.types import *
+except ImportError:
+\tprint('ImportError: Failing to import adam.types')
+
+try:
+\timport sys
+except ImportError:
+\tprint('ImportError: Failing to import sys')
+
+try:
+\timport os
+except ImportError:
+\tprint('ImportError: Failing to import os')
+
+try:
+\timport subprocess
+except ImportError:
+\tprint('ImportError: Failing to import subprocess')
 """
     
     file_name = file_name.split("/")[-1]
