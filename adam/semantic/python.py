@@ -142,7 +142,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             code_line += [f'"{s.symbol}"']
 
         elif s.ID == gr.DOCSTRING:
-            code_line += ['"""' + s.symbol + '"""']
+            code_line += [f'"""{s.symbol}"""']
 
         elif s.ID == gr.MATRIX:
             replacements = ""
