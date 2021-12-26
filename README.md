@@ -103,12 +103,15 @@ You just need the subfolders:
 2. nqs      For Quantum Computing
 3. user     For NQS customizable functions
 
-Feel free to delete the examples.
-Do not delete the file adam.bat, it will be used in the next step
+Feel free to delete the examples, testing files and the other folders.
+DO NOT delete the file adam.bat, it will be used in the next step
 
 #### Add the adam.bat file to the PATH
 
-You can also move the adam.bat file into the Python/Scripts folder in order to add it to the PATH easily
+You can also move the adam.bat file into the Python/Scripts folder in order to easily add adam.bat to the PATH 
+
+Adding adam.bat to the PATH alows you to invoke Adam with the command `adam`.
+Instead, you can invoke Adam with the command `py -m adam` without using the adam.bat file.
 
 #### Add your favorite templates
 
