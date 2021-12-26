@@ -99,9 +99,10 @@ Recommend Installation:
 #### 3. Move the content of the folder Adam-main into the Python/Libs folder
 
 You just need the subfolders:
-1. adam     The Nateve core
-2. nqs      For Quantum Computing
-3. user     For NQS customizable functions
+
+1. **adam**: the Nateve core
+2. **nqs**:  for Quantum Computing
+3. **user**:  for NQS customizable functions
 
 Feel free to delete the examples, testing files and the other folders.
 DO NOT delete the file adam.bat, it will be used in the next step
