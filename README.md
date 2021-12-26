@@ -71,6 +71,17 @@ Your templates can be used by other developers. You can easily share your templa
 
 In this tutorial, we will learn how to use Nateve step by step.
 
+### Requirements
+
+1. [python >=3.8 added to the PATH](https://www.python.org/)
+2. [pip >=21.3.1](https://pypi.org/project/pip/)
+3. [eggdriver >=0.0.1](https://pypi.org/project/eggdriver/)
+
+### Extra requirements for Quantum Computing developers
+
+1. [qiskit >=0.30.0](https://pypi.org/project/qiskit/)
+2. [numpy >=1.20.1](https://pypi.org/project/numpy/)
+
 ### Step 0: Learn the basics
 
 We recommend read this README.md file.
@@ -79,22 +90,35 @@ We recommend read this README.md file.
 
 Recommend Installation:
 
-#### Clone the repo
+#### Download the source as a Zip
 
-```bash
-$> git clone https://github.com/NateveLang/Adam.git
-```
+[Download now!](https://github.com/NateveLang/Adam/archive/refs/heads/main.zip)
 
-#### Add to path
+#### Unzip the source Adam-main.zip
+
+#### Move the content of the folder Adam-main into the Python/Libs folder
+
+You just need the subfolders:
+1. adam     The Nateve core
+2. nqs      For Quantum Computing
+3. user     For NQS customizable functions
+
+Feel free to delete the examples.
+Do not delete the file adam.bat, it will be used in the next step
+
+#### Add the adam.bat file to the PATH
+
+You can also move the adam.bat file into the Python/Scripts folder in order to add it to the PATH easily
 
 #### Add your favorite templates
 
+If you want, you can create tour own templates in the folder Python/Libs/adam/templates<br>
+Learn more about templates in the [templates use](#using-templates) section.
+
+
 ### Step 2: Create a new Nateve file
 
-```bash
-$> cd my-project
-$> COPY CON main.nate
-```
+Create a file with the file extension .nate and join to the Nateve community.
 
 ### Quick start examples
 
