@@ -73,7 +73,7 @@ In this tutorial, we will learn how to use Nateve step by step.
 
 ### Requirements
 
-1. [python >=3.8 added to the PATH](https://www.python.org/)
+1. [python 3.5<= version <=3.8 added to the PATH](https://www.python.org/)
 2. [pip >=21.3.1](https://pypi.org/project/pip/)
 3. [eggdriver >=0.0.1](https://pypi.org/project/eggdriver/)
 
