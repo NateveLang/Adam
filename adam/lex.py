@@ -238,7 +238,13 @@ Returns a list of tokens, wich are used by the parser.
             number, float = F, F
         
         elif name and ch in tp.alphanum:
-            lexema += ch
+            
+            if ch == "ñ":
+                lexema += "n__n"  
+            elif ch == "Ñ":
+                lexema += "N__N"
+            else:
+                lexema += ch
 
         elif name and ch not in tp.alphanum:
             lexema, errors = tr.translate(lexema, errors, tp)
@@ -286,7 +292,13 @@ Returns a list of tokens, wich are used by the parser.
 
         elif not name and ch in tp.alphabet:
             name = True
-            lexema += ch
+            
+            if ch == "ñ":
+                lexema += "n__n"  
+            elif ch == "Ñ":
+                lexema += "N__N"
+            else:
+                lexema += ch
 
         elif not name and not number and ch in tp.digits:
             number = True
