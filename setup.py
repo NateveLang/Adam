@@ -9,7 +9,6 @@ long_description = (here / 'README.md').read_text(encoding = 'utf-8') # Get the 
 
 setup(
 	name = 'nateve-adam',
-	packages = ['nateve-adam'],
 	version = version,
 	license='MIT',
 	description = 'Nateve transpiler developed with python 3.8',
@@ -29,6 +28,7 @@ setup(
 
 	packages = find_packages(),
 	python_requires = '>=3.5, <=3.8',
+	include_package_data = True,
 
 	classifiers = [
 		'Development Status :: 5 - Production/Stable',
@@ -44,5 +44,11 @@ setup(
 	project_urls = {
 		'Bug Reports': 'https://github.com/NateveLang/Adam/issues',
 		'Source': 'https://github.com/NateveLang/Adam',
+	},
+
+	entry_points = {
+		'console_scripts': [
+			'adam = adam.__main__:main',
+		],
 	},
 )

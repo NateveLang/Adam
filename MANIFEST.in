@@ -1,0 +1,7 @@
+include nqs
+include src
+include user
+include adam.bat
+include example*.nate
+include LICENSE
+include README.md
