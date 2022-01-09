@@ -1,7 +1,7 @@
 """
-__main__.py
+app.py
 
-The entry point of the program. It drives the program, and allows to
+The entry point of the program from Python Scripts. It drives the program, and allows to
 use the program in console.
 """
 
@@ -130,5 +130,3 @@ def main():
 
     else:
         ArgumentError(None, "no arguments specified")
-
-main()

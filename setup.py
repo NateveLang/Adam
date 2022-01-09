@@ -1,4 +1,4 @@
-version = '0.0.1'
+version = '0.0.2'
 
 import pathlib
 from setuptools import setup, find_packages
@@ -48,7 +48,7 @@ setup(
 
 	entry_points = {
 		'console_scripts': [
-			'adam = adam.__main__:main',
+			'adam = adam.app:main',
 		],
 	},
 )

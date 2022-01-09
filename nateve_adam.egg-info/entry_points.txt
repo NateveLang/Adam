@@ -1,3 +1,0 @@
-[console_scripts]
-adam = adam.__main__:main
-
