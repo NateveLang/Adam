@@ -1,5 +1,3 @@
-import subprocess
-
 def tokenize(lexemas):
 	tokens = []
 
