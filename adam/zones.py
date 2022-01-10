@@ -31,8 +31,12 @@ class Zone():
         
         if self.name == "root":
             arrow = ""
+
+        elif file != sys.stdout:
+            arrow = "->  " # Because python files do not support ↳ character
+
         else:
-            arrow = "↳  "
+            arrow = "↳  " 
         
         print(depth * "    " + arrow + f"{self.name} ({self.type})", file = file)
 
@@ -41,14 +45,14 @@ class Zone():
             if type(d) == Zone:
                 d.display(depth + 1)
             else:
-                print((depth + 1) * "    " + "↳  " + f"{d.symbol} ({d.ID})", file = file)
+                print((depth + 1) * "    " + arrow + f"{d.symbol} ({d.ID})", file = file)
 
-        print((depth + 1) * "    " + "↳  " + 10 * "-", file = file)
+        print((depth + 1) * "    " + arrow + 10 * "-", file = file)
 
         for s in self.statements:
 
             if type(s) == Zone:
                 s.display(depth + 1)
             else:
-                print((depth + 1) * "    " + "↳  " + f"{s.symbol} ({s.ID})", file = file)
+                print((depth + 1) * "    " + arrow + f"{s.symbol} ({s.ID})", file = file)
                 
