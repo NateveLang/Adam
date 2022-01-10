@@ -16,7 +16,6 @@ print(y)
 
 	def __init__(self, *args):
 		super().__init__(*args)
-		a = int(2)
 
 class matrix(Matrix):
 	"""x = matrix('''
