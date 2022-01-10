@@ -1,4 +1,4 @@
-import sys
+import  sys
 
 from    adam.error import   *
 import  adam.grammar as     gr
