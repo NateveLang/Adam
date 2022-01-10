@@ -100,7 +100,9 @@ Requeriments:
 pip install nateve-adam
 ```
 
-##### 2. Add your favorite templates
+Installing adam using pip alows you to invoke Adam with the command `adam`.
+
+##### 2. Add your favorite templates (optional)
 
 If you want, you can create tour own templates in the folder Python/Libs/site-packages/adam/templates<br>
 Learn more about templates in the [templates use](#using-templates) section.
@@ -131,7 +133,7 @@ You can also move the adam.bat file into the Python/Scripts folder in order to e
 Adding adam.bat to the PATH alows you to invoke Adam with the command `adam`.
 Instead, you can invoke Adam with the command `py -m adam` without using the adam.bat file.
 
-##### 5. Add your favorite templates
+##### 5. Add your favorite templates (optional)
 
 If you want, you can create tour own templates in the folder Python/Libs/adam/templates<br>
 Learn more about templates in the [templates use](#using-templates) section.
