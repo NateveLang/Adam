@@ -7,7 +7,7 @@ from    adam.utils import   tostring
 
 F = False
 
-def scanner(text = "", args = ["none"]):
+def scanner(text: str = "", args = ["none"]):
     """Lexical scanner for the Nateve language.
 Returns a list of tokens, wich are used by the parser.
 """	

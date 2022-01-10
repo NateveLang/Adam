@@ -45,6 +45,9 @@ serie_cos = cos_serie
 """
 
 special_functions = f"""
+def eentree(prompt = '', default = ''):
+	return int(input(prompt, default))
+
 def nentree(prompt = '', default = ''):
 \treturn float(input(prompt, default))
 

@@ -51,6 +51,9 @@ eof = 400
 # The string special_functions is used to write these functions.
 # You can use variables in it using the fstring notation.
 special_functions = f"""
+def iinput(prompt = '', default = ''):
+	return int(input(prompt, default))
+
 def ninput(prompt = '', default = ''):
 	return float(input(prompt, default))
 

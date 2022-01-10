@@ -48,12 +48,15 @@ serie_cos = cos_serie
 """
 
 special_functions = """
+def recibe_entero(prompt = '', default = ''):
+	return int(input(prompt, default))
+
 def recibe_numero(prompt = '', default = ''):
-\treturn float(input(prompt, default))
+    return float(input(prompt, default))
 
 def recibe_booleano(prompt = '', default = ''):
-\treturn bool(input(prompt, default))
+    return bool(input(prompt, default))
 
 def actualiza_std():
-\tsubprocess.call(["py", "-m", "pip", "install", "eggdriver"])
+    subprocess.call(["py", "-m", "pip", "install", "eggdriver"])
 """ + traducciones

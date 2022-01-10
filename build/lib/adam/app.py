@@ -34,6 +34,7 @@ import sys
 
 from adam.assembly import   Assembler
 from adam.error import      ArgumentError, FileError, RuntimeError
+from adam.help import       introducing_text
 from adam.run import        execute_driver
 
 def get_argument(position, plural = False):
@@ -121,6 +122,9 @@ def main():
 
                     else:
                         ArgumentError(None, "no loop file specified")
+
+                else:
+                    print(introducing_text)
 
             except IndexError:
                 RuntimeError(None, "Error in compilation")

@@ -14,7 +14,6 @@ example9.nate
 setup.cfg
 setup.py
 adam/__init__.py
-adam/__main__.py
 adam/app.py
 adam/assembly.py
 adam/build.py
@@ -22,6 +21,7 @@ adam/code.py
 adam/error.py
 adam/file.py
 adam/grammar.py
+adam/help.py
 adam/lex.py
 adam/run.py
 adam/syntax.py

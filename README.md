@@ -62,10 +62,10 @@ Your templates can be used by other developers. You can easily share your templa
 
 1. `build`: Transpile Nateve source code to Python 3.8
 2. `run`: Run Nateve source code
-3. `transpile`: Transpile Nateve source code to an executable file (.exe)
+3. `compile`: Transpile Nateve source code to an executable file (.exe)
 4. `run-init-loop`: Run Nateve source code with an initial source and a loop source
 5. `set-time-unit`: Set Adam time unit to seconds or miliseconds (default: milisecond)
-6. `-v`: Activate verbose mode
+6. `help`: Get help
 
 ## Nateve Tutorial
 
