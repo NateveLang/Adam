@@ -88,15 +88,32 @@ We recommend read this README.md file.
 
 ### Step 1: Installation
 
-Recommend Installation:
+#### Recommended Installation (using `pip`):
 
-#### 1. Download the source as a Zip
+Requeriments:
+
+1. pip (latest version)
+
+##### 1. Install adam using pip
+
+```bash
+pip install nateve-adam
+```
+
+##### 2. Add your favorite templates
+
+If you want, you can create tour own templates in the folder Python/Libs/site-packages/adam/templates<br>
+Learn more about templates in the [templates use](#using-templates) section.
+
+#### Deprecated Installation (for Nateve <= 0.0.1):
+
+##### 1. Download the source as a Zip
 
 [Download now!](https://github.com/NateveLang/Adam/archive/refs/heads/main.zip)
 
-#### 2. Unzip the source Adam-main.zip
+##### 2. Unzip the source Adam-main.zip
 
-#### 3. Move the content of the folder Adam-main into the Python/Libs folder
+##### 3. Move the content of the folder Adam-main into the Python/Libs folder
 
 You just need the subfolders:
 
@@ -107,14 +124,14 @@ You just need the subfolders:
 Feel free to delete the examples, testing files and the other folders.
 DO NOT delete the file adam.bat, it will be used in the next step
 
-#### 4. Add the adam.bat file to the PATH
+##### 4. Add the adam.bat file to the PATH
 
 You can also move the adam.bat file into the Python/Scripts folder in order to easily add adam.bat to the PATH 
 
 Adding adam.bat to the PATH alows you to invoke Adam with the command `adam`.
 Instead, you can invoke Adam with the command `py -m adam` without using the adam.bat file.
 
-#### 5. Add your favorite templates
+##### 5. Add your favorite templates
 
 If you want, you can create tour own templates in the folder Python/Libs/adam/templates<br>
 Learn more about templates in the [templates use](#using-templates) section.
