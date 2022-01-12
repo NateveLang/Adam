@@ -230,18 +230,30 @@ except:
 
     else:
         file_name = file_name + ".py"
-        file = open(file_name, "w")
 
-        print(init, file = file)
-        
-        for tp in templates:
-            print(tp.special_functions, file = file)
+        with open(file_name, "w") as file:
+            print(init, file = file)
+            
+            for tp in templates:
+                print(tp.special_functions, file = file)
 
-        errors = navigator(tree, -1, 1, file, errors)
-        
-        if "moduled" not in args:
-            print(close, file = file)
+            errors = navigator(tree, -1, 1, file, errors)
+            
+            if "moduled" not in args:
+                print(close, file = file)
 
-        file.close()
+        with open(file_name, "r") as file:
+            generated_code = file.read()
+
+        chars = []
+        processed_code = []
+
+        for i in len(generated_code):
+            ch = generated_code[i]
+
+            if i >= 2 and generated_code[-2] in ["u, f, b"] and chars[-1] in [" ", "\t"]:
+                
+
+            chars.append(ch)
 
     return errors

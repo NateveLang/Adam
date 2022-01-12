@@ -1,4 +1,11 @@
-version = '0.0.3'
+version = '0.0.3w0'
+
+#		Versions Labeling:		 #
+#								 #
+#		Alpha		0.0.1a1		 #
+#		Beta		0.0.1b1		 #
+#		Production	0.0.1		 #
+#		Snapshot	0.0.1w1		 #
 
 import pathlib
 from setuptools import setup, find_packages
