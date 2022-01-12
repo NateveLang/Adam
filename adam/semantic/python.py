@@ -242,7 +242,7 @@ except:
             if "moduled" not in args:
                 print(close, file = file)
 
-        with open(file_name, "r") as file:
+        """with open(file_name, "r") as file:
             generated_code = file.read()
 
         chars = []
@@ -252,8 +252,8 @@ except:
             ch = generated_code[i]
 
             if i >= 2 and generated_code[-2] in ["u, f, b"] and chars[-1] in [" ", "\t"]:
-                
+                pass
 
-            chars.append(ch)
+            chars.append(ch)"""
 
     return errors
