@@ -1,3 +1,5 @@
+from    eggdriver import    Set
+
 from    adam.error import   LexicalError
 import  adam.grammar as     gr
 import  adam.templates as   temp
@@ -23,7 +25,7 @@ Returns a list of tokens, wich are used by the parser.
     docstring, waiting_close_bracket = 0, 0
 
     tokens = Tokens()
-    modules = []
+    modules = Set()
     errors = 0
     line, last_line, pos = 1, 1, 0
 
@@ -84,7 +86,7 @@ Returns a list of tokens, wich are used by the parser.
                     using = F
 
                 elif including:
-                    modules.append(lexema)
+                    modules.addLast(lexema)
                     including = F
                     
                 else:
@@ -201,7 +203,7 @@ Returns a list of tokens, wich are used by the parser.
                     using = F
 
                 elif including:
-                    modules.append(lexema)
+                    modules.addLast(lexema)
                     including = F
 
                 else:
