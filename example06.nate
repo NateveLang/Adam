@@ -1,6 +1,6 @@
 using "spanish"
 
-incluye "example5.nate"
+incluye "example05.nate"
 
 a = $
 | 1 5 |

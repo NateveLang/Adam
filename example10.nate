@@ -1,18 +1,9 @@
 include "example09.nate"
+include "example05.nate"
 
 print("Yes")
 
 print("No")
-
-
-
-
-
-
-
-
-
-
 
 ~pass~
 print(2)
