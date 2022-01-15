@@ -1,7 +1,3 @@
 example*.py
 .editorconfig
 main.*
-node_modules/*
-mode_modules
-package.json
-package-lock.json

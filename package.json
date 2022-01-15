@@ -1,0 +1,11 @@
+{
+  "name": "adam",
+  "version": "0.0.3w0",
+  "scripts": {
+    "co": "sui-mono commit",
+    "gp": "git push origin"
+  },
+  "devDependencies": {
+    "@s-ui/mono": "^2.18.0"
+  }
+}
