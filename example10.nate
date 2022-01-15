@@ -1,0 +1,18 @@
+include "example09.nate"
+
+print("Yes")
+
+print("No")
+
+
+
+
+
+
+
+
+
+
+
+~pass~
+print(2)

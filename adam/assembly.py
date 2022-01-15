@@ -101,7 +101,34 @@ This method is used to assemble the modules into a final python file.
     
         file = open(driver_file + ".py", "w")
         
-        text = ""
+        init = """
+try:
+    from eggdriver import *
+except ImportError:
+    print('ImportError: Failing to import eggdriver')
+
+try:
+    from adam.types import *
+except ImportError:
+    print('ImportError: Failing to import adam.types')
+
+try:
+    import sys
+except ImportError:
+    print('ImportError: Failing to import sys')
+
+try:
+    import os
+except ImportError:
+    print('ImportError: Failing to import os')
+
+try:
+    import subprocess
+except ImportError:
+    print('ImportError: Failing to import subprocess')
+"""
+
+        text = init
 
         n = math.floor(len(self.modules) / 2)
 
@@ -112,10 +139,8 @@ This method is used to assemble the modules into a final python file.
 
         for module in self.modules:
             text += module.content + "\n"
-
-        n_text = math.floor(len(text) / 2) # Skip modules double-counting 
         
-        file.write(text[:n_text])
+        file.write(text[:])
 
         file.close()
 

@@ -23,4 +23,4 @@ author_email = "eanorambuena@uc.cl"
 #	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #	SOFTWARE.
 
-from adam.semantic.python import *
+from adam.semantic.semantic import *

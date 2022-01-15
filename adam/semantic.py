@@ -211,11 +211,12 @@ except ImportError:
     
     file_name = file_name.split("/")[-1]
     
-    close = f"""try:
-\t{file_name}()
+    close = f"""
+try:
+	{file_name}()
 {main}
 except:
-{exceptions}
+	{exceptions}
 """
 
     if direct_run_mode:
@@ -232,8 +233,7 @@ except:
         file_name = file_name + ".py"
 
         with open(file_name, "w") as file:
-            print(init, file = file)
-            
+			
             for tp in templates:
                 print(tp.special_functions, file = file)
 
