@@ -1,6 +1,6 @@
 import  sys
 
-from    adam.error import   *
+from    adam.error import   ZoneError
 import  adam.grammar as     gr
 
 class Zone():
