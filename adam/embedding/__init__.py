@@ -71,4 +71,3 @@ class Language():
 		text = self.execute_with_module(main)
 
 		return text
-
