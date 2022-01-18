@@ -37,7 +37,7 @@ from adam.error import      ArgumentError, FileError, RuntimeError
 from adam.help import       introducing_text
 from adam.run import        execute_driver
 
-def get_argument(position, plural = False):
+def get_argument(position, plural = False, args = None):
     """
 Get an argument from command line, with a specific position.
 You can get more than one argument, if you set 'plural' to True.
@@ -46,31 +46,39 @@ It receives the following arguments:
     position: The position of the argument in the command line.
     plural:   If you want to get more than one argument, set it to True.
 """
+    if args == None:
+        params = sys.argv[:]
+    else:
+        params = ["adam"] + args
 
     if plural:
 
         try:
-            return sys.argv[position:]
+            return params[position:]
         except:
             return ["none"]
 
     try:
-        return sys.argv[position]
+        return params[position]
     except:
         return "none"
 
-def main():
-    params = sys.argv[:]
-
+def main(args = None):
+    
+    if args == None:
+        params = sys.argv[:]
+    else:
+        params = ["adam"] + args
+    print(params)
     if len(params) >= 2:
 
         if len(params) >= 3:
 
             try:
-                file = sys.argv[2]
+                file = params[2]
 
-                arg = get_argument(3)
-                args = get_argument(3, True)
+                arg = get_argument(3, args = params)
+                args = get_argument(3, True, args = params)
 
                 # Switch command
                 
@@ -101,7 +109,7 @@ def main():
 
                     if len(params) >= 4:
 
-                        arg2 = get_argument(4)
+                        arg2 = get_argument(4, args = params)
 
                         assembler = Assembler(file, [arg2])
                         assembler.compile(arg)
@@ -113,7 +121,7 @@ def main():
 
                     if len(params) >= 4:
 
-                        arg2 = get_argument(4)
+                        arg2 = get_argument(4, args = params)
                         """
                         file, modules = build(file, arg2)
                         file2, modules = build(arg, arg2, driver = "import " + file + "\nwhile True:\n\timport {}")
