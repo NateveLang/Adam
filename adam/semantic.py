@@ -243,7 +243,7 @@ try:
 except:
 	{exceptions}
 """
-
+    close = f"{file_name}()\n"
     if direct_run_mode:
         code.run_python(init)
 

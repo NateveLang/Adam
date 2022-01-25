@@ -69,7 +69,7 @@ def main(args = None):
         params = sys.argv[:]
     else:
         params = ["adam"] + args
-    print(params)
+    
     if len(params) >= 2:
 
         if len(params) >= 3:

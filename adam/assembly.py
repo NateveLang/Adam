@@ -80,7 +80,9 @@ It takes the following arguments:
         self.modules.append(module)
 
         for module_name in module.modules_names:
-            self.add_module(module_name)
+
+            if module_name != module.name:
+                self.add_module(module_name)
 
     def __str__(self):
         """
