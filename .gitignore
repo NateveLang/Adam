@@ -1,3 +1,7 @@
 example*.py
 .editorconfig
 main.*
+__pycache__/*
+adam/__pycache__/*
+adam/*/__pycache__/*
+adam/*/*/__pycache__/*
