@@ -28,6 +28,7 @@ import  os
 
 driver_file = "nateve_nqs_driver"
 
+_author = author
 _required_data = None
 
 def _build(code):

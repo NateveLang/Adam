@@ -23,6 +23,7 @@ author_email = "eanorambuena@uc.cl"
 #	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #	SOFTWARE.
 
+_author = author
 _required_data = None
 
 def _build(code):
