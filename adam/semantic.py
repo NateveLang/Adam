@@ -30,9 +30,20 @@ from    adam.embedding import   Language
 from    adam.error import       SemanticError, DeclarationError
 import  adam.grammar as         gr
 import  adam.templates as       temp
+import 	adam.utils as 		utils
 from    adam.zones import       Zone
 
+def vector_processing(raw_vector_content: str):
+	
+    if utils.is_numeric_list(raw_vector_content):
+        processed_vector_content = ['vector(' + raw_vector_content + ')']
+	    
+    else:
+	processed_vector_content = [gr.vector[0] + raw_vector_content + gr.vector[1]]
+	
+    return processed_vector_content
 
+# navigator
 def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
 
     last_line = line
@@ -114,7 +125,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
                 code_line += ['matrix("""' + d.symbol + '""")' + replacements]
 
             elif d.ID == gr.VECTOR:
-                code_line += ['vector(' + d.symbol + ')']
+                code_line += vector_processing(d.symbol)
 
             else:
                 code_line += [d.symbol]
@@ -191,7 +202,7 @@ def navigator(zone, depth = -1, line = 1, file = sys.stdout, errors = 0):
             code_line += ['matrix("""' + s.symbol + '"""' + replacements + ')']
 
         elif s.ID == gr.VECTOR:
-            code_line += ['vector(' + s.symbol + ')']	
+	    code_line += vector_processing(s.symbol)
 
         else:
             code_line += [f"{s.symbol}"]
