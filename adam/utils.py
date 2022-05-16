@@ -23,6 +23,24 @@ author_email = "eanorambuena@uc.cl"
 #	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #	SOFTWARE.
 
+numbers = "0123456789."
+
+def is_number(string: str):
+	for char in string:
+		if char not in numbers:
+			return False
+	
+	return True
+
+def is_numeric_list(raw_vector_content_lexema: str):
+	raw_list = raw_vector_content_lexema.split(",")
+
+	for element in raw_list:
+		if not is_number(element):
+			return False
+		
+	return True
+
 def tokenize(lexemas):
 	tokens = []
 
